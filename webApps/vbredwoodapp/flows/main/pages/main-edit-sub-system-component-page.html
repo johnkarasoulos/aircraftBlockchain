@@ -1,0 +1,28 @@
+<div class="oj-flex">
+  <h1 class="oj-flex-item oj-sm-12 oj-md-12">Edit SubSystemComponent</h1>
+</div>
+<div class="oj-flex">
+  <oj-validation-group id="validation-group" class="oj-flex-item oj-sm-12 oj-md-12">
+    <oj-form-layout class="oj-formlayout-full-width" label-edge="start">
+      <oj-select-single value="{{ $variables.subSystemComponent.subSystems }}" label-hint="Sub Systems"
+        data="[[ $variables.subSystemsListSDP ]]" item-text="subsystemtitle"></oj-select-single>
+      <oj-input-text value="{{ $variables.subSystemComponent.name }}" label-hint="name"></oj-input-text>
+      <oj-input-text value="{{ $variables.subSystemComponent.serialNumber }}" label-hint=" serial number"
+        required="true"></oj-input-text>
+      <oj-select-single value="{{ $variables.subSystemComponent.operatingData }}" label-hint="Operating Data"
+        data="[[ $variables.operatingDataListSDP ]]" item-text="operatingDataName"></oj-select-single>
+      <oj-switch value="{{ $variables.subSystemComponent.newPart }}" label-hint="new part"></oj-switch>
+      <oj-input-date value="{{ $variables.subSystemComponent.assemblyDate }}" label-hint="Assembly Date"></oj-input-date>
+      <oj-input-date value="{{ $variables.subSystemComponent.replacementDate }}" label-hint="Replacement Date"></oj-input-date>
+      <oj-select-single value="{{ $variables.subSystemComponent.maintenanceActions }}" label-hint="Maintenance Actions"
+        data="[[ $variables.maintenanceActionsListSDP ]]" item-text="description"></oj-select-single>
+    </oj-form-layout>
+  </oj-validation-group>
+</div>
+<div class="oj-flex">
+  <oj-toolbar chroming="solid" class="oj-flex-item oj-sm-12 oj-md-12">
+    <oj-button on-oj-action="[[$listeners.backButtonClicked]]">Cancel</oj-button>
+    <oj-button on-oj-action="[[$listeners.saveButtonClicked]]"
+      disabled="[[ $variables.saveSubSystemComponentChainInProgress ]]">Save</oj-button>
+  </oj-toolbar>
+</div>

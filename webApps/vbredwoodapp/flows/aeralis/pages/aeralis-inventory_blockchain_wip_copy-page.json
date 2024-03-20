@@ -1,0 +1,232 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "getAllTokens": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "listOfAllTokens",
+        "keyAttributes": "description"
+      }
+    },
+    "goToParentOption": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "landingGearListSDP2": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_LandingGear",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallLandingGearResponse2"
+      }
+    },
+    "listOfTokens": {
+      "type": "listOfAllTokens"
+    },
+    "pageTitle": {
+      "type": "string",
+      "defaultValue": "Systems"
+    },
+    "searchInventory": {
+      "type": "string"
+    },
+    "setRequestAllTokens": {
+      "type": "setRequest4AllTokens"
+    },
+    "setRequestToken": {
+      "type": "setRequestSingleToken"
+    },
+    "singleToken": {
+      "type": "retrieveSingleToken"
+    },
+    "subtitle": {
+      "type": "string"
+    }
+
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getallLandingGearResponse": {
+      "endpoint": "getall_LandingGear",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.getallLandingGearResponse2": {
+      "endpoint": "getall_LandingGear",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.getallLandingGearResponse3": {
+      "endpoint": "getall_LandingGear",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.listOfAllTokens": {
+      "endpoint": "getAllTokens",
+      "service": "Retrieve-All-Tokens",
+      "path": "response"
+    },
+    "@decorators.retrieveSingleToken": {
+      "endpoint": "postRestproxy",
+      "service": "GetSingleToken",
+      "path": "response"
+    },
+    "@decorators.setRequest4AllTokens": {
+      "endpoint": "getAllTokens",
+      "service": "Retrieve-All-Tokens",
+      "path": "request"
+    },
+    "@decorators.setRequestSingleToken": {
+      "endpoint": "postRestproxy",
+      "service": "GetSingleToken",
+      "path": "request"
+    },
+    "getallLandingGearResponse": {
+      "items": [
+        {
+          "id": "number",
+          "subSystemID": "string",
+          "SystemDefinition": "string",
+          "systemImage": "string",
+          "title": "string"
+        }
+      ]
+    },
+    "getallLandingGearResponse2": {
+      "items": [
+        {
+          "figther": "number",
+          "id": "number",
+          "subSystemID": "string",
+          "SystemDefinition": "string",
+          "systemImage": "string",
+          "title": "string"
+        }
+      ]
+    },
+    "getallLandingGearResponse3": {
+      "items": [
+        {
+          "id": "number",
+          "subSystemID": "string",
+          "SystemDefinition": "string",
+          "systemImage": "string",
+          "title": "string"
+        }
+      ]
+    },
+    "listOfAllTokens": {
+      "description": "string",
+      "id": "string"
+    },
+    "retrieveSingleToken": {
+      "assemblyDate": "string",
+      "assetType": "string",
+      "behaviors": "string[]",
+      "createdBy": "string",
+      "creationDate": "string",
+      "isBurned": "boolean",
+      "mintable": {
+        "max_mint_quantity": "number"
+      },
+      "newPart": "boolean",
+      "owner": "string",
+      "quantity": "number",
+      "replacementDate": "string",
+      "roles": {
+        "minter_role_name": "string"
+      },
+      "tokenDesc": "string",
+      "tokenId": "string",
+      "tokenMetadata": {
+        "description": "string",
+        "id": "string",
+        "maintenanceDateAction": "string",
+        "name": "string",
+        "serialNumber": "string",
+        "subSystems": "string"
+      },
+      "tokenName": "string",
+      "tokenStandard": "string",
+      "tokenType": "string",
+      "tokenUnit": "string",
+      "tokenUri": "string"
+    },
+    "setRequest4AllTokens": {
+      "args": "string[]",
+      "chaincode": "string",
+      "sync": "boolean",
+      "timeout": "number"
+    },
+    "setRequestSingleToken": {
+      "args": "string[]",
+      "chaincode": "string",
+      "sync": "boolean",
+      "timeout": "number"
+    }
+  },
+  "eventListeners": {
+    "searchSysValueAction": {
+      "chains": [
+        {
+          "chainId": "getToken",
+          "parameters": {
+            "value": "{{$event.detail.value}}",
+            "itemContext": "{{$event.detail.itemContext}}"
+          }
+        }
+      ]
+    },
+    "selectValueItem": {
+      "chains": [
+        {
+          "chainId": "SelectValueItemChangeChain1",
+          "parameters": {
+            "key": "{{$event.detail.value.key}}",
+            "data": "{{$event.detail.value.data}}",
+            "metadata": "{{$event.detail.value.metadata}}"
+          }
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "chainId": "PageVbEnterChain"
+        }
+      ]
+    }
+
+  },
+  "imports": {
+    "components": {
+
+      "oj-input-search": {
+        "path": "ojs/ojinputsearch"
+      },
+      "oj-select-single": {
+        "path": "ojs/ojselectsingle"
+      },
+      "oj-sp-general-drawer-template": {
+        "path": "oj-sp/general-drawer-template/loader"
+      },
+      "oj-sp-profile-card": {
+        "path": "oj-sp/profile-card/loader"
+      },
+      "oj-sp-smart-search-page": {
+        "path": "oj-sp/smart-search-page/loader"
+      }
+
+    }
+  },
+  "@dt": {
+    "iconClass": "vbdt-dynamic-icon-75-icoSmartSearchPage48Svg"
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

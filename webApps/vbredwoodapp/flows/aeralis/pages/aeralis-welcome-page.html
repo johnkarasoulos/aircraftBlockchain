@@ -1,0 +1,31 @@
+<oj-sp-welcome-page id="oj-sp-wp1" background-color="[[ $page.variables.backgroundColor ]]"
+  illustration-background="[[ require.toUrl($page.variables.illustrationBackground) ]]"
+  illustration-foreground="[[ require.toUrl($page.variables.illustrationForeground) ]]"
+  display-options.mobile-image="[[ $page.variables.mobileImage ]]" display-options.responsive-padding="on"
+  page-title="Air vehicle, engines and equipment SNS" description-text="Coding and definitions for the AVEE SNS"
+  overline-text="The SNS is used in this specification as a method to describe the functional and/or physical breakdown of items of the Product.">
+  <oj-input-text label-hint="System Token" slot="search" value="{{ $variables.selectTokenID }}"
+    on-value-changed="[[$listeners.inputTextValue]]"></oj-input-text>
+  <oj-sp-collection-container display-options.columns="on" display-options.selector="on" selected-items-count="ALL"
+    display-options.export="on" selector="indeterminate"
+    on-sp-primary-action="[[$listeners.collectionContainerSpPrimaryAction]]"
+    on-functional-primary-actions-changed="[[$listeners.collectionContainerFunctionalPrimaryActions]]">
+    <oj-list-view data="[[ $variables.allTokens ]]" selection-mode="single" scroll-policy="loadAll">
+      <template slot="itemTemplate">
+        <oj-sp-list-item-template badge.status="info" badge.position="leading"
+          badge.text="[[ $current.data.valueJson.tokenId ]]" primary-action.display="on" primary-action.label="Overview"
+          display-options.column-layout="one"
+          columns='[[ [{"columnType":"primary","primaryText":$current.data.valueJson.tokenDesc},{"primaryText":$current.data.subSystemID}] ]]'
+          on-sp-primary-action="[[$listeners.listItemTemplateSpPrimaryAction]]"
+          secondary-actions='[{"id":"foldout","label":"Fold Out SubSystem","display":"on","icon":"oj-ux-ico-foldout-layout"}]'
+          primary-action.icon="oj-ux-ico-foldout-layout" display-options.badge-size="long"
+          on-dblclick="[[$listeners.listItemTemplateDblclick]]">
+          <div>
+          <oj-bind-text value="[[ $current.data.key ]]"></oj-bind-text>
+          </div>
+          </oj-sp-list-item-template>
+      </template>
+    </oj-list-view>
+  </oj-sp-collection-container>
+
+</oj-sp-welcome-page>

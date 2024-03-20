@@ -1,0 +1,69 @@
+{
+  "title": "LifeCycleStatus Detail",
+  "description": "Displays LifeCycleStatus record",
+  "variables": {
+    "lifeCycleStatus": {
+      "type": "page:getLifeCycleStatusResponse"
+    },
+    "lifeCycleStatusId": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    }
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getLifeCycleStatusResponse": {
+      "endpoint": "get_LifeCycleStatus",
+      "service": "businessObjects",
+      "path": "request"
+    },
+    "getLifeCycleStatusResponse": {
+      "actorsObject": {
+        "items": [
+          {
+            "actorName": "string"
+          }
+        ]
+      },
+      "systemLifeCycleDescription": "string"
+    }
+  },
+  "eventListeners": {
+    "backButtonClicked": {
+      "chains": [
+        {
+          "chainId": "goBackChain"
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "chainId": "loadLifeCycleStatusChain"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      }
+    }
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

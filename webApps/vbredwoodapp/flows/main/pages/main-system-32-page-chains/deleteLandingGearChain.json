@@ -1,0 +1,66 @@
+{
+  "root": "deleteLandingGear",
+  "variables": {
+    "landingGearId": {
+      "type": "string",
+      "input": "fromCaller",
+      "required": true
+    }
+  },
+  "actions": {
+    "deleteLandingGear": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "businessObjects/delete_LandingGear",
+        "uriParams": {
+          "LandingGear_Id": "[[ $variables.landingGearId ]]"
+        }
+      },
+      "outcomes": {
+        "success": "resetSelection",
+        "failure": "fireErrorNotification"
+      }
+    },
+    "resetSelection": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "[[ '$page.variables.oj_table_628944390_1SelectedId' ]]"
+        ]
+      },
+      "outcomes": {
+        "success": "refreshDataProvider"
+      },
+      "description": "Resets selection variable",
+      "label": "Reset selection"
+    },
+    "refreshDataProvider": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "outcomes": {
+        "success": "fireSuccessNotification"
+      },
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.landingGearListSDP ]]"
+      }
+    },
+    "fireSuccessNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "summary": "LandingGear deleted",
+        "message": "[[ 'LandingGear [' + $variables.landingGearId + '] successfully deleted' ]]",
+        "type": "confirmation",
+        "displayMode": "transient"
+      }
+    },
+    "fireErrorNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "summary": "Delete failed",
+        "message": "[[ 'Could not delete data: status ' + $chain.results.deleteLandingGear.status ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    }
+  }
+}

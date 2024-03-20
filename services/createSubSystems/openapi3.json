@@ -1,0 +1,240 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "CreateAirplane",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "vb-catalog://backends/CreateAirplane",
+            "description": "CreateAirplane"
+        }
+    ],
+    "paths": {
+        "/restproxy/api/v2/channels/goldenthread/transactions": {
+            "post": {
+                "operationId": "postTransactions",
+                "requestBody": {
+                    "description": "Request for application/json",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PostRestproxyApiV2ChannelsGoldenthreadTransactionsRequest"
+                            },
+                            "examples": {
+                                "vb": {
+                                    "summary": "Example stored by VB User",
+                                    "externalValue": "./examples/postTransactions/request_application_json_vb.json"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PostRestproxyApiV2ChannelsGoldenthreadTransactionsResponse"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/postTransactions/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "create"
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "PostTransactionsResponse": {
+                "type": "object",
+                "properties": {
+                    "returnCode": {
+                        "type": "string"
+                    },
+                    "error": {
+                        "type": "string"
+                    },
+                    "result": {
+                        "type": "object",
+                        "properties": {
+                            "txid": {
+                                "type": "string"
+                            },
+                            "payload": {
+                                "type": "string"
+                            },
+                            "encode": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "PostTransactionsRequest": {
+                "type": "object",
+                "properties": {
+                    "chaincode": {
+                        "type": "string"
+                    },
+                    "args": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "timeout": {
+                        "type": "integer"
+                    },
+                    "sync": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "PostRestproxyApiV2ChannelsGoldenthreadTransactionsRequest": {
+                "type": "object",
+                "properties": {
+                    "chaincode": {
+                        "type": "string"
+                    },
+                    "args": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "timeout": {
+                        "type": "integer"
+                    },
+                    "sync": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "PostRestproxyApiV2ChannelsGoldenthreadTransactionsResponse": {
+                "type": "object",
+                "properties": {
+                    "returnCode": {
+                        "type": "string"
+                    },
+                    "error": {
+                        "type": "string"
+                    },
+                    "result": {
+                        "type": "object",
+                        "properties": {
+                            "txid": {
+                                "type": "string"
+                            },
+                            "payload": {
+                                "type": "object",
+                                "properties": {
+                                    "tokenMetadata": {
+                                        "type": "object",
+                                        "properties": {
+                                            "assetType": {
+                                                "type": "string"
+                                            },
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "landingGear": {
+                                                "type": "string"
+                                            },
+                                            "subsystemCode": {
+                                                "type": "string"
+                                            },
+                                            "subsystemdefinition": {
+                                                "type": "string"
+                                            },
+                                            "subsystemtitle": {
+                                                "type": "string"
+                                            },
+                                            "parent_nft": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "assetType": {
+                                        "type": "string"
+                                    },
+                                    "tokenId": {
+                                        "type": "string"
+                                    },
+                                    "tokenName": {
+                                        "type": "string"
+                                    },
+                                    "tokenDesc": {
+                                        "type": "string"
+                                    },
+                                    "tokenStandard": {
+                                        "type": "string"
+                                    },
+                                    "tokenType": {
+                                        "type": "string"
+                                    },
+                                    "tokenUnit": {
+                                        "type": "string"
+                                    },
+                                    "behaviors": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "roles": {
+                                        "type": "object",
+                                        "properties": {
+                                            "minter_role_name": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "mintable": {
+                                        "type": "object",
+                                        "properties": {
+                                            "max_mint_quantity": {
+                                                "type": "integer"
+                                            }
+                                        }
+                                    },
+                                    "quantity": {
+                                        "type": "integer"
+                                    },
+                                    "createdBy": {
+                                        "type": "string"
+                                    },
+                                    "creationDate": {
+                                        "type": "string"
+                                    },
+                                    "owner": {
+                                        "type": "string"
+                                    },
+                                    "isBurned": {
+                                        "type": "boolean"
+                                    },
+                                    "tokenUri": {
+                                        "type": "string"
+                                    }
+                                }
+                            },
+                            "encode": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

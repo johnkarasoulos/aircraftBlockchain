@@ -1,0 +1,396 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "allAircrafts": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getAllTokens",
+        "keyAttributes": "key"
+      }
+    },
+    "assetTypesListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_AssetTypes",
+        "keyAttributes": "assetType",
+        "itemsPath": "items",
+        "responseType": "getallAssetTypesResponse",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "assetType"
+          ]
+        }
+      }
+    },
+    "assetTypesListTokenSDP": {
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_TokenAssetType",
+        "responseType": "getall_TokenAssetType",
+        "itemsPath": "items",
+        "keyAttributes": "assetType"
+      },
+      "type": "vb/ServiceDataProvider"
+    },
+    "avatar": {
+      "type": {
+        "initials": "string",
+        "src": "string"
+      },
+      "defaultValue": {
+        "initials": "",
+        "src": ""
+      }
+    },
+    "contextualInfoLabelVisible": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "contextualInfoSticky": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "createSubSystemsChainInProgress": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "createTokenSubsystem": {
+      "type": "createTokenSubsystem"
+    },
+    "dirtyDataFlag": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "displayMode": {
+      "type": "string"
+    },
+    "formState": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "getAllLandingGears": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getAllTokens",
+        "keyAttributes": "key",
+        "textFilterAttributes": [
+          "key"
+        ]
+      }
+    },
+    "goToParentOption": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "isSaved": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "landingGearListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_LandingGear",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallLandingGearResponse",
+        "uriParameters": {}
+      }
+    },
+    "landingGearTokenListSDP": {
+      "defaultValue": {
+        "endpoint": "Retrieve-All-Tokens/getAllTokens",
+        "responseType": "getAllTokensbyAirplane",
+        "keyAttributes": "payload",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "payload"
+          ]
+        }
+      },
+      "type": "vb/ServiceDataProvider"
+    },
+    "objectId": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "primaryAlwaysOn": {
+      "type": "boolean",
+      "defaultValue": true
+    },
+    "saveOption": {
+      "type": "string",
+      "defaultValue": "off"
+    },
+    "subSystems": {
+      "type": "createSubSystemsRequest"
+    }
+
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.createSubSystemsRequest": {
+      "endpoint": "create_SubSystems",
+      "service": "businessObjects",
+      "path": "request"
+    },
+    "@decorators.getall_TokenAssetType": {
+      "endpoint": "getall_TokenAssetType",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.getallAssetTypesResponse": {
+      "endpoint": "getall_AssetTypes",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.getallLandingGearResponse": {
+      "endpoint": "getall_LandingGear",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.getAllTokens": {
+      "endpoint": "getAllTokens",
+      "service": "Retrieve-All-Tokens",
+      "path": "response"
+    },
+    "@decorators.getAllTokensbyAirplane": {
+      "endpoint": "getAllTokens",
+      "service": "Retrieve-All-Tokens",
+      "path": "response"
+    },
+    "createSubSystemsRequest": {
+      "landingGear": "number",
+      "subsystemAssetType": "string",
+      "subsystemCode": "string",
+      "subsystemdefinition": "string",
+      "subsystemId": "string",
+      "subsystemtitle": "string",
+      "tokenDesc": "string",
+      "tokenId": "string",
+      "tokenUri": "string"
+    },
+    "createTokenSubsystem": {
+      "tokenDesc": "string",
+      "tokenId": "string",
+      "tokenMetadata": {
+        "assetType": "string",
+        "id": "string",
+        "landingGear": "string",
+        "parent_nft": "string",
+        "subsystemCode": "string",
+        "subsystemdefinition": "string",
+        "subsystemtitle": "string"
+      },
+      "tokenUri": "string"
+    },
+    "getall_TokenAssetType": {
+      "items": [
+        {
+          "assetType": "string"
+        }
+      ]
+    },
+    "getallAssetTypesResponse": {
+      "items": [
+        {
+          "assetType": "string"
+        }
+      ]
+    },
+    "getallLandingGearResponse": {
+      "items": [
+        {
+          "id": "number",
+          "subSystemID": "string"
+        }
+      ]
+    },
+    "getAllTokens": {
+            "key": "string",
+            "valueJson": {
+              "assemblyDate": "string",
+              "assetType": "string",
+              "behaviors": "string[]",
+              "createdBy": "string",
+              "creationDate": "string",
+              "isBurned": "boolean",
+              "landingGearCollection": "string[]",
+              "mintable": {
+                "max_mint_quantity": "number"
+              },
+              "newPart": "boolean",
+              "owner": "string",
+              "quantity": "number",
+              "replacementDate": "string",
+              "roles": {
+                "minter_role_name": "string"
+              },
+              "subSystemComponentCollection": "string[]",
+              "subSystemsCollection": "string[]",
+              "tokenDesc": "string",
+              "tokenId": "string",
+              "tokenMetadata": {
+                "assetType": "string",
+                "definition1": "string",
+                "description": "string",
+                "figther": "string",
+                "id": "string",
+                "landingGear": "string",
+                "maintenanceDateAction": "string",
+                "name": "string",
+                "parent_nft": "string",
+                "serialNumber": "string",
+                "subsystemCode": "string",
+                "subsystemdefinition": "string",
+                "subSystems": "string",
+                "subsystemtitle": "string",
+                "systemDefinition": "string",
+                "title": "string"
+              },
+              "tokenName": "string",
+              "tokenStandard": "string",
+              "tokenType": "string",
+              "tokenUnit": "string",
+              "tokenUri": "string"
+            }
+    },
+    "getAllTokensbyAirplane": {
+        "payload": [
+          {
+              "tokenId": "string",
+                "assetType": "string"
+          }
+        ]
+    }
+
+  },
+  "eventListeners": {
+    "confirmNoOjAction": {
+      "chains": [
+        {
+          "chainId": "dialogResponseChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}",
+            "response": "NO"
+          }
+        }
+      ]
+    },
+    "confirmYesOjAction": {
+      "chains": [
+        {
+          "chainId": "dialogResponseChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}",
+            "response": "YES"
+          }
+        }
+      ]
+    },
+    "inputTextValue": {
+      "chains": [
+        {
+          "chain": "InputTextValueChangeChain",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "ojdynamicFormTransientValueChangeChain": {
+      "chains": [
+        {
+          "chainId": "dynamicFormTransientValueChangeChain",
+          "parameters": {
+            "detail": "{{ $event.detail}}"
+          }
+        }
+      ]
+    },
+    "ojSpCancel": {
+      "chains": [
+        {
+          "chainId": "spCancelChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}"
+          }
+        }
+      ]
+    },
+    "ojSpGoToParent": {
+      "chains": [
+        {
+          "chainId": "goToParent",
+          "parameters": {}
+        }
+      ]
+    },
+    "ojSpSave": {
+      "chains": [
+        {
+          "chainId": "spSaveChain"
+        }
+      ]
+    },
+    "ojSpSubmit": {
+      "chains": [
+        {
+          "chainId": "spSubmitChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}"
+          }
+        }
+      ]
+    },
+    "saveButtonClicked": {
+      "chains": [
+        {
+          "chain": "createSubSystemsChain"
+        }
+      ]
+    },
+    "vbBeforeExit": {
+      "chains": [
+        {
+          "chainId": "checkBeforeExit",
+          "parameters": {}
+        }
+      ]
+    }
+
+  },
+  "imports": {
+    "components": {
+      "oj-dynamic-form": {
+        "path": "oj-dynamic/form/loader"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-select-single": {
+        "path": "ojs/ojselectsingle"
+      },
+      "oj-sp-message-unsaved-changes": {
+        "path": "oj-sp/message-unsaved-changes/loader"
+      },
+      "oj-sp-simple-create-edit": {
+        "path": "oj-sp/simple-create-edit/loader"
+      },
+      "oj-validation-group": {
+        "path": "ojs/ojvalidationgroup"
+      }
+
+    }
+  },
+  "@dt": {
+    "iconClass": "vbdt-dynamic-icon-71-icoSimpleCreateAndEdit48Svg"
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

@@ -1,0 +1,31 @@
+<oj-sp-general-overview-page id="oj_gop1" display-options.responsive-padding="on" page-title="Subsystems"
+  page-subtitle="Subsystem definition">
+
+    
+  <div slot="main">
+        <!-- Main Content goes here... It is recommended to have a heading element title as well -->
+        <oj-table scroll-policy="loadMoreOnScroll" data="[[$variables.subSystemsListSDP]]"
+          columns='[{"headerText":"Landing Gear","field":"landingGear"},{"headerText":"Title","field":"landingGearObject","sortProperty":"landingGearObject.title","template":"titleCellTemplate2"},{"headerText":"subsystemtitle","field":"subsystemtitle"},{"headerText":"Subsystem Code","field":"subsystemCode"},{"headerText":"subsystemdefinition","field":"subsystemdefinition"}]'
+          id="oj-table-2083428117-1" selection-mode.row="single" selection-mode.column="single"
+          on-first-selected-row-changed="[[ $listeners.oj_table_2083428117_1SelectionChanged ]]">
+              <template slot="titleCellTemplate2">
+                    <oj-bind-text value="[[ $current.data.items[0] ? $current.data.items[0].title : undefined ]]"></oj-bind-text>
+              </template>
+        </oj-table>
+  </div>
+
+    
+  <div slot="info">
+        <!-- Complementary Content goes here... It is recommended to have a heading element title as well --></div>
+
+
+</oj-sp-general-overview-page>
+<div class="oj-flex">
+  <oj-toolbar id="oj-toolbar-for-oj-table-2083428117-1" chroming="solid" class="oj-flex-item oj-sm-12 oj-md-12">
+        <oj-button on-oj-action="[[$listeners.createSubSystemsButtonClicked]]">Create</oj-button>
+        <oj-button disabled="[[ $variables.oj_table_2083428117_1SelectedId === '' ]]"
+          on-oj-action="[[$listeners.editSubSystemsButtonClicked]]">Edit</oj-button>
+        <oj-button disabled="[[ $variables.oj_table_2083428117_1SelectedId === '' ]]"
+          on-oj-action="[[$listeners.deleteSubSystemsButtonClicked]]">Delete SubSystems</oj-button>
+  </oj-toolbar>
+</div>

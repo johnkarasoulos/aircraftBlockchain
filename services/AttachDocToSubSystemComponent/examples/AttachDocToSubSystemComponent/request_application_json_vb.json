@@ -1,0 +1,16 @@
+{
+    "chaincode": "gt1155",
+    "args": [
+        "attachComponentDocument",
+        "0432001400010001", 
+        "0432001400010001D0001", 
+        "0432001400010001-invoice117", 
+        "simple-us-invoice117.pdf (application/pdf)", 
+        "7bf17c838db90434ce597399f506ec122808b99d082bd3eab47c82624bb2f99f", 
+        "Proforma Invoice", 
+        "[\"vatpercentage\",\"deliverydate\"]",
+        "[\"21\",\"20231030\"]"
+    ],
+    "timeout": 6000,
+    "sync": true
+}

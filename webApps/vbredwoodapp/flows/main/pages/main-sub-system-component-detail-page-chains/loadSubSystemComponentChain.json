@@ -1,0 +1,36 @@
+{
+  "root": "loadSubSystemComponent",
+  "actions": {
+    "loadSubSystemComponent": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "businessObjects/get_SubSystemComponent",
+        "uriParams": {
+          "SubSystemComponent_Id": "[[ $page.variables.subSystemComponentId ]]"
+        },
+        "responseType": "page:getSubSystemComponentResponse"
+      },
+      "outcomes": {
+        "success": "assignPayload",
+        "failure": "fireErrorNotification"
+      }
+    },
+    "assignPayload": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.subSystemComponent": {
+          "source": "[[ $chain.results.loadSubSystemComponent.body ]]"
+        }
+      }
+    },
+    "fireErrorNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "summary": "Could not load data",
+        "message": "[[ 'Could not load data: status ' + $chain.results.loadSubSystemComponent.status ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    }
+  }
+}

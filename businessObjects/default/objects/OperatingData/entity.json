@@ -1,0 +1,125 @@
+{
+    "fields": [
+        {
+            "type": "number",
+            "name": "id",
+            "internal": false,
+            "key": true,
+            "oid": "26aaa0e8-0708-4507-8479-3d4df9629e37",
+            "required": true,
+            "unique": true,
+            "displayLabel": "Id"
+        },
+        {
+            "type": "datetime",
+            "name": "creationDate",
+            "internal": false,
+            "oid": "3d088e65-acef-4284-a201-5050029686d5",
+            "displayLabel": "Created",
+            "historyType": "timeCreated"
+        },
+        {
+            "type": "datetime",
+            "name": "lastUpdateDate",
+            "internal": false,
+            "oid": "1dacf88a-410b-4efe-8d39-2af2e35537fe",
+            "displayLabel": "Last Updated",
+            "historyType": "timeUpdated"
+        },
+        {
+            "type": "string",
+            "name": "createdBy",
+            "internal": false,
+            "oid": "dc33d9e2-056b-409f-bf6d-4addf12fbfbb",
+            "displayLabel": "Created By",
+            "historyType": "createdBy"
+        },
+        {
+            "type": "string",
+            "name": "lastUpdatedBy",
+            "internal": false,
+            "oid": "48ee8942-cbdb-4e1c-a1dd-dcee1a2fdd7f",
+            "displayLabel": "Last Updated By",
+            "historyType": "updatedBy"
+        },
+{
+            "type": "number",
+            "name": "versionNumber",
+            "internal": false,
+            "oid": "23f1d300-006b-42ff-8502-9e9d08884c66",
+            "displayLabel": "Version Number",
+            "historyType": "versionNumber"
+        },
+        {
+            "type": "string",
+            "name": "operatingDataName",
+            "oid": "be5ff4a7-5f97-4f90-93e8-ee5d67249af9",
+            "displayLabel": "Operating Data Name"
+        }        ,
+        {
+            "type": "string",
+            "name": "operatingDataDescription",
+            "oid": "6fa28f49-a8ee-435b-a4cd-3da086fb2438",
+            "displayLabel": "Operating Data Description"
+        }
+    ],
+    "name": "OperatingData",
+    "oid": "09cb8c76-cfcb-46c2-bbed-3b2a0128bae9",
+    "displayLabel": "Operating Data",
+    "relationships": [
+        {
+            "name": "subSystemComponentCollection",
+            "reverseRelationship": "operatingDataObject",
+            "targetEntity": "SubSystemComponent",
+            "type": "incoming",
+            "displayField": "operatingDataName"
+        }
+    ],
+    "security": {
+        "type": "local",
+        "acl": [
+            {
+                "roleId": "approle.anonymous.user",
+                "privileges": [
+                    {
+                        "name": "view",
+                        "value": true
+                    },
+                    {
+                        "name": "create",
+                        "value": true
+                    },
+                    {
+                        "name": "update",
+                        "value": true
+                    },
+                    {
+                        "name": "delete",
+                        "value": true
+                    }
+                ]
+            },
+            {
+                "roleId": "approle.authenticated.user",
+                "privileges": [
+                    {
+                        "name": "view",
+                        "value": true
+                    },
+                    {
+                        "name": "create",
+                        "value": true
+                    },
+                    {
+                        "name": "update",
+                        "value": true
+                    },
+                    {
+                        "name": "delete",
+                        "value": true
+                    }
+                ]
+            }
+        ]
+    }
+}

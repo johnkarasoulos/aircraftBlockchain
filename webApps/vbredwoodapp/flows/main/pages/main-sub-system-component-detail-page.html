@@ -1,0 +1,34 @@
+<div class="oj-flex">
+  <h1 class="oj-flex-item oj-sm-12 oj-md-12">SubSystemComponent Detail</h1>
+</div>
+<div class="oj-flex">
+  <div class="oj-flex-item oj-sm-12 oj-md-12">
+    <oj-form-layout label-edge="start">
+      <oj-label id="oj-label--17832837-1">Sub Systems</oj-label>
+      <div aria-labelledby="oj-label--17832837-1">
+        <oj-bind-text value="[[ $variables.subSystemComponent.subSystems ]]"></oj-bind-text>
+      </div>
+      <oj-input-text value="[[ $variables.subSystemComponent.name ]]" readonly="true" label-hint="name"></oj-input-text>
+      <oj-input-text value="[[ $variables.subSystemComponent.serialNumber ]]" readonly="true"
+        label-hint=" serial number"></oj-input-text>
+      <oj-label id="oj-label--17832837-2">Operating Data</oj-label>
+      <div aria-labelledby="oj-label--17832837-2">
+        <oj-bind-text value="[[ $variables.subSystemComponent.operatingData ]]"></oj-bind-text>
+      </div>
+      <oj-switch value="[[ $variables.subSystemComponent.newPart ]]" readonly="true" label-hint="new part"></oj-switch>
+      <oj-input-date value="[[ $variables.subSystemComponent.assemblyDate ]]" readonly="true"
+        label-hint="Assembly Date"></oj-input-date>
+      <oj-input-date value="[[ $variables.subSystemComponent.replacementDate ]]" readonly="true"
+        label-hint="Replacement Date"></oj-input-date>
+      <oj-label id="oj-label--17832837-3">Maintenance Actions</oj-label>
+      <div aria-labelledby="oj-label--17832837-3">
+        <oj-bind-text value="[[ $variables.subSystemComponent.maintenanceActions ]]"></oj-bind-text>
+      </div>
+    </oj-form-layout>
+  </div>
+</div>
+<div class="oj-flex">
+  <oj-toolbar chroming="solid" class="oj-flex-item oj-sm-12 oj-md-12">
+    <oj-button on-oj-action="[[$listeners.backButtonClicked]]">Back</oj-button>
+  </oj-toolbar>
+</div>

@@ -1,0 +1,109 @@
+{
+  "description": "Submit form data",
+  "variables": {},
+  "root": "assignVariablesCreateTokenSubsystem",
+  "actions": {
+
+    "resetDirtyDataFlag": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.dirtyDataFlag"
+        ]
+      },
+      "outcomes": {
+        "success": "setVariableIsSaved"
+      }
+    },
+    "setVariableIsSaved": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.isSaved": {
+          "source": true,
+          "auto": "always"
+        }
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPostTransactions.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "assignVariablesCreateTokenSubsystem": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.createTokenSubsystem": {
+          "source": {
+            "tokenUri": "{{ $page.variables.subSystems.tokenUri }}",
+            "tokenId": "{{ $page.variables.subSystems.tokenId }}",
+            "tokenDesc": "{{ $page.variables.subSystems.tokenDesc }}",
+            "tokenMetadata": {
+              "assetType": "{{ $page.variables.subSystems.subsystemAssetType }}",
+              "id": "{{ $page.variables.subSystems.subsystemId }}",
+              "landingGear": "{{ $page.variables.subSystems.landingGear }}",
+              "subsystemCode": "{{ $page.variables.subSystems.subsystemCode }}",
+              "subsystemtitle": "{{ $page.variables.subSystems.subsystemtitle }}",
+              "subsystemdefinition": "{{ $page.variables.subSystems.subsystemdefinition }}",
+              "parent_nft": "{{ $page.variables.subSystems.landingGear }}"
+            }
+          },
+          "reset": "none",
+          "auto": "always",
+          "mapping": {
+            "$target.tokenMetadata": {
+              "source": "$source.tokenMetadata",
+              "reset": "none",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "callFunctionScapedStr"
+      }
+    },
+    "callFunctionScapedStr": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "scapedStr",
+        "params": [
+          "{{ $page.variables.createTokenSubsystem }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionPrepareData4CreateSubSystem"
+      }
+    },
+    "callFunctionPrepareData4CreateSubSystem": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "prepareData4CreateSubSystem",
+        "params": [
+          "createSubSystems",
+          "{{ $chain.results.callFunctionScapedStr }}",
+          "gt1155"
+        ]
+      },
+      "outcomes": {
+        "success": "callRestPostTransactions"
+      }
+    },
+    "callRestPostTransactions": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "createSubSystems/postTransactions",
+        "body": "{{ $chain.results.callFunctionPrepareData4CreateSubSystem }}"
+      },
+      "outcomes": {
+        "success": "resetDirtyDataFlag",
+        "failure": "fireNotification"
+      }
+    }
+  }
+}

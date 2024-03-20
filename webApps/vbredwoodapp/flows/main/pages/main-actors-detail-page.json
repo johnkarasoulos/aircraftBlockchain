@@ -1,0 +1,67 @@
+{
+  "title": "Actors Detail",
+  "description": "Displays Actors record",
+  "variables": {
+    "actors": {
+      "type": "page:getActorsResponse"
+    },
+    "actorsId": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    }
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getActorsResponse": {
+      "endpoint": "get_Actors",
+      "service": "businessObjects",
+      "path": "request"
+    },
+    "getActorsResponse": {
+      "actorDescription": "string",
+      "actorName": "string",
+      "lastUpdateDate": "string"
+    }
+  },
+  "eventListeners": {
+    "backButtonClicked": {
+      "chains": [
+        {
+          "chainId": "goBackChain"
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "chainId": "loadActorsChain"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-date-time": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      }
+    }
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

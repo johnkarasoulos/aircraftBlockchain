@@ -1,0 +1,14 @@
+<!-- vb default-layout:flex -->
+<oj-sp-smart-search-page id="inventory-search-filter" display-mode="mixed"
+  smart-filters.results-data="[[ $variables.retrieveAllTokens ]]" page-title="Air vehicle, engines and equipment SNS"
+  page-subtitle="The SNS is used in this specification as a method to describe the functional and/or physical breakdown of items of the Product.">
+  <oj-list-view id="inventory-system-list" selection-mode="single" class="oj-flex-item"
+    data="[[ $variables.getAllTokens ]]">
+    <template slot="itemTemplate" data-oj-as="system">
+      <li class="oj-sm-12 oj-md-6 oj-lg-4 oj-sm-margin-0">Item
+        <oj-sp-object-card :id="[[ 'aircraft-system-' + $current.data.key ]]"></oj-sp-object-card>
+      </li>
+    </template>
+  </oj-list-view>
+  <oj-input-search slot="search"></oj-input-search>
+</oj-sp-smart-search-page>

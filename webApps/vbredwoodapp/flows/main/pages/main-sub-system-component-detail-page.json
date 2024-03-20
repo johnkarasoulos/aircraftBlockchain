@@ -1,0 +1,78 @@
+{
+  "title": "SubSystemComponent Detail",
+  "description": "Displays SubSystemComponent record",
+  "variables": {
+    "subSystemComponent": {
+      "type": "page:getSubSystemComponentResponse"
+    },
+    "subSystemComponentId": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    }
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getSubSystemComponentResponse": {
+      "endpoint": "get_SubSystemComponent",
+      "service": "businessObjects",
+      "path": "request"
+    },
+    "getSubSystemComponentResponse": {
+      "assemblyDate": "string",
+      "maintenanceActions": "number",
+      "name": "string",
+      "newPart": "boolean",
+      "operatingData": "number",
+      "replacementDate": "string",
+      "serialNumber": "string",
+      "subSystems": "number"
+    }
+  },
+  "eventListeners": {
+    "backButtonClicked": {
+      "chains": [
+        {
+          "chainId": "goBackChain"
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "chainId": "loadSubSystemComponentChain"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-date": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-label": {
+        "path": "ojs/ojlabel"
+      },
+      "oj-switch": {
+        "path": "ojs/ojswitch"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      }
+    }
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "id": "aeralis",
+  "description": "Flow main",
+  "defaultPage": "aeralis-welcome",
+  "services": {},
+  "types": {
+    "@decorators.get_SystemDetails": {
+      "endpoint": "get_LandingGear",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.getall_AircraftSystems": {
+      "endpoint": "getall_LandingGear",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "get_SystemDetails": {
+      "figther": "number",
+      "subSystemID": "string",
+      "SystemDefinition": "string",
+      "systemImage": "string",
+      "title": "string"
+    },
+    "getall_AircraftSystems": {
+      "count": "number",
+      "hasMore": "boolean",
+      "hasSystemsErrorMessages": "boolean",
+      "items": [
+        {
+          "figther": "number",
+          "subSystemID": "string",
+          "SystemDefinition": "string",
+          "systemImage": "string",
+          "title": "string"
+        }
+      ],
+      "totalResults": "number"
+    }
+  },
+  "variables": {
+    "aircraftSystemDetails": {
+      "type": "getall_AircraftSystems"
+    },
+    "bcadminuser": {
+      "type": "string",
+      "defaultValue": "cmsrsk001"
+    },
+    "bcadminuserpassword": {
+      "type": "string",
+      "defaultValue": "Oracle12345."
+    },
+    "bcchaincodename": {
+      "type": "string",
+      "defaultValue": "gt1155"
+    },
+    "bcchannel": {
+      "type": "string",
+      "defaultValue": "goldenthread"
+    },
+    "bcorgid": {
+      "type": "string",
+      "defaultValue": "WEDOBCStd2"
+    },
+    "navigationItems": {
+      "type": [
+        {
+          "icon": "string",
+          "id": "string",
+          "label": "string"
+        }
+      ]
+    },
+    "navigationItemsAdp": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "data": "{{ $variables.navigationItems }}",
+        "itemType": "any",
+        "keyAttributes": "id"
+      }
+    },
+    "systemDetails": {
+      "type": "get_SystemDetails"
+    }
+
+  },
+  "@dt": {
+    "chains": {
+      "validateFormChain": {
+        "autowire": {
+          "contextKey": "vb-quickstarts-js",
+          "name": "validateFormChain"
+        }
+      }
+    }
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

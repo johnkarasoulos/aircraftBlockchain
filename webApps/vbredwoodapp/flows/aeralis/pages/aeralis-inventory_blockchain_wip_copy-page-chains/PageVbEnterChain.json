@@ -1,0 +1,77 @@
+{
+  "description": "",
+  "root": "resetVariablesGetAllTokens",
+  "actions": {
+    "resetVariablesGetAllTokens": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.getAllTokens"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionSetBody2RetrieveAllTokens"
+      }
+    },
+    "callFunctionSetBody2RetrieveAllTokens": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "setBody2RetrieveAllTokens",
+        "params": [
+          "getAllTokens",
+          [],
+          "gt1155"
+        ]
+      },
+      "outcomes": {
+        "success": "callRestGetAllTokens"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetAllTokens.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callRestGetAllTokens": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "Retrieve-All-Tokens/getAllTokens",
+        "body": "{{ $chain.results.callFunctionSetBody2RetrieveAllTokens }}"
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "assignVariablesGetAllTokens"
+      }
+    },
+    "assignVariablesGetAllTokens": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getAllTokens": {
+          "source": {
+            "data": [
+              {
+                "description": "{{ $chain.results.callRestGetAllTokens.body.result.payload[0].valueJson.tokenMetadata.description }}",
+                "id": "{{ $chain.results.callRestGetAllTokens.body.result.payload[0].valueJson.tokenMetadata.id }}"
+              }
+            ]
+          },
+          "reset": "none",
+          "auto": "always",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      }
+    }
+  },
+  "variables": {}
+}

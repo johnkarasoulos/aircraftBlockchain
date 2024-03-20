@@ -1,0 +1,208 @@
+{
+    "fields": [
+        {
+            "type": "number",
+            "name": "id",
+            "internal": false,
+            "key": true,
+            "oid": "ae6bd178-87e5-4457-bfa1-d2d05f3bbf28",
+            "required": true,
+            "unique": true,
+            "displayLabel": "Id"
+        },
+        {
+            "type": "datetime",
+            "name": "creationDate",
+            "internal": false,
+            "oid": "25627beb-a784-4997-beec-9f438e8c0993",
+            "displayLabel": "Created",
+            "historyType": "timeCreated"
+        },
+        {
+            "type": "datetime",
+            "name": "lastUpdateDate",
+            "internal": false,
+            "oid": "292472c4-91ef-409f-b3a2-51425de9d672",
+            "displayLabel": "Last Updated",
+            "historyType": "timeUpdated"
+        },
+        {
+            "type": "string",
+            "name": "createdBy",
+            "internal": false,
+            "oid": "dd4c425e-3d18-4232-86ae-550fa326eb6c",
+            "displayLabel": "Created By",
+            "historyType": "createdBy"
+        },
+        {
+            "type": "string",
+            "name": "lastUpdatedBy",
+            "internal": false,
+            "oid": "c237e182-3c51-4070-a102-dce361c876a3",
+            "displayLabel": "Last Updated By",
+            "historyType": "updatedBy"
+        },
+{
+            "type": "number",
+            "name": "versionNumber",
+            "internal": false,
+            "oid": "89f38585-1fb1-43b6-8c62-1c35a1cbcb52",
+            "displayLabel": "Version Number",
+            "historyType": "versionNumber"
+        },
+        {
+            "type": "string",
+            "defaultValue": {
+                "server": {
+                    "type": "static",
+                    "value": "32"
+                }
+            },
+            "name": "subSystemID",
+            "oid": "a92d5ee6-f695-459f-b4f7-c6e3f1f33d84",
+            "displayLabel": "SubSystemID"
+        }        ,
+        {
+            "type": "string",
+            "defaultValue": {
+                "server": {
+                    "type": "static",
+                    "value": "Landing gear"
+                }
+            },
+            "name": "title",
+            "oid": "3c9cf665-e31e-4cbd-a38d-ec6a53cdd07d",
+            "displayLabel": "Title"
+        }        ,
+        {
+            "type": "string",
+            "defaultValue": {
+                "server": {
+                    "type": "static",
+                    "value": "Those units and components which furnish a means of supporting, steering, and maneuvering the air vehicle on the ground or water, and make it possible to retract and store the landing gear in flight. Includes tail skid assembly, arresting hooks, landing assistance equipment, drag chutes, brakes, wheels, floats, skids, skis, doors, shock struts, tires, linkages, position indicating and warning systems, motor, control systems, power supplies or converter. Also includes the functioning and maintenance aspects of the landing gear doors but does not include the structure which is covered in System 52."
+                }
+            },
+            "name": "SystemDefinition",
+            "oid": "98638c78-18d7-49ed-bc14-9feba5bf03d5",
+            "displayLabel": "definition"
+        }        ,
+{
+            "type": "number",
+            "name": "figther",
+            "oid": "31af1470-7ff5-4df1-9122-9d3ac3b2d1aa",
+            "required": true,
+            "displayLabel": "aircraft"
+        },
+{
+            "type": "string",
+            "name": "systemImage",
+            "oid": "a983f8cc-d437-4c4f-b202-a3da8e1affd2",
+            "displayLabel": "System Image",
+            "format": "uri"
+        },
+        {
+            "type": "string",
+            "name": "tokenId",
+            "oid": "60edd804-8222-4163-98d6-414bd9a350c5",
+            "displayLabel": "tokenId"
+        }        ,
+        {
+            "type": "string",
+            "name": "aircraftID",
+            "oid": "f052d28e-798b-4661-80a5-854ff08c9956",
+            "displayLabel": "aircraftID"
+        }        ,
+        {
+            "type": "string",
+            "name": "tokenURI",
+            "oid": "5276a7f4-b76d-46ae-97dd-2af6f1802a20",
+            "displayLabel": "tokenURI"
+        }        ,
+        {
+            "type": "string",
+            "name": "tokenDec",
+            "oid": "7a497b95-d5de-4c47-b103-192a4354d54f",
+            "displayLabel": "tokenDec"
+        }        ,
+        {
+            "type": "string",
+            "name": "aircraftToken",
+            "oid": "9a22143e-5dc2-41e1-8507-4a1ddd96b193",
+            "displayLabel": "aircraftToken"
+        }        ,
+        {
+            "type": "string",
+            "name": "systemAssetType",
+            "oid": "a86795dd-bb1e-4618-871c-d6c631b35147",
+            "displayLabel": "systemAssetType"
+        }
+    ],
+    "name": "LandingGear",
+    "oid": "ec5c3786-cf88-4719-adda-dea9acb14e66",
+    "displayLabel": "Systems",
+    "relationships": [
+        {
+            "name": "figtherObject",
+            "reverseRelationship": "landingGearCollection",
+            "targetEntity": "ColonialViper",
+            "type": "outgoing",
+            "exposeAccessor": true,
+            "mappingField": "figther",
+            "deleteRule": "restrict"
+        },
+        {
+            "name": "subSystemsCollection",
+            "reverseRelationship": "landingGearObject",
+            "targetEntity": "SubSystems",
+            "type": "incoming",
+            "displayField": "subSystemID"
+        }
+    ],
+    "security": {
+        "type": "local",
+        "acl": [
+            {
+                "roleId": "approle.anonymous.user",
+                "privileges": [
+                    {
+                        "name": "view",
+                        "value": true
+                    },
+                    {
+                        "name": "create",
+                        "value": true
+                    },
+                    {
+                        "name": "update",
+                        "value": true
+                    },
+                    {
+                        "name": "delete",
+                        "value": true
+                    }
+                ]
+            },
+            {
+                "roleId": "approle.authenticated.user",
+                "privileges": [
+                    {
+                        "name": "view",
+                        "value": true
+                    },
+                    {
+                        "name": "create",
+                        "value": true
+                    },
+                    {
+                        "name": "update",
+                        "value": true
+                    },
+                    {
+                        "name": "delete",
+                        "value": true
+                    }
+                ]
+            }
+        ]
+    }
+}

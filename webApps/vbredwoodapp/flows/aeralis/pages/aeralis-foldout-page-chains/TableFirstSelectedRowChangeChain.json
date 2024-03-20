@@ -1,0 +1,26 @@
+{
+  "description": "",
+  "root": "assignVariablesSelectedSubSystem",
+  "actions": {
+    "assignVariablesSelectedSubSystem": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.selectedSubSystem": {
+          "source": "{{ $variables.rowKey }}"
+        }
+      }
+    }
+  },
+  "variables": {
+    "rowKey": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "rowData": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

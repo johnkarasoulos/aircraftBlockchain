@@ -1,0 +1,125 @@
+{
+    "fields": [
+        {
+            "type": "number",
+            "name": "id",
+            "internal": false,
+            "key": true,
+            "oid": "7472e572-9200-498c-9128-04b6d06a8052",
+            "required": true,
+            "unique": true,
+            "displayLabel": "Id"
+        },
+        {
+            "type": "datetime",
+            "name": "creationDate",
+            "internal": false,
+            "oid": "0ac204e1-8b8c-42f5-88e0-9650d319d44c",
+            "displayLabel": "Created",
+            "historyType": "timeCreated"
+        },
+        {
+            "type": "datetime",
+            "name": "lastUpdateDate",
+            "internal": false,
+            "oid": "106d2794-feef-4c27-9a65-ac1e54ddb893",
+            "displayLabel": "Last Updated",
+            "historyType": "timeUpdated"
+        },
+        {
+            "type": "string",
+            "name": "createdBy",
+            "internal": false,
+            "oid": "6db85bba-6072-4219-9be1-7a4ec5404b35",
+            "displayLabel": "Created By",
+            "historyType": "createdBy"
+        },
+        {
+            "type": "string",
+            "name": "lastUpdatedBy",
+            "internal": false,
+            "oid": "d2540012-65d0-4415-8652-6464b1ac5729",
+            "displayLabel": "Last Updated By",
+            "historyType": "updatedBy"
+        },
+{
+            "type": "number",
+            "name": "versionNumber",
+            "internal": false,
+            "oid": "7a57b8f0-ecc4-4eaf-97e7-b7d38488e73e",
+            "displayLabel": "Version Number",
+            "historyType": "versionNumber"
+        },
+        {
+            "type": "string",
+            "name": "actorName",
+            "oid": "6b049ac2-e1b6-4552-9d28-0bde93179145",
+            "displayLabel": "Actor Name"
+        }        ,
+        {
+            "type": "string",
+            "name": "actorDescription",
+            "oid": "b02aa048-bb6e-4b0a-9fcd-e692cd574c7e",
+            "displayLabel": "Actor Description"
+        }
+    ],
+    "name": "Actors",
+    "oid": "428b6514-3d3b-45d1-b4d9-0e5f4e817429",
+    "displayLabel": "Actors",
+    "relationships": [
+        {
+            "name": "lifeCycleStatusCollection",
+            "reverseRelationship": "actorsObject",
+            "targetEntity": "LifeCycleStatus",
+            "type": "incoming",
+            "displayField": "actorName"
+        }
+    ],
+    "security": {
+        "type": "local",
+        "acl": [
+            {
+                "roleId": "approle.anonymous.user",
+                "privileges": [
+                    {
+                        "name": "view",
+                        "value": true
+                    },
+                    {
+                        "name": "create",
+                        "value": true
+                    },
+                    {
+                        "name": "update",
+                        "value": true
+                    },
+                    {
+                        "name": "delete",
+                        "value": true
+                    }
+                ]
+            },
+            {
+                "roleId": "approle.authenticated.user",
+                "privileges": [
+                    {
+                        "name": "view",
+                        "value": true
+                    },
+                    {
+                        "name": "create",
+                        "value": true
+                    },
+                    {
+                        "name": "update",
+                        "value": true
+                    },
+                    {
+                        "name": "delete",
+                        "value": true
+                    }
+                ]
+            }
+        ]
+    }
+}

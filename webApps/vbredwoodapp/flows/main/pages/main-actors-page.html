@@ -1,0 +1,29 @@
+<oj-sp-general-overview-page id="oj_gop1" display-options.responsive-padding="on" page-title="Actors"
+  page-subtitle="Actors for lifecycle of systems">
+
+    
+  <div slot="main">
+        <!-- Main Content goes here... It is recommended to have a heading element title as well -->
+        <oj-table scroll-policy="loadMoreOnScroll" data="[[$variables.actorsListSDP]]"
+          columns='[{"headerText":"Actor Name","field":"actorName"},{"headerText":"Actor Description","field":"actorDescription"}]'
+          id="oj-table-811435983-1" selection-mode.row="single" selection-mode.column="single"
+          on-first-selected-row-changed="[[ $listeners.oj_table_811435983_1SelectionChanged ]]"></oj-table>
+  </div>
+
+    
+  <div slot="info">
+        <!-- Complementary Content goes here... It is recommended to have a heading element title as well --></div>
+
+
+</oj-sp-general-overview-page>
+<div class="oj-flex">
+  <oj-toolbar id="oj-toolbar-for-oj-table-811435983-1" chroming="solid" class="oj-flex-item oj-sm-12 oj-md-12">
+        <oj-button on-oj-action="[[$listeners.createActorsButtonClicked]]">Create</oj-button>
+        <oj-button disabled="[[ $variables.oj_table_811435983_1SelectedId === '' ]]"
+          on-oj-action="[[$listeners.editActorsButtonClicked]]">Edit</oj-button>
+        <oj-button disabled="[[ $variables.oj_table_811435983_1SelectedId === '' ]]"
+          on-oj-action="[[$listeners.actorsDetailButtonClicked]]">Details</oj-button>
+        <oj-button disabled="[[ $variables.oj_table_811435983_1SelectedId === '' ]]"
+          on-oj-action="[[$listeners.deleteActorsButtonClicked]]">Delete Actors</oj-button>
+  </oj-toolbar>
+</div>

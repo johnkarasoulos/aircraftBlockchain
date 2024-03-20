@@ -1,0 +1,95 @@
+{
+    "description": "",
+    "routerFlow": "aeralis",
+    "variables": {
+    "NavigationADP": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "Navigation",
+        "keyAttributes": "id"
+      }
+    },
+    "navigationArray": {
+      "type": "Navigation[]",
+      "defaultValue": [
+        {
+          "label": "Aircraft",
+          "id": "aircraft",
+          "badgeValue": 0,
+          "icon": "oj-ux-ico-search"
+        },
+        {
+          "label": "System",
+          "id": "system",
+          "badgeValue": 0,
+          "icon": "oj-ux-ico-search"
+        },
+        {
+          "label": "Subsystem",
+          "id": "subsystem",
+          "badgeValue": 0,
+          "icon": "oj-ux-ico-search"
+        },
+{
+          "label": "Component",
+          "id": "component",
+          "badgeValue": 0,
+          "icon": "oj-ux-ico-search"
+        },
+        {
+          "label": "Home",
+          "id": "home",
+          "badgeValue": 0,
+          "icon": "oj-ux-ico-home"
+        }
+      ]
+    },
+    "shownav": {
+      "type": "boolean",
+      "defaultValue": true
+    }
+    },
+    "metadata": {},
+    "types": {
+    "Navigation": {
+      "badgeValue": "number",
+      "icon": "string",
+      "id": "any",
+      "label": "string"
+    }
+    },
+    "eventListeners": {
+    "inAppNavigationSpSelectionAction": {
+      "chains": [
+        {
+          "chain": "InAppNavigationSpSelectionActionChain",
+          "parameters": {
+            "currentId": "{{$event.detail.currentId}}",
+            "previousId": "{{$event.detail.previousId}}"
+          }
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "chainId": "PageVbEnterChain"
+        }
+      ]
+    }
+
+    },
+    "imports": {
+    "components": {
+      "oj-sp-in-app-navigation": {
+        "path": "oj-sp/in-app-navigation/loader"
+      }
+    }
+    },
+    "translations": {},
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+  }

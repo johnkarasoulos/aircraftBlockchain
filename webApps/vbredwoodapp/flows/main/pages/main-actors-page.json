@@ -1,0 +1,115 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "actorsListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_Actors",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallActorsResponse"
+      }
+    },
+    "oj_table_811435983_1SelectedId": {
+      "type": "string",
+      "defaultValue": ""
+    }
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getallActorsResponse": {
+      "endpoint": "getall_Actors",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "action": {
+      "id": "string",
+      "label": "string",
+      "display": "string",
+      "icon": "string"
+    },
+    "getallActorsResponse": {
+      "items": [
+        {
+          "actorDescription": "string",
+          "actorName": "string",
+          "id": "number"
+        }
+      ]
+    }
+  },
+  "eventListeners": {
+    "actorsDetailButtonClicked": {
+      "chains": [
+        {
+          "chainId": "navigateToActorsDetailChain",
+          "parameters": {
+            "actorsId": "[[ $variables.oj_table_811435983_1SelectedId ]]"
+          }
+        }
+      ]
+    },
+    "createActorsButtonClicked": {
+      "chains": [
+        {
+          "chainId": "navigateToCreateActorsChain"
+        }
+      ]
+    },
+    "deleteActorsButtonClicked": {
+      "chains": [
+        {
+          "chainId": "deleteActorsChain",
+          "parameters": {
+            "actorsId": "[[ $variables.oj_table_811435983_1SelectedId ]]"
+          }
+        }
+      ]
+    },
+    "editActorsButtonClicked": {
+      "chains": [
+        {
+          "chainId": "navigateToEditActorsChain",
+          "parameters": {
+            "actorsId": "[[ $variables.oj_table_811435983_1SelectedId ]]"
+          }
+        }
+      ]
+    },
+    "oj_table_811435983_1SelectionChanged": {
+      "chains": [
+        {
+          "chainId": "oj_table_811435983_1ChangeSelectionChain",
+          "parameters": {
+            "actorsId": "[[ $event.detail.value.key || '' ]]"
+          }
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-sp-general-overview-page": {
+        "path": "oj-sp/general-overview-page/loader"
+      },
+      "oj-table": {
+        "path": "ojs/ojtable"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      }
+    }
+  },
+  "@dt": {
+    "iconClass": "vbdt-dynamic-icon-7-icoOverviewPageTemplateSvg"
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

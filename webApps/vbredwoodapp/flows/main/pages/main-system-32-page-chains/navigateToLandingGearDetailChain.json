@@ -1,0 +1,21 @@
+{
+  "root": "navigateToDetail",
+  "variables": {
+    "landingGearId": {
+      "type": "string",
+      "input": "fromCaller",
+      "required": true
+    }
+  },
+  "actions": {
+    "navigateToDetail": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "main-landing-gear-detail",
+        "params": {
+          "landingGearId": "[[ $variables.landingGearId ]]"
+        }
+      }
+    }
+  }
+}

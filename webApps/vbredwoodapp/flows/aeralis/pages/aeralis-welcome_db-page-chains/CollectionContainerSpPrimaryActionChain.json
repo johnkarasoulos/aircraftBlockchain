@@ -1,0 +1,19 @@
+{
+  "description": "",
+  "root": "navigateToAeralisFoldout",
+  "actions": {
+    "navigateToAeralisFoldout": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "aeralis-foldout"
+      }
+    }
+  },
+  "variables": {
+    "actionId": {
+      "required": true,
+      "type": "string",
+      "input": "fromCaller"
+    }
+  }
+}

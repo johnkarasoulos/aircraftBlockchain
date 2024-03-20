@@ -1,0 +1,191 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "goToParentOption": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "landingGearListSDP2": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_LandingGear",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallLandingGearResponse2"
+      }
+    },
+    "pageTitle": {
+      "type": "string",
+      "defaultValue": "Systems"
+    },
+    "searchInventory": {
+      "type": "string"
+    },
+    "setRequestToken": {
+      "type": "setRequestSingleToken"
+    },
+    "singleToken": {
+      "type": "retrieveSingleToken"
+    },
+    "subtitle": {
+      "type": "string"
+    }
+
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getallLandingGearResponse": {
+      "endpoint": "getall_LandingGear",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.getallLandingGearResponse2": {
+      "endpoint": "getall_LandingGear",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.getallLandingGearResponse3": {
+      "endpoint": "getall_LandingGear",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.retrieveSingleToken": {
+      "endpoint": "postRestproxy",
+      "service": "GetSingleToken",
+      "path": "response"
+    },
+    "@decorators.setRequestSingleToken": {
+      "endpoint": "postRestproxy",
+      "service": "GetSingleToken",
+      "path": "request"
+    },
+    "getallLandingGearResponse": {
+      "items": [
+        {
+          "id": "number",
+          "subSystemID": "string",
+          "SystemDefinition": "string",
+          "systemImage": "string",
+          "title": "string"
+        }
+      ]
+    },
+    "getallLandingGearResponse2": {
+      "items": [
+        {
+          "figther": "number",
+          "id": "number",
+          "subSystemID": "string",
+          "SystemDefinition": "string",
+          "systemImage": "string",
+          "title": "string"
+        }
+      ]
+    },
+    "getallLandingGearResponse3": {
+      "items": [
+        {
+          "id": "number",
+          "subSystemID": "string",
+          "SystemDefinition": "string",
+          "systemImage": "string",
+          "title": "string"
+        }
+      ]
+    },
+    "retrieveSingleToken": {
+          "assemblyDate": "string",
+          "assetType": "string",
+          "behaviors": "string[]",
+          "createdBy": "string",
+          "creationDate": "string",
+          "isBurned": "boolean",
+          "mintable": {
+            "max_mint_quantity": "number"
+          },
+          "newPart": "boolean",
+          "owner": "string",
+          "quantity": "number",
+          "replacementDate": "string",
+          "roles": {
+            "minter_role_name": "string"
+          },
+          "tokenDesc": "string",
+          "tokenId": "string",
+          "tokenMetadata": {
+            "description": "string",
+            "id": "string",
+            "maintenanceDateAction": "string",
+            "name": "string",
+            "serialNumber": "string",
+            "subSystems": "string"
+          },
+          "tokenName": "string",
+          "tokenStandard": "string",
+          "tokenType": "string",
+          "tokenUnit": "string",
+          "tokenUri": "string"
+    },
+    "setRequestSingleToken": {
+      "args": "string[]",
+      "chaincode": "string",
+      "sync": "boolean",
+      "timeout": "number"
+    }
+
+  },
+  "eventListeners": {
+    "searchSysValueAction": {
+      "chains": [
+        {
+          "chainId": "InputSearchValueActionChain",
+          "parameters": {
+            "value": "{{$event.detail.value}}",
+            "itemContext": "{{$event.detail.itemContext}}"
+          }
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-date-time": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-input-search": {
+        "path": "ojs/ojinputsearch"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-sp-detail-panel": {
+        "path": "oj-sp/detail-panel/loader"
+      },
+      "oj-sp-general-drawer-template": {
+        "path": "oj-sp/general-drawer-template/loader"
+      },
+      "oj-sp-input-rich-text-2": {
+        "path": "oj-sp/input-rich-text-2/loader"
+      },
+      "oj-sp-profile-card": {
+        "path": "oj-sp/profile-card/loader"
+      },
+      "oj-sp-smart-search-page": {
+        "path": "oj-sp/smart-search-page/loader"
+      }
+
+    }
+  },
+  "@dt": {
+    "iconClass": "vbdt-dynamic-icon-75-icoSmartSearchPage48Svg"
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

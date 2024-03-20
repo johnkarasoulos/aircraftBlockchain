@@ -1,0 +1,128 @@
+{
+    "fields": [
+        {
+            "type": "number",
+            "name": "id",
+            "internal": false,
+            "key": true,
+            "oid": "ab72af29-5b74-4283-9afb-8e27ec6b7f52",
+            "required": true,
+            "unique": true,
+            "displayLabel": "Id"
+        },
+        {
+            "type": "datetime",
+            "name": "creationDate",
+            "internal": false,
+            "oid": "e35f1484-5b91-4b78-8b1a-b2b9560d726a",
+            "displayLabel": "Created",
+            "historyType": "timeCreated"
+        },
+        {
+            "type": "datetime",
+            "name": "lastUpdateDate",
+            "internal": false,
+            "oid": "3f7aa0f3-35e6-4582-92fa-1738e84ffa4e",
+            "displayLabel": "Last Updated",
+            "historyType": "timeUpdated"
+        },
+        {
+            "type": "string",
+            "name": "createdBy",
+            "internal": false,
+            "oid": "4c90d250-c83b-4afa-a969-a83e8dfeec82",
+            "displayLabel": "Created By",
+            "historyType": "createdBy"
+        },
+        {
+            "type": "string",
+            "name": "lastUpdatedBy",
+            "internal": false,
+            "oid": "116661b5-d4f6-40e4-9f8b-c2b245efe6f5",
+            "displayLabel": "Last Updated By",
+            "historyType": "updatedBy"
+        },
+{
+            "type": "number",
+            "name": "versionNumber",
+            "internal": false,
+            "oid": "0cd798c1-8e80-4e73-a01f-e4226fd5e0e9",
+            "displayLabel": "Version Number",
+            "historyType": "versionNumber"
+        },
+        {
+            "type": "string",
+            "name": "systemLifeCycleDescription",
+            "oid": "7a8a4f11-4dae-4cdb-a745-e57e644a0197",
+            "displayLabel": "System Life Cycle Description"
+        }        ,
+        {
+            "type": "number",
+            "name": "actors",
+            "oid": "d04806d9-106b-45e6-a011-3caf63a523fb",
+            "required": true,
+            "displayLabel": "Actors"
+        }
+    ],
+    "name": "LifeCycleStatus",
+    "oid": "26013b14-a349-4e48-91af-59d4954bc457",
+    "displayLabel": "Life Cycle Status",
+    "relationships": [
+        {
+            "name": "actorsObject",
+            "reverseRelationship": "lifeCycleStatusCollection",
+            "targetEntity": "Actors",
+            "type": "outgoing",
+            "exposeAccessor": true,
+            "mappingField": "actors",
+            "deleteRule": "restrict"
+        }
+    ],
+    "security": {
+        "type": "local",
+        "acl": [
+            {
+                "roleId": "approle.anonymous.user",
+                "privileges": [
+                    {
+                        "name": "view",
+                        "value": true
+                    },
+                    {
+                        "name": "create",
+                        "value": true
+                    },
+                    {
+                        "name": "update",
+                        "value": true
+                    },
+                    {
+                        "name": "delete",
+                        "value": true
+                    }
+                ]
+            },
+            {
+                "roleId": "approle.authenticated.user",
+                "privileges": [
+                    {
+                        "name": "view",
+                        "value": true
+                    },
+                    {
+                        "name": "create",
+                        "value": true
+                    },
+                    {
+                        "name": "update",
+                        "value": true
+                    },
+                    {
+                        "name": "delete",
+                        "value": true
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,39 @@
+{
+  "root": "loadColonialViper",
+  "actions": {
+    "loadColonialViper": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "businessObjects/get_ColonialViper",
+        "uriParams": {
+          "ColonialViper_Id": "[[ $page.variables.colonialViperId ]]"
+        },
+        "responseType": "page:getColonialViperResponse"
+      },
+      "outcomes": {
+        "success": "assignPayload",
+        "failure": "fireErrorNotification"
+      }
+    },
+    "assignPayload": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.colonialViper": {
+          "source": "{{ $chain.results.loadColonialViper.body }}"
+        },
+        "$page.variables.colonialViperETag": {
+          "source": "[[ $chain.results.loadColonialViper.headers.get('ETag') ]]"
+        }
+      }
+    },
+    "fireErrorNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "summary": "Could not load data",
+        "message": "{{ 'Could not load data: status ' + $chain.results.loadColonialViper.status }}",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    }
+  }
+}

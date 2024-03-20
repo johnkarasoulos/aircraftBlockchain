@@ -1,0 +1,40 @@
+<div>
+  <oj-sp-simple-create-edit id="oj_ssce1" 
+    page-title="SubSystems"
+    page-subtitle="Create SubSystem"
+    avatar="{{$page.variables.avatar}}"
+    primary-action.disabled="{{!($page.variables.primaryAlwaysOn || ($page.variables.dirtyDataFlag ? true : $page.variables.isSaved))}}"
+    display-options.save="{{$page.variables.saveOption!=='off'?$page.variables.dirtyDataFlag?'on':'disabled':'off'}}"
+    display-options.go-to-parent="{{$page.variables.goToParentOption }}"
+    contextual-info-sticky="{{ $page.variables.contextualInfoSticky }}"
+    display-options.contextual-info-label="{{$page.variables.contextualInfoLabelVisible}}"
+    display-mode="[[$page.variables.displayMode]]" on-sp-cancel="[[$listeners.ojSpCancel]]"
+    on-sp-save="[[$listeners.ojSpSave]]" on-sp-go-to-parent="[[$listeners.ojSpGoToParent]]"
+    on-sp-primary-action="[[$listeners.ojSpSubmit]]" 
+  >
+    <oj-validation-group slot="main" id="subSystems-validation-group-149363037-1">
+      <oj-form-layout id="oj-form-layout-149363037-1" class="oj-formlayout-full-width">
+        <h3 class="oj-header">Token SubSystem</h3>
+        <oj-select-single label-hint="Select (Single)" item-text="key" value="{{ $variables.subSystems.landingGear }}"
+          data="[[ $variables.allAircrafts ]]"></oj-select-single>
+        <oj-input-text value="{{ $variables.subSystems.tokenId }}" label-hint="tokenId"
+          on-value-changed="[[$listeners.inputTextValue]]"></oj-input-text>
+        <oj-input-text label-hint="Token Description" value="{{ $variables.subSystems.tokenDesc }}" id="tokenDesc"></oj-input-text>
+        <oj-input-text value="{{ $variables.subSystems.tokenUri }}" label-hint="tokenUri"></oj-input-text>
+        <div class="oj-divider-top"></div>
+        <h5 class="oj-header">SubSystem</h5>
+        <oj-input-text value="{{ $variables.subSystems.subsystemId }}" label-hint="Subsystem Identification"></oj-input-text>
+        <oj-input-text value="{{ $variables.subSystems.subsystemtitle }}" label-hint="Subsystem Title"
+          id="subsystemtitle"></oj-input-text>
+        <oj-input-text value="{{ $variables.subSystems.subsystemCode }}" label-hint="Subsystem Code"
+          required="true"></oj-input-text>
+        <oj-input-text label-hint="Subsystem definition" value="{{ $variables.subSystems.subsystemdefinition }}"
+          id="subsystemdefinition"></oj-input-text>
+        <oj-select-single label-hint="Subsystem Asset Type" data="[[ $variables.assetTypesListTokenSDP ]]"
+          item-text="assetType" id="subsystemAssetType"></oj-select-single>
+      </oj-form-layout>
+    </oj-validation-group>
+  </oj-sp-simple-create-edit>
+  <oj-sp-message-unsaved-changes id="dirtyDataWarningDialog"
+    on-oj-sp-discard-changes="[[ $listeners.confirmYesOjAction ]]" on-oj-sp-cancel="[[ $listeners.confirmNoOjAction ]]"></oj-sp-message-unsaved-changes>
+</div>

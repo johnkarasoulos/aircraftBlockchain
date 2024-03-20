@@ -1,0 +1,44 @@
+<div>
+  <oj-sp-simple-create-edit id="oj_ssce1" 
+    page-title="Subsystem Component"
+    page-subtitle="Create Component"
+    avatar="{{$page.variables.avatar}}"
+    primary-action.disabled="{{!($page.variables.primaryAlwaysOn || ($page.variables.dirtyDataFlag ? true : $page.variables.isSaved))}}"
+    display-options.save="{{$page.variables.saveOption!=='off'?$page.variables.dirtyDataFlag?'on':'disabled':'off'}}"
+    display-options.go-to-parent="{{$page.variables.goToParentOption }}"
+    contextual-info-sticky="{{ $page.variables.contextualInfoSticky }}"
+    display-options.contextual-info-label="{{$page.variables.contextualInfoLabelVisible}}"
+    display-mode="[[$page.variables.displayMode]]" on-sp-cancel="[[$listeners.ojSpCancel]]"
+    on-sp-save="[[$listeners.ojSpSave]]" on-sp-go-to-parent="[[$listeners.ojSpGoToParent]]"
+    on-sp-primary-action="[[$listeners.ojSpSubmit]]" 
+  >
+    <oj-validation-group slot="main" id="subSystemComponent-validation-group-1872746394-1">
+      <oj-form-layout id="oj-form-layout-1872746394-1" class="oj-formlayout-full-width">
+        <h3 class="oj-header">Token</h3>
+        <oj-input-text value="{{ $variables.subSystemComponent.tokenId }}" label-hint="tokenId"></oj-input-text>
+        <oj-sp-input-rich-text-2 label-hint="Description" id="tokenDesc"
+          value="{{ $variables.subSystemComponent.tokenDesc }}"></oj-sp-input-rich-text-2>
+        <oj-input-text value="{{ $variables.subSystemComponent.tokenUri }}" label-hint="URI" id="tokenUri"></oj-input-text>
+        <div class="oj-divider-top"></div>
+        <h5 class="oj-header">SubSystem Component</h5>
+        <oj-input-text value="{{ $variables.subSystemComponent.subsystemcomponentID }}" id="subsystemcomponentID"
+          label-hint="Subsystem Component Identification"></oj-input-text>
+        <oj-input-text value="{{ $variables.subSystemComponent.name }}" label-hint="Component Name" id="CompName"></oj-input-text>
+        <oj-input-text value="{{ $variables.subSystemComponent.serialNumber }}" label-hint=" Component Serial Number"
+          required="true" id="CompSerialID"></oj-input-text>
+        <oj-select-single value="{{ $variables.subSystemComponent.subSystems }}" label-hint="Sub Systems"
+          data="[[ $variables.subSystemsListSDP ]]" item-text="subsystemtitle"></oj-select-single>
+        <oj-sp-input-rich-text-2 label-hint="Component Description"
+          value="{{ $variables.subSystemComponent.description }}" id="SubSystemComponentDescription"></oj-sp-input-rich-text-2>
+        <oj-input-text label-hint="Asset Type" id="AssetType" value="{{ $variables.subSystemComponent.AssetType }}"></oj-input-text>
+        <oj-select-single value="{{ $variables.subSystemComponent.maintenanceActions }}"
+          label-hint="Maintenance Actions" data="[[ $variables.maintenanceActionsListSDP ]]" item-text="description"></oj-select-single>
+        <oj-switch value="{{ $variables.subSystemComponent.newPart }}" label-hint="new part"></oj-switch>
+        <oj-input-date value="{{ $variables.subSystemComponent.replacementDate }}" label-hint="Replacement Date"></oj-input-date>
+        <oj-input-date value="{{ $variables.subSystemComponent.assemblyDate }}" label-hint="Assembly Date"></oj-input-date>
+      </oj-form-layout>
+    </oj-validation-group>
+  </oj-sp-simple-create-edit>
+  <oj-sp-message-unsaved-changes id="dirtyDataWarningDialog"
+    on-oj-sp-discard-changes="[[ $listeners.confirmYesOjAction ]]" on-oj-sp-cancel="[[ $listeners.confirmNoOjAction ]]"></oj-sp-message-unsaved-changes>
+</div>

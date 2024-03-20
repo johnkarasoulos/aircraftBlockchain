@@ -1,0 +1,115 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "colonialViperListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_ColonialViper",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallColonialViperResponse"
+      }
+    },
+    "oj_table_2078512949_1SelectedId": {
+      "type": "string",
+      "defaultValue": ""
+    }
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getallColonialViperResponse": {
+      "endpoint": "getall_ColonialViper",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "action": {
+      "id": "string",
+      "label": "string",
+      "display": "string",
+      "icon": "string"
+    },
+    "getallColonialViperResponse": {
+      "items": [
+        {
+          "definition1": "string",
+          "id": "number",
+          "title": "string"
+        }
+      ]
+    }
+  },
+  "eventListeners": {
+    "colonialViperDetailButtonClicked": {
+      "chains": [
+        {
+          "chainId": "navigateToColonialViperDetailChain",
+          "parameters": {
+            "colonialViperId": "[[ $variables.oj_table_2078512949_1SelectedId ]]"
+          }
+        }
+      ]
+    },
+    "createColonialViperButtonClicked": {
+      "chains": [
+        {
+          "chainId": "navigateToCreateColonialViperChain"
+        }
+      ]
+    },
+    "deleteColonialViperButtonClicked": {
+      "chains": [
+        {
+          "chainId": "deleteColonialViperChain",
+          "parameters": {
+            "colonialViperId": "[[ $variables.oj_table_2078512949_1SelectedId ]]"
+          }
+        }
+      ]
+    },
+    "editColonialViperButtonClicked": {
+      "chains": [
+        {
+          "chainId": "navigateToEditColonialViperChain",
+          "parameters": {
+            "colonialViperId": "[[ $variables.oj_table_2078512949_1SelectedId ]]"
+          }
+        }
+      ]
+    },
+    "ojTable20785129491Selection": {
+      "chains": [
+        {
+          "chainId": "oj_table_2078512949_1ChangeSelectionChain",
+          "parameters": {
+            "colonialViperId": "[[ $event.detail.value.key || '' ]]"
+          }
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-sp-general-overview-page": {
+        "path": "oj-sp/general-overview-page/loader"
+      },
+      "oj-table": {
+        "path": "ojs/ojtable"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      }
+    }
+  },
+  "@dt": {
+    "iconClass": "vbdt-dynamic-icon-7-icoOverviewPageTemplateSvg"
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

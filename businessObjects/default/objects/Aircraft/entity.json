@@ -1,0 +1,75 @@
+{
+    "fields": [
+        {
+            "type": "number",
+            "name": "id",
+            "internal": false,
+            "key": true,
+            "oid": "6e2688c5-6fe3-44f7-90a6-ff5aac08fb7b",
+            "required": true,
+            "unique": true,
+            "displayLabel": "Id"
+        },
+        {
+            "type": "datetime",
+            "name": "creationDate",
+            "internal": false,
+            "oid": "93dd46eb-949d-495a-88ba-03b562563bde",
+            "displayLabel": "Created",
+            "historyType": "timeCreated"
+        },
+        {
+            "type": "datetime",
+            "name": "lastUpdateDate",
+            "internal": false,
+            "oid": "a4e78db9-7f4a-4358-b00e-a2b95f2c99d1",
+            "displayLabel": "Last Updated",
+            "historyType": "timeUpdated"
+        },
+        {
+            "type": "string",
+            "name": "createdBy",
+            "internal": false,
+            "oid": "ee06791f-20db-435e-a795-c7926798c5f8",
+            "displayLabel": "Created By",
+            "historyType": "createdBy"
+        },
+        {
+            "type": "string",
+            "name": "lastUpdatedBy",
+            "internal": false,
+            "oid": "81ef33ab-f0ca-422b-beab-ee7fadd1b383",
+            "displayLabel": "Last Updated By",
+            "historyType": "updatedBy"
+        },
+        {
+            "type": "number",
+            "name": "versionNumber",
+            "internal": false,
+            "oid": "e6fd170f-a2b0-40dd-ad4f-ba44d09bd471",
+            "displayLabel": "Version Number",
+            "historyType": "versionNumber"
+        },
+        {
+            "type": "string",
+            "name": "tokenId",
+            "oid": "612955e6-9e7f-4038-9c7c-31d0ad5b303e",
+            "displayLabel": "tokenId"
+        },
+        {
+            "type": "string",
+            "name": "tokenName",
+            "oid": "65ad3d5b-5ea1-4891-a04d-f03a1e372a6f",
+            "displayLabel": "tokenName"
+        },
+        {
+            "type": "string",
+            "name": "tokenDesc",
+            "oid": "477cd993-ef5a-4a0d-b59c-5ac4015fef49",
+            "displayLabel": "tokenDesc"
+        }
+    ],
+    "name": "Aircraft",
+    "oid": "43276646-148a-452d-a616-af78be194a8a",
+    "displayLabel": "Aircraft"
+}

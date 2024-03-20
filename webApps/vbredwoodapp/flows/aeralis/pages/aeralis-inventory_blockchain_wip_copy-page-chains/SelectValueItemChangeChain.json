@@ -1,0 +1,32 @@
+{
+  "description": "",
+  "root": "callChainGetToken",
+  "actions": {
+    "callChainGetToken": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "getToken",
+        "params": {
+          "value": "{{ $variables.data }}"
+        }
+      }
+    }
+  },
+  "variables": {
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "data": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "metadata": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

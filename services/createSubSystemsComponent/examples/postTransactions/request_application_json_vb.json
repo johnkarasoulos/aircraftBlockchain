@@ -1,0 +1,10 @@
+{
+    "chaincode": "gt1155",
+    "args": [
+        "createSubSystemComponent",
+        "{\"tokenId\":\"0634001400010001\",\"tokenDesc\":\"Central Air Data Computers\",\"tokenUri\":\"tokenUri value\",\"tokenMetadata\":{\"id\":\"0634001400010001\",\"name\":\"Central Air Data Computers Active\",\"serialNumber\":\"0634001400010001\",\"subSystems\":\"0634001400010000\",\"description\":\"That portion of the system which senses environmental conditions and uses the data to influence navigation for colonial viper 4\",\"maintenanceDateAction\":\"2024-03-28T15:16:36+00:00\"},\"assetType\":\"subsystemcomponent\",\"newPart\":true,\"replacementDate\":\"2025-03-28T15:16:36+00:00\",\"assemblyDate\":\"2023-03-28T15:16:36+00:00\"}",
+        "1"
+    ],
+    "timeout": 6000,
+    "sync": true
+}

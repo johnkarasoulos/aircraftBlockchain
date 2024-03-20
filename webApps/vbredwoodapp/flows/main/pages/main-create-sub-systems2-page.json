@@ -1,0 +1,106 @@
+{
+  "title": "Create SubSystems",
+  "description": "Creates new SubSystems",
+  "variables": {
+    "createSubSystemsChainInProgress": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "landingGearListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_LandingGear",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallLandingGearResponse",
+        "uriParameters": {}
+      }
+    },
+    "subSystems": {
+      "type": "page:createSubSystemsRequest"
+    }
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.createSubSystemsRequest": {
+      "endpoint": "create_SubSystems",
+      "service": "businessObjects",
+      "path": "request"
+    },
+    "@decorators.getallLandingGearResponse": {
+      "endpoint": "getall_LandingGear",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "businessObjectsServiceErrorResponseType": {
+      "body": {
+        "status": "string",
+        "title": "string",
+        "o:errorDetails": [
+          {
+            "detail": "string",
+            "o:errorCode": "string"
+          }
+        ]
+      },
+      "status": "number"
+    },
+    "createSubSystemsRequest": {
+      "landingGear": "number",
+      "subsystemCode": "string",
+      "subsystemdefinition": "string",
+      "subsystemtitle": "string"
+    },
+    "getallLandingGearResponse": {
+      "items": [
+        {
+          "id": "number",
+          "subSystemID": "string"
+        }
+      ]
+    }
+  },
+  "eventListeners": {
+    "backButtonClicked": {
+      "chains": [
+        {
+          "chainId": "goBackChain"
+        }
+      ]
+    },
+    "saveButtonClicked": {
+      "chains": [
+        {
+          "chainId": "createSubSystemsChain"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-select-single": {
+        "path": "ojs/ojselectsingle"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      },
+      "oj-validation-group": {
+        "path": "ojs/ojvalidationgroup"
+      }
+    }
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

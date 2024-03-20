@@ -1,0 +1,192 @@
+{
+  "variables": {
+    "saveFailureResult": {
+      "type": "page:businessObjectsServiceErrorResponseType"
+    },
+    "errorMessage": {
+      "type": "string"
+    },
+    "saveHeaders": {
+      "type": "object"
+    }
+  },
+  "root": "markSaveStarted",
+  "actions": {
+    "markSaveStarted": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.saveActorsChainInProgress": {
+          "source": true
+        }
+      },
+      "outcomes": {
+        "success": "validateActors"
+      },
+      "description": "Sets the progress variable to true",
+      "label": "Mark Save in progress"
+    },
+    "validateActors": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "flow:validateFormChain",
+        "params": {
+          "validationGroupId": "validation-group"
+        }
+      },
+      "outcomes": {
+        "success": "isFormValid"
+      },
+      "label": "Validate",
+      "description": "Validates Actors form"
+    },
+    "isFormValid": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.validateActors === true ]]"
+      },
+      "outcomes": {
+        "true": "checkETag",
+        "false": "markSaveEnded"
+      },
+      "label": "Is Form valid",
+      "description": "Tests if form passed validation"
+    },
+    "checkETag": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.actorsETag ]]"
+      },
+      "outcomes": {
+        "true": "assignIfMatchHeader",
+        "false": "saveActors"
+      }
+    },
+    "assignIfMatchHeader": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.saveHeaders": {
+          "source": "[[ { 'If-Match': $page.variables.actorsETag } ]]"
+        }
+      },
+      "outcomes": {
+        "success": "saveActors"
+      }
+    },
+    "saveActors": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "businessObjects/update_Actors",
+        "body": "{{ $page.variables.actors }}",
+        "requestType": "json",
+        "uriParams": {
+          "Actors_Id": "[[ $page.variables.actorsId ]]"
+        },
+        "headers": "[[ $variables.saveHeaders ]]"
+      },
+      "outcomes": {
+        "success": "assignPayload",
+        "failure": "assignFailureResult"
+      }
+    },
+    "assignPayload": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.actors": {
+          "source": "{{ $chain.results.saveActors.body }}"
+        },
+        "$page.variables.actorsETag": {
+          "source": "[[ $chain.results.saveActors.headers.get('ETag') ]]"
+        }
+      },
+      "outcomes": {
+        "success": "fireSuccessNotification"
+      }
+    },
+    "fireSuccessNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "summary": "Actors saved",
+        "message": "Actors record successfully updated",
+        "type": "confirmation",
+        "displayMode": "transient"
+      },
+      "outcomes": {
+        "success": "callGoBackChain"
+      }
+    },
+    "callGoBackChain": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "goBackChain"
+      },
+      "outcomes": {
+        "success": "markSaveEnded"
+      }
+    },
+    "assignFailureResult": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.saveFailureResult": {
+          "source": "[[ $chain.results.saveActors ]]"
+        }
+      },
+      "outcomes": {
+        "success": "testFailureDetails"
+      }
+    },
+    "testFailureDetails": {
+      "module": "vb/action/builtin/ifAction",
+      "outcomes": {
+        "true": "handleDetailedErrorMessage",
+        "false": "handleDefaultErrorMessage"
+      },
+      "parameters": {
+        "condition": "[[ $variables.saveFailureResult.body['o:errorDetails'][0] ]]"
+      }
+    },
+    "handleDetailedErrorMessage": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "outcomes": {
+        "success": "fireErrorNotification"
+      },
+      "parameters": {
+        "$variables.errorMessage": {
+          "source": "[[ $variables.saveFailureResult.body['o:errorDetails'][0].detail ]]"
+        }
+      }
+    },
+    "handleDefaultErrorMessage": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "outcomes": {
+        "success": "fireErrorNotification"
+      },
+      "parameters": {
+        "$variables.errorMessage": {
+          "source": "[[ 'Could not update Actors: status ' + $chain.results.saveActors.status ]]"
+        }
+      }
+    },
+    "fireErrorNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "summary": "Save failed",
+        "message": "[[ $variables.errorMessage ]]",
+        "type": "error",
+        "displayMode": "persist"
+      },
+      "outcomes": {
+        "success": "markSaveEnded"
+      }
+    },
+    "markSaveEnded": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.saveActorsChainInProgress": {
+          "source": false
+        }
+      },
+      "description": "Sets the progress variable to false",
+      "label": "Mark Save done"
+    }
+  }
+}

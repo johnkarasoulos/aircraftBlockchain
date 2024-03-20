@@ -1,0 +1,10 @@
+{
+    "chaincode": "gt1155",
+    "args": [
+        "createLandingGearToken",
+        "{\"tokenId\":\"0634009000000000\",\"tokenDesc\":\"tokenDesc value\",\"tokenUri\":\"tokenUri value\",\"tokenMetadata\":{\"figther\":\"0600000000000000\",\"id\":\"0634009000000000\",\"systemDefinition\":\"Those units and components which provide air vehicle navigational information. Includes VOR, pitot, static, ILS, flight director, compasses, indicators, etc.\",\"title\":\"Navigation of commercial airplace\",\"assetType\":\"landinggear\"}}",
+        "1"
+    ],
+    "timeout": 6000,
+    "sync": true
+}

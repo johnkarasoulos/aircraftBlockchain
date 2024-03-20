@@ -1,0 +1,39 @@
+{
+  "root": "loadLifeCycleStatus",
+  "actions": {
+    "loadLifeCycleStatus": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "businessObjects/get_LifeCycleStatus",
+        "uriParams": {
+          "LifeCycleStatus_Id": "[[ $page.variables.lifeCycleStatusId ]]"
+        },
+        "responseType": "page:getLifeCycleStatusResponse"
+      },
+      "outcomes": {
+        "success": "assignPayload",
+        "failure": "fireErrorNotification"
+      }
+    },
+    "assignPayload": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.lifeCycleStatus": {
+          "source": "{{ $chain.results.loadLifeCycleStatus.body }}"
+        },
+        "$page.variables.lifeCycleStatusETag": {
+          "source": "[[ $chain.results.loadLifeCycleStatus.headers.get('ETag') ]]"
+        }
+      }
+    },
+    "fireErrorNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "summary": "Could not load data",
+        "message": "{{ 'Could not load data: status ' + $chain.results.loadLifeCycleStatus.status }}",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+{
+    "returnCode": "Success",
+    "error": "",
+    "result": {
+        "txid": "694bd2ef15a4a60459af66d876ad6ce278b026c237646426da4536d384cf4bed",
+        "payload": "SubSytemComponent created : '0434001400010001', and attached to Subsystem : '0434001400010000",
+        "encode": "UTF-8"
+    }
+}

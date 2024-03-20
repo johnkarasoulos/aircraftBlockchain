@@ -1,0 +1,81 @@
+{
+  "title": "Create MaintenanceActions",
+  "description": "Creates new MaintenanceActions",
+  "variables": {
+    "createMaintenanceActionsChainInProgress": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "maintenanceActions": {
+      "type": "page:createMaintenanceActionsRequest"
+    }
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.createMaintenanceActionsRequest": {
+      "endpoint": "create_MaintenanceActions",
+      "service": "businessObjects",
+      "path": "request"
+    },
+    "businessObjectsServiceErrorResponseType": {
+      "body": {
+        "status": "string",
+        "title": "string",
+        "o:errorDetails": [
+          {
+            "detail": "string",
+            "o:errorCode": "string"
+          }
+        ]
+      },
+      "status": "number"
+    },
+    "createMaintenanceActionsRequest": {
+      "description": "string",
+      "maintenaceDateAction": "string"
+    }
+  },
+  "eventListeners": {
+    "backButtonClicked": {
+      "chains": [
+        {
+          "chainId": "goBackChain"
+        }
+      ]
+    },
+    "saveButtonClicked": {
+      "chains": [
+        {
+          "chainId": "createMaintenanceActionsChain"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-date": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      },
+      "oj-validation-group": {
+        "path": "ojs/ojvalidationgroup"
+      }
+    }
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

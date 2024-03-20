@@ -1,0 +1,66 @@
+{
+  "root": "deleteSubSystems",
+  "variables": {
+    "subSystemsId": {
+      "type": "string",
+      "input": "fromCaller",
+      "required": true
+    }
+  },
+  "actions": {
+    "deleteSubSystems": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "businessObjects/delete_SubSystems",
+        "uriParams": {
+          "SubSystems_Id": "[[ $variables.subSystemsId ]]"
+        }
+      },
+      "outcomes": {
+        "success": "resetSelection",
+        "failure": "fireErrorNotification"
+      }
+    },
+    "resetSelection": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "[[ '$page.variables.oj_table_2083428117_1SelectedId' ]]"
+        ]
+      },
+      "outcomes": {
+        "success": "refreshDataProvider"
+      },
+      "description": "Resets selection variable",
+      "label": "Reset selection"
+    },
+    "refreshDataProvider": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "outcomes": {
+        "success": "fireSuccessNotification"
+      },
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.subSystemsListSDP ]]"
+      }
+    },
+    "fireSuccessNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "summary": "SubSystems deleted",
+        "message": "[[ 'SubSystems [' + $variables.subSystemsId + '] successfully deleted' ]]",
+        "type": "confirmation",
+        "displayMode": "transient"
+      }
+    },
+    "fireErrorNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "summary": "Delete failed",
+        "message": "[[ 'Could not delete data: status ' + $chain.results.deleteSubSystems.status ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "description": "",
+  "root": "navigateToAeralisSystemDetail",
+  "actions": {
+    "navigateToAeralisSystemDetail": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "aeralis-system-detail",
+        "params": {
+          "inputToken": "{{ $variables.actionId }}",
+          "goToParent": "{{ $flow.currentPage }}"
+        }
+      }
+    }
+  },
+  "variables": {
+    "actionId": {
+      "required": true,
+      "type": "string",
+      "input": "fromCaller"
+    }
+  }
+}

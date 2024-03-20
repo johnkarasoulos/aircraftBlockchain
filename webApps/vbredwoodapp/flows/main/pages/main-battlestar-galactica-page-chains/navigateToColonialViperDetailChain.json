@@ -1,0 +1,21 @@
+{
+  "root": "navigateToDetail",
+  "variables": {
+    "colonialViperId": {
+      "type": "string",
+      "input": "fromCaller",
+      "required": true
+    }
+  },
+  "actions": {
+    "navigateToDetail": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "main-colonial-viper-detail",
+        "params": {
+          "colonialViperId": "[[ $variables.colonialViperId ]]"
+        }
+      }
+    }
+  }
+}

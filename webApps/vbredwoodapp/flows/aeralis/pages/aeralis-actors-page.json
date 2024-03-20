@@ -1,0 +1,186 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "bidirectionalNavigation": {
+      "type": "boolean",
+      "defaultValue": true,
+      "input": "fromCaller"
+    },
+    "displayMode": {
+      "type": "string"
+    },
+    "inFlowBack": {
+      "type": "boolean",
+      "defaultValue": false,
+      "input": "fromCaller"
+    },
+    "itemId": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "itemIndex": {
+      "type": "number",
+      "description": "Zero-based index referring to the current row in the collection",
+      "input": "fromCaller",
+      "onValueChanged": {
+        "chains": [
+          {
+            "chainId": "fetchItemChain",
+            "parameters": {
+              "limit": "{{ $page.variables.itemIndex === 0 ? 2 : 3 }}",
+              "offset": "{{ $page.variables.itemIndex > 0 ? ($page.variables.itemIndex - 1) : 0 }}"
+            }
+          },
+          {
+            "chainId": "loadLandingGearChain",
+            "parameters": {
+              "fetchedFields": "[[ $variables.landingGearDetailFormRenderedFields ]]",
+              "landingGearId": "{{ $variables.itemIndex }}"
+            }
+          }
+        ]
+      }
+    },
+    "landingGear": {
+      "type": "getLandingGearResponse"
+    },
+    "landingGearDetailFormLoadingStatus": {
+      "type": "string",
+      "defaultValue": "pending"
+    },
+    "landingGearDetailFormRenderedFields": {
+      "type": "any[]",
+      "onValueChanged": {
+        "chains": [
+          {
+            "chainId": "loadLandingGearChain",
+            "parameters": {
+              "fetchedFields": "[[ $variables.landingGearDetailFormRenderedFields ]]",
+              "landingGearId": "{{ $variables.itemIndex }}"
+            }
+          }
+        ]
+      }
+    },
+    "nextItem": {
+      "type": "any",
+      "defaultValue": null
+    },
+    "overviewExpanded": {
+      "type": "boolean",
+      "defaultValue": false,
+      "input": "fromCaller"
+    },
+    "parentPage": {
+      "type": "string",
+      "input": "fromCaller"
+    },
+    "parentUrlParams": {
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "previousItem": {
+      "type": "any",
+      "defaultValue": null
+    }
+  },
+  "metadata": {
+    "businessObjectsGetLandingGearMetadata": {
+      "type": "vb/DynamicLayoutMetadataProviderDescriptor",
+      "defaultValue": {
+        "endpoint": "businessObjects/get_LandingGear"
+      }
+    }
+  },
+  "types": {
+    "@decorators.getLandingGearResponse": {
+      "endpoint": "get_LandingGear",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "getLandingGearResponse": "object"
+  },
+  "eventListeners": {
+    "ojSpGoToParent": {
+      "chains": [
+        {
+          "chainId": "goToParentChain",
+          "parameters": {
+            "parentPage": "{{ $page.variables.parentPage }}"
+          }
+        }
+      ]
+    },
+    "ojSpItemOverviewPageSpNext": {
+      "chains": [
+        {
+          "chainId": "goToNextItemChain",
+          "parameters": {
+            "event": "{{ $event }}"
+          }
+        }
+      ]
+    },
+    "ojSpItemOverviewPageSpPrevious": {
+      "chains": [
+        {
+          "chainId": "goToPreviousItemChain",
+          "parameters": {
+            "event": "{{ $event }}"
+          }
+        }
+      ]
+    },
+    "ojSpItemOverviewSpCollapse": {
+      "chains": [
+        {
+          "chainId": "ExpandOrCollapseOverviewChain",
+          "parameters": {
+            "expand": "false"
+          }
+        }
+      ]
+    },
+    "ojSpItemOverviewSpExpand": {
+      "chains": [
+        {
+          "chainId": "ExpandOrCollapseOverviewChain",
+          "parameters": {
+            "expand": "true"
+          }
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "chainId": "ifItemIndexConfigured",
+          "parameters": {}
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-dynamic-form": {
+        "path": "oj-dynamic/form/loader"
+      },
+      "oj-sp-item-overview": {
+        "path": "oj-sp/item-overview/loader"
+      },
+      "oj-sp-item-overview-page": {
+        "path": "oj-sp/item-overview-page/loader"
+      }
+    }
+  },
+  "@dt": {
+    "iconClass": "vbdt-dynamic-icon-70-icoItemOverviewPage48Svg"
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

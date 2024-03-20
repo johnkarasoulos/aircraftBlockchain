@@ -1,0 +1,63 @@
+<div>
+  <oj-sp-foldout-layout id="foldout_layout_Horizontal_page" animate="[[$page.variables.animate]]"
+    previous-step="[[$variables.previousStep]]" next-step="[[$variables.nextStep]]"
+    display-options.go-to-parent="[[$page.variables.goToParent]]"
+    display-options.bidirectional-navigation="[[$page.variables.bidirectionalNavigation]]"
+    on-sp-go-to-parent="[[$listeners.onSpGoToParent]]" selected-panel="{{$variables.selectedPanel}}"
+    on-sp-previous="[[$listeners.onSpPrevious]]" on-sp-next="[[$listeners.onSpNext]]" orientation='horizontal'
+    display-mode="[[$page.variables.displayMode]]" display-options.in-flow-back="true"
+    display-options.background="transparent">
+
+    
+    <oj-sp-horizontal-overview id="foldout_layout_h_overview" slot="overview"
+      item-title="[[ $variables.landingGear.title ]]" display-mode="[[$page.variables.displayMode]]"
+      badge.text="[[ $variables.landingGear.title ]]" badge.status="info" badge.style="strong"
+      display-options.show-details="on"></oj-sp-horizontal-overview>
+    
+    <!-- the below is default slot, maximum 6 oj-sp-foldout-panel could be added -->
+    <oj-sp-foldout-panel-summarizing panel-title="[[ $page.variables.panelOneTitle]]" class="profile-panel">
+      <!-- below div is default slot for the content of the first foldout panel -->
+      <div>
+        <oj-table scroll-policy="loadMoreOnScroll" data="[[$variables.subSystemsListSDP]]"
+          columns='[{"headerText":"SubSystem Code","field":"subsystemCode","resizable":"enabled"},{"headerText":"SubSystem Title","field":"subsystemtitle","resizable":"enabled"},{"headerText":"SubSystem Definition","field":"subsystemdefinition","resizable":"enabled"}]'
+          id="subsystemDetail" on-first-selected-row-changed="[[$listeners.subsystemDetailFirstSelectedRow]]"
+          selection-mode.row="single"></oj-table>
+      </div>
+      <!-- Summary Slot: Summary Section of the first foldout panel -->
+      <div slot="summary">
+        <oj-bind-if test="[[ ($variables.rowIndex) !== undefined ]]">
+          <oj-form-layout readonly="true">
+            <oj-input-text value="{{ $variables.landingGear.title }}" readonly="true" label-hint="SubSystemID"></oj-input-text>
+            <oj-input-text value="[[ $variables.landingGear.title ]]" readonly="true" label-hint="Title"></oj-input-text>
+            <oj-input-text value="[[ $variables.landingGear.SystemDefinition ]]" readonly="true"
+              label-hint="definition"></oj-input-text>
+          </oj-form-layout>
+        </oj-bind-if>
+      </div>
+    </oj-sp-foldout-panel-summarizing>
+
+    
+    <oj-sp-foldout-panel-summarizing panel-title="[[ $page.variables.panelTwoTitle]]" class="profile-panel">
+      <!-- below div is default slot for the content of the first foldout panel -->
+      <div>
+        <oj-table scroll-policy="loadMoreOnScroll" data="[[$variables.subSystemComponentListSDP]]"
+          columns='[{"headerText":"Sub Systems","field":"subSystems","resizable":"enabled","minWidth":"auto"},{"headerText":"Name","field":"name","minWidth":"auto","resizable":"enabled"},{"headerText":"Serial Number","field":"serialNumber","minWidth":"auto"},{"headerText":"Operating Data","field":"operatingData","minWidth":"auto","resizable":"enabled"},{"headerText":"Assembly Date","template":"multiFieldCellTemplate5","sortable":"disabled","resizable":"enabled"},{"headerText":"new part","sortable":"disabled","template":"multiFieldCellTemplate6","resizable":"enabled"},{"headerText":"Replacement Date","sortable":"disabled","template":"multiFieldCellTemplate7","resizable":"enabled"},{"headerText":"Maintenance Actions","field":"maintenanceActions","resizable":"enabled"}]'>
+          <template slot="multiFieldCellTemplate5">
+            <oj-input-date value="[[ $current.row.assemblyDate ]]" readonly="true"></oj-input-date>
+          </template>
+          <template slot="multiFieldCellTemplate6">
+            <oj-switch value="[[ $current.row.newPart ]]" readonly="true"></oj-switch>
+          </template>
+          <template slot="multiFieldCellTemplate7">
+            <oj-input-date value="[[ $current.row.replacementDate ]]" readonly="true"></oj-input-date>
+          </template>
+        </oj-table>
+      </div>
+      <!-- Summary Slot: Summary Section of the second foldout panel -->
+      <div slot="summary"></div>
+    </oj-sp-foldout-panel-summarizing>
+
+    
+    <oj-vb-content slot="drilldown" config="[[vbRouterFlow]]"></oj-vb-content>
+  </oj-sp-foldout-layout>
+</div>

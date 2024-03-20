@@ -1,0 +1,29 @@
+<oj-sp-general-overview-page id="oj_gop1" display-options.responsive-padding="on" page-title="Battlestar Galactica"
+  page-subtitle="Air Vehicle engine and equipement">
+
+    
+  <div slot="main">
+        <!-- Main Content goes here... It is recommended to have a heading element title as well -->
+        <oj-table scroll-policy="loadMoreOnScroll" data="[[$variables.colonialViperListSDP]]"
+          columns='[{"headerText":"title","field":"title"},{"headerText":"Definition","field":"definition1"}]'
+          id="oj-table-2078512949-1" selection-mode.row="single" selection-mode.column="single"
+          on-first-selected-row-changed="[[ $listeners.ojTable20785129491Selection ]]"></oj-table>
+  </div>
+
+    
+  <div slot="info">
+        <!-- Complementary Content goes here... It is recommended to have a heading element title as well --></div>
+
+
+</oj-sp-general-overview-page>
+<div class="oj-flex">
+  <oj-toolbar id="oj-toolbar-for-oj-table-2078512949-1" chroming="solid" class="oj-flex-item oj-sm-12 oj-md-12">
+        <oj-button on-oj-action="[[$listeners.createColonialViperButtonClicked]]">Create</oj-button>
+        <oj-button disabled="[[ $variables.oj_table_2078512949_1SelectedId === '' ]]"
+          on-oj-action="[[$listeners.editColonialViperButtonClicked]]">Edit</oj-button>
+        <oj-button disabled="[[ $variables.oj_table_2078512949_1SelectedId === '' ]]"
+          on-oj-action="[[$listeners.colonialViperDetailButtonClicked]]">Detail</oj-button>
+        <oj-button disabled="[[ $variables.oj_table_2078512949_1SelectedId === '' ]]"
+          on-oj-action="[[$listeners.deleteColonialViperButtonClicked]]">Delete ColonialViper</oj-button>
+  </oj-toolbar>
+</div>

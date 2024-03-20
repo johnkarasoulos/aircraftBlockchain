@@ -1,0 +1,96 @@
+{
+  "title": "Edit MaintenanceActions",
+  "description": "Updates single MaintenanceActions record",
+  "variables": {
+    "maintenanceActions": {
+      "type": "page:getMaintenanceActionsResponse"
+    },
+    "maintenanceActionsETag": {
+      "type": "string"
+    },
+    "maintenanceActionsId": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "saveMaintenanceActionsChainInProgress": {
+      "type": "boolean",
+      "defaultValue": false
+    }
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getMaintenanceActionsResponse": {
+      "endpoint": "get_MaintenanceActions",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "businessObjectsServiceErrorResponseType": {
+      "body": {
+        "status": "string",
+        "title": "string",
+        "o:errorDetails": [
+          {
+            "detail": "string",
+            "o:errorCode": "string"
+          }
+        ]
+      },
+      "status": "number"
+    },
+    "getMaintenanceActionsResponse": {
+      "description": "string",
+      "maintenaceDateAction": "string"
+    }
+  },
+  "eventListeners": {
+    "backButtonClicked": {
+      "chains": [
+        {
+          "chainId": "goBackChain"
+        }
+      ]
+    },
+    "saveButtonClicked": {
+      "chains": [
+        {
+          "chainId": "saveMaintenanceActionsChain"
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "chainId": "loadMaintenanceActionsChain"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-date": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      },
+      "oj-validation-group": {
+        "path": "ojs/ojvalidationgroup"
+      }
+    }
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

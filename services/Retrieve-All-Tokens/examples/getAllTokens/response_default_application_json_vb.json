@@ -1,0 +1,343 @@
+{
+    "returnCode": "Success",
+    "error": "",
+    "result": {
+        "payload": [
+            {
+                "key": "AA-000001",
+                "valueJson": {
+                    "tokenMetadata": {
+                        "id": "000001",
+                        "definition1": "First Colonial Viper airplane",
+                        "title": "Colonial Viper 1"
+                    },
+                    "assetType": "otoken",
+                    "tokenId": "AA-000001",
+                    "tokenName": "airplane",
+                    "tokenDesc": "First Colonial Viper airplane",
+                    "tokenStandard": "erc1155+",
+                    "tokenType": "nonfungible",
+                    "tokenUnit": "whole",
+                    "behaviors": [
+                        "indivisible",
+                        "mintable",
+                        "transferable",
+                        "burnable",
+                        "roles"
+                    ],
+                    "roles": {
+                        "minter_role_name": "minter"
+                    },
+                    "mintable": {
+                        "max_mint_quantity": 0
+                    },
+                    "quantity": 1,
+                    "createdBy": "oaccount~b55b00b5401e70e56fc22d5680bbd9f88f0f40c095a29e2d270d9a30de99fd8f",
+                    "creationDate": "2024-02-07T15:24:19.000Z",
+                    "owner": "oaccount~b55b00b5401e70e56fc22d5680bbd9f88f0f40c095a29e2d270d9a30de99fd8f",
+                    "isBurned": false,
+                    "tokenUri": "Colonial Viper 1"
+                }
+            },
+            {
+                "key": "050000000000000",
+                "valueJson": {
+                    "tokenMetadata": {
+                        "assetType": "airplane",
+                        "id": "0200000000000000",
+                        "definition1": "OracleAircraft",
+                        "title": "Oracle Cloud"
+                    },
+                    "assetType": "otoken",
+                    "tokenId": "050000000000000",
+                    "tokenName": "airplane",
+                    "tokenDesc": "OracleAircraft",
+                    "tokenStandard": "erc1155+",
+                    "tokenType": "nonfungible",
+                    "tokenUnit": "whole",
+                    "behaviors": [
+                        "indivisible",
+                        "mintable",
+                        "transferable",
+                        "burnable",
+                        "roles"
+                    ],
+                    "roles": {
+                        "minter_role_name": "minter"
+                    },
+                    "mintable": {
+                        "max_mint_quantity": 0
+                    },
+                    "quantity": 1,
+                    "createdBy": "oaccount~b55b00b5401e70e56fc22d5680bbd9f88f0f40c095a29e2d270d9a30de99fd8f",
+                    "creationDate": "2024-02-09T12:33:17.000Z",
+                    "owner": "oaccount~b55b00b5401e70e56fc22d5680bbd9f88f0f40c095a29e2d270d9a30de99fd8f",
+                    "isBurned": false,
+                    "tokenUri": "OracleAircraft"
+                }
+            },
+            {
+                "key": "060000000000000",
+                "valueJson": {
+                    "tokenMetadata": {
+                        "assetType": "airplane OCI",
+                        "id": "0600000000000000",
+                        "definition1": "OracleAircraft OCI",
+                        "title": "Oracle Cloud OCI "
+                    },
+                    "assetType": "otoken",
+                    "tokenId": "060000000000000",
+                    "tokenName": "airplane",
+                    "tokenDesc": "OracleAircraft OCI",
+                    "tokenStandard": "erc1155+",
+                    "tokenType": "nonfungible",
+                    "tokenUnit": "whole",
+                    "behaviors": [
+                        "indivisible",
+                        "mintable",
+                        "transferable",
+                        "burnable",
+                        "roles"
+                    ],
+                    "roles": {
+                        "minter_role_name": "minter"
+                    },
+                    "mintable": {
+                        "max_mint_quantity": 0
+                    },
+                    "quantity": 1,
+                    "createdBy": "oaccount~b55b00b5401e70e56fc22d5680bbd9f88f0f40c095a29e2d270d9a30de99fd8f",
+                    "creationDate": "2024-02-09T12:47:27.000Z",
+                    "owner": "oaccount~b55b00b5401e70e56fc22d5680bbd9f88f0f40c095a29e2d270d9a30de99fd8f",
+                    "isBurned": false,
+                    "tokenUri": "OracleAircraft OCI"
+                }
+            },
+            {
+                "key": "0434001400010000",
+                "valueJson": {
+                    "tokenMetadata": {
+                        "assetType": "subsystems",
+                        "id": "id value",
+                        "landingGear": "0434001000000000",
+                        "subsystemCode": "0434001400010000",
+                        "subsystemdefinition": "That portion of the system which senses environmental conditions and uses the data to influence navigation. Includes such items as Central Air Data Computers, pitot/static systems, air temperature, rate-of-climb, airspeed, high speed warning, altitude, altitude reporting, altimeter correction system, air disturbance detection system, etc.",
+                        "subsystemtitle": "Flight environment data of colonial viper 4",
+                        "parent_nft": "0434001000000000"
+                    },
+                    "assetType": "otoken",
+                    "tokenId": "0434001400010000",
+                    "tokenName": "subsystems",
+                    "tokenDesc": "Flight environment data of colonial viper 4",
+                    "tokenStandard": "erc1155+",
+                    "tokenType": "nonfungible",
+                    "tokenUnit": "whole",
+                    "behaviors": [
+                        "indivisible",
+                        "mintable",
+                        "transferable",
+                        "burnable",
+                        "roles"
+                    ],
+                    "roles": {
+                        "minter_role_name": "minter"
+                    },
+                    "mintable": {
+                        "max_mint_quantity": 0
+                    },
+                    "quantity": 1,
+                    "createdBy": "oaccount~b55b00b5401e70e56fc22d5680bbd9f88f0f40c095a29e2d270d9a30de99fd8f",
+                    "creationDate": "2024-02-09T13:02:26.000Z",
+                    "owner": "oaccount~b55b00b5401e70e56fc22d5680bbd9f88f0f40c095a29e2d270d9a30de99fd8f",
+                    "isBurned": false,
+                    "tokenUri": "tokenUri value"
+                }
+            },
+            {
+                "key": "AA-100001",
+                "valueJson": {
+                    "tokenMetadata": {
+                        "assetType": "landinggear",
+                        "figther": "AA-000001",
+                        "id": "Test Identification AA-100001",
+                        "systemDefinition": "Test system definition AA-100001",
+                        "title": "Test System Title AA-100001"
+                    },
+                    "assetType": "otoken",
+                    "tokenId": "AA-100001",
+                    "tokenName": "landinggear",
+                    "tokenDesc": "test token DEscription AA-000001",
+                    "tokenStandard": "erc1155+",
+                    "tokenType": "nonfungible",
+                    "tokenUnit": "whole",
+                    "behaviors": [
+                        "indivisible",
+                        "mintable",
+                        "transferable",
+                        "burnable",
+                        "roles"
+                    ],
+                    "roles": {
+                        "minter_role_name": "minter"
+                    },
+                    "mintable": {
+                        "max_mint_quantity": 0
+                    },
+                    "quantity": 1,
+                    "createdBy": "oaccount~b55b00b5401e70e56fc22d5680bbd9f88f0f40c095a29e2d270d9a30de99fd8f",
+                    "creationDate": "2024-02-09T15:25:13.000Z",
+                    "owner": "oaccount~b55b00b5401e70e56fc22d5680bbd9f88f0f40c095a29e2d270d9a30de99fd8f",
+                    "isBurned": false,
+                    "tokenUri": "test tokenURI AA-000001"
+                }
+            },
+            {
+                "key": "AA-000011",
+                "valueJson": {
+                    "tokenMetadata": {
+                        "id": "000001",
+                        "definition1": "First Colonial Viper airplane",
+                        "title": "Colonial Viper 1"
+                    },
+                    "assetType": "otoken",
+                    "tokenId": "AA-000011",
+                    "tokenName": "airplane",
+                    "tokenDesc": "First Colonial Viper airplane",
+                    "tokenStandard": "erc1155+",
+                    "tokenType": "nonfungible",
+                    "tokenUnit": "whole",
+                    "behaviors": [
+                        "indivisible",
+                        "mintable",
+                        "transferable",
+                        "burnable",
+                        "roles"
+                    ],
+                    "roles": {
+                        "minter_role_name": "minter"
+                    },
+                    "mintable": {
+                        "max_mint_quantity": 0
+                    },
+                    "quantity": 1,
+                    "createdBy": "oaccount~b55b00b5401e70e56fc22d5680bbd9f88f0f40c095a29e2d270d9a30de99fd8f",
+                    "creationDate": "2024-02-11T22:38:27.000Z",
+                    "owner": "oaccount~b55b00b5401e70e56fc22d5680bbd9f88f0f40c095a29e2d270d9a30de99fd8f",
+                    "isBurned": false,
+                    "tokenUri": "Colonial Viper 1"
+                }
+            },
+            {
+                "key": "AA-000021",
+                "valueJson": {
+                    "tokenMetadata": {
+                        "id": "000001",
+                        "definition1": "First Colonial Viper airplane",
+                        "title": "Colonial Viper 1"
+                    },
+                    "assetType": "otoken",
+                    "tokenId": "AA-000021",
+                    "tokenName": "airplane",
+                    "tokenDesc": "First Colonial Viper airplane",
+                    "tokenStandard": "erc1155+",
+                    "tokenType": "nonfungible",
+                    "tokenUnit": "whole",
+                    "behaviors": [
+                        "indivisible",
+                        "mintable",
+                        "transferable",
+                        "burnable",
+                        "roles"
+                    ],
+                    "roles": {
+                        "minter_role_name": "minter"
+                    },
+                    "mintable": {
+                        "max_mint_quantity": 0
+                    },
+                    "quantity": 1,
+                    "createdBy": "oaccount~b55b00b5401e70e56fc22d5680bbd9f88f0f40c095a29e2d270d9a30de99fd8f",
+                    "creationDate": "2024-02-11T22:38:59.000Z",
+                    "owner": "oaccount~b55b00b5401e70e56fc22d5680bbd9f88f0f40c095a29e2d270d9a30de99fd8f",
+                    "isBurned": false,
+                    "tokenUri": "Colonial Viper 1"
+                }
+            },
+            {
+                "key": 1000000000000000,
+                "valueJson": {
+                    "tokenMetadata": {
+                        "assetType": "airplane",
+                        "id": "1000000000000000",
+                        "definition1": "Fifth Colonial Viper airplane",
+                        "title": "Colonial Viper 5"
+                    },
+                    "assetType": "otoken",
+                    "tokenId": "1000000000000000",
+                    "tokenName": "airplane",
+                    "tokenDesc": "Fifth Colonial Viper airplane",
+                    "tokenStandard": "erc1155+",
+                    "tokenType": "nonfungible",
+                    "tokenUnit": "whole",
+                    "behaviors": [
+                        "indivisible",
+                        "mintable",
+                        "transferable",
+                        "burnable",
+                        "roles"
+                    ],
+                    "roles": {
+                        "minter_role_name": "minter"
+                    },
+                    "mintable": {
+                        "max_mint_quantity": 0
+                    },
+                    "quantity": 1,
+                    "createdBy": "oaccount~b55b00b5401e70e56fc22d5680bbd9f88f0f40c095a29e2d270d9a30de99fd8f",
+                    "creationDate": "2024-02-12T10:54:51.000Z",
+                    "owner": "oaccount~b55b00b5401e70e56fc22d5680bbd9f88f0f40c095a29e2d270d9a30de99fd8f",
+                    "isBurned": false,
+                    "tokenUri": "Colonial Viper 10"
+                }
+            },
+            {
+                "key": "BB-200000",
+                "valueJson": {
+                    "tokenMetadata": {
+                        "assetType": "airplane",
+                        "id": "BB-200000",
+                        "definition1": "Test demo",
+                        "title": "demo aircraft"
+                    },
+                    "assetType": "otoken",
+                    "tokenId": "BB-200000",
+                    "tokenName": "airplane",
+                    "tokenDesc": "testAircraft",
+                    "tokenStandard": "erc1155+",
+                    "tokenType": "nonfungible",
+                    "tokenUnit": "whole",
+                    "behaviors": [
+                        "indivisible",
+                        "mintable",
+                        "transferable",
+                        "burnable",
+                        "roles"
+                    ],
+                    "roles": {
+                        "minter_role_name": "minter"
+                    },
+                    "mintable": {
+                        "max_mint_quantity": 0
+                    },
+                    "quantity": 1,
+                    "createdBy": "oaccount~b55b00b5401e70e56fc22d5680bbd9f88f0f40c095a29e2d270d9a30de99fd8f",
+                    "creationDate": "2024-02-12T14:51:49.000Z",
+                    "owner": "oaccount~b55b00b5401e70e56fc22d5680bbd9f88f0f40c095a29e2d270d9a30de99fd8f",
+                    "isBurned": false,
+                    "tokenUri": "testAircraft"
+                }
+            }
+        ],
+        "encode": "JSON"
+    }
+}

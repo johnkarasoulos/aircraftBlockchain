@@ -1,0 +1,215 @@
+{
+    "fields": [
+        {
+            "type": "number",
+            "name": "id",
+            "internal": false,
+            "key": true,
+            "oid": "eaea2f67-598f-447b-8bcd-b9bab17bf019",
+            "required": true,
+            "unique": true,
+            "displayLabel": "Id"
+        },
+        {
+            "type": "datetime",
+            "name": "creationDate",
+            "internal": false,
+            "oid": "4440e181-d7d6-4af4-b7ed-be89f186f504",
+            "displayLabel": "Created",
+            "historyType": "timeCreated"
+        },
+        {
+            "type": "datetime",
+            "name": "lastUpdateDate",
+            "internal": false,
+            "oid": "57b491a6-4f60-4c85-8ebc-7e0429cd3115",
+            "displayLabel": "Last Updated",
+            "historyType": "timeUpdated"
+        },
+        {
+            "type": "string",
+            "name": "createdBy",
+            "internal": false,
+            "oid": "2499f683-baae-4ecb-9175-46c11cbe8e04",
+            "displayLabel": "Created By",
+            "historyType": "createdBy"
+        },
+        {
+            "type": "string",
+            "name": "lastUpdatedBy",
+            "internal": false,
+            "oid": "a9c28c90-a741-4040-97ff-80bd29f49bb5",
+            "displayLabel": "Last Updated By",
+            "historyType": "updatedBy"
+        },
+{
+            "type": "number",
+            "name": "versionNumber",
+            "internal": false,
+            "oid": "89921d4d-ae9b-4d2f-aa80-a8375c363136",
+            "displayLabel": "Version Number",
+            "historyType": "versionNumber"
+        },
+        {
+            "type": "string",
+            "name": "serialNumber",
+            "oid": "2e7e47e5-0425-4049-9a41-fc41cf70096f",
+            "required": true,
+            "displayLabel": " serial number"
+        }        ,
+        {
+            "type": "boolean",
+            "name": "newPart",
+            "oid": "00406125-c44f-4505-8f6a-ec07fff25a7d",
+            "displayLabel": "new part"
+        }        ,
+        {
+            "type": "date",
+            "name": "assemblyDate",
+            "oid": "284220c1-a4cf-4eac-90cc-bf65790fb674",
+            "displayLabel": "Assembly Date"
+        }        ,
+        {
+            "type": "date",
+            "name": "replacementDate",
+            "oid": "d652ae29-6166-46c6-a63b-c57c33e4d4a0",
+            "displayLabel": "Replacement Date"
+        }        ,
+        {
+            "type": "number",
+            "name": "operatingData",
+            "oid": "c30018ac-7ebb-4ede-8a24-5a77049f1f2b",
+            "required": false,
+            "displayLabel": "Operating Data"
+        }        ,
+        {
+            "type": "number",
+            "name": "maintenanceActions",
+            "oid": "dd782bb5-b945-4397-a2e4-851315e4728f",
+            "required": false,
+            "displayLabel": "Maintenance Actions"
+        }        ,
+{
+            "type": "string",
+            "name": "name",
+            "oid": "d7e38de7-eadf-479d-9a26-8757200cc9cf",
+            "displayLabel": "name"
+        },
+{
+            "type": "number",
+            "name": "subSystems",
+            "oid": "356454f0-71e2-44d7-b046-887f6327fc19",
+            "required": false,
+            "displayLabel": "Sub Systems"
+        },
+        {
+            "type": "string",
+            "name": "tokenId",
+            "oid": "e4c93159-5e5f-44c4-91ae-82d5e1a21b61",
+            "displayLabel": "tokenId"
+        }        ,
+        {
+            "type": "string",
+            "name": "tokenDesc",
+            "oid": "51eb675c-614d-42a7-9913-3b5750ce4dd8",
+            "displayLabel": "tokenDesc"
+        }        ,
+        {
+            "type": "string",
+            "name": "tokenUri",
+            "oid": "f99347c0-58c9-4f40-8afd-5e050972ab41",
+            "displayLabel": "tokenUri"
+        }        ,
+        {
+            "type": "string",
+            "name": "subsystemcomponentID",
+            "oid": "9b174b06-4180-45f4-a8c6-fba6940e5518",
+            "displayLabel": "subsystemcomponentID"
+        }        ,
+        {
+            "type": "string",
+            "name": "description",
+            "oid": "4fa22058-6cf3-44a6-a8cc-258a9fa46d63",
+            "displayLabel": "description"
+        }
+    ],
+    "name": "SubSystemComponent",
+    "oid": "2dad7e1d-d3c6-41a2-aa11-df0aef231450",
+    "displayLabel": "Sub System Component",
+    "relationships": [
+        {
+            "name": "operatingDataObject",
+            "reverseRelationship": "subSystemComponentCollection",
+            "targetEntity": "OperatingData",
+            "type": "outgoing",
+            "exposeAccessor": true,
+            "mappingField": "operatingData",
+            "deleteRule": "restrict"
+        },
+{
+            "name": "maintenanceActionsObject",
+            "reverseRelationship": "subSystemComponentCollection",
+            "targetEntity": "MaintenanceActions",
+            "type": "outgoing",
+            "exposeAccessor": true,
+            "mappingField": "maintenanceActions",
+            "deleteRule": "restrict"
+        },
+        {
+            "name": "subSystemsObject",
+            "reverseRelationship": "subSystemComponentCollection",
+            "targetEntity": "SubSystems",
+            "type": "outgoing",
+            "exposeAccessor": true,
+            "mappingField": "subSystems",
+            "deleteRule": "restrict"
+        }
+    ],
+    "security": {
+        "type": "local",
+        "acl": [
+            {
+                "roleId": "approle.anonymous.user",
+                "privileges": [
+                    {
+                        "name": "view",
+                        "value": true
+                    },
+                    {
+                        "name": "create",
+                        "value": true
+                    },
+                    {
+                        "name": "update",
+                        "value": true
+                    },
+                    {
+                        "name": "delete",
+                        "value": true
+                    }
+                ]
+            },
+            {
+                "roleId": "approle.authenticated.user",
+                "privileges": [
+                    {
+                        "name": "view",
+                        "value": true
+                    },
+                    {
+                        "name": "create",
+                        "value": true
+                    },
+                    {
+                        "name": "update",
+                        "value": true
+                    },
+                    {
+                        "name": "delete",
+                        "value": true
+                    }
+                ]
+            }
+        ]
+    }
+}

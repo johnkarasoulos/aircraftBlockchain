@@ -1,0 +1,51 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "backgroundColor": {
+      "type": "string",
+      "defaultValue": "dark-ocean"
+    },
+    "illustrationBackground": {
+      "type": "string",
+      "defaultValue": "https://static.oracle.com/cdn/fnd/gallery/2307.0.2/images/illust-welcome-banner-bg-01.png"
+    },
+    "illustrationForeground": {
+      "type": "string",
+      "defaultValue": "https://static.oracle.com/cdn/fnd/gallery/2307.0.2/images/illust-welcome-banner-fg-01.png"
+    },
+    "imageStretch": {
+      "type": "string",
+      "defaultValue": "none"
+    },
+    "mobileImage": {
+      "type": "string",
+      "defaultValue": "on"
+    },
+    "openDrawer": {
+      "type": "boolean",
+      "defaultValue": "[[ $application.responsive.lgUp ]]"
+    }
+  },
+  "metadata": {},
+  "types": {},
+  "eventListeners": {},
+  "imports": {
+    "components": {
+      "oj-sp-in-app-navigation": {
+        "path": "oj-sp/in-app-navigation/loader"
+      },
+      "oj-sp-welcome-page": {
+        "path": "oj-sp/welcome-page/loader"
+      }
+    }
+  },
+  "@dt": {
+    "iconClass": "vbdt-dynamic-icon-73-icoWelcomePageTemplate48Svg"
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

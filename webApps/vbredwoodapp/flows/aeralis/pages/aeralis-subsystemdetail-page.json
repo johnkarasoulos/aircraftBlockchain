@@ -1,0 +1,141 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "animate": {
+      "type": "string",
+      "defaultValue": "auto"
+    },
+    "bidirectionalNavigation": {
+      "type": "boolean",
+      "defaultValue": true,
+      "input": "fromCaller"
+    },
+    "displayMode": {
+      "type": "string"
+    },
+    "goToParent": {
+      "type": "boolean",
+      "defaultValue": true,
+      "input": "fromCaller"
+    },
+    "nextStep": {
+      "type": "any",
+      "defaultValue": {}
+    },
+    "pageTitle": {
+      "type": "string",
+      "defaultValue": "Horizontal Overview Title"
+    },
+    "panelOneTitle": {
+      "type": "string",
+      "defaultValue": "Panel one title"
+    },
+    "panelTwoTitle": {
+      "type": "string",
+      "defaultValue": "Panel two title"
+    },
+    "parentPage": {
+      "type": "string",
+      "input": "fromCaller"
+    },
+    "previousStep": {
+      "type": "any"
+    },
+    "rowIndex": {
+      "type": "number",
+      "input": "fromUrl",
+      "description": "Zero-based index referring to the current row",
+      "onValueChanged": {
+        "chains": [
+          {
+            "chainId": "fetchChain",
+            "parameters": {
+              "limit": 3,
+              "offset": "{{ $page.variables.rowIndex > 0 ? ($page.variables.rowIndex - 1) : 0 }}"
+            }
+          }
+        ]
+      }
+    },
+    "selectedPanel": {
+      "type": "number",
+      "input": "fromUrl"
+    }
+  },
+  "metadata": {},
+  "types": {},
+  "eventListeners": {
+    "onSpGoToParent": {
+      "chains": [
+        {
+          "chainId": "goToParentChain",
+          "parameters": {
+            "parentPage": "{{ $page.variables.parentPage }}"
+          }
+        }
+      ]
+    },
+    "onSpNext": {
+      "chains": [
+        {
+          "chainId": "next",
+          "parameters": {
+            "event": "{{ $event }}"
+          }
+        }
+      ]
+    },
+    "onSpPrevious": {
+      "chains": [
+        {
+          "chainId": "previous",
+          "parameters": {
+            "event": "{{ $event }}"
+          }
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "chainId": "firePageLayoutEventChain"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-dyn-form": {
+        "path": "oj-dyn/form/loader"
+      },
+      "oj-sp-collection-container": {
+        "path": "oj-sp/collection-container/loader"
+      },
+      "oj-sp-empty-state": {
+        "path": "oj-sp/empty-state/loader"
+      },
+      "oj-sp-foldout-layout": {
+        "path": "oj-sp/foldout-layout/loader"
+      },
+      "oj-sp-foldout-panel-summarizing": {
+        "path": "oj-sp/foldout-panel-summarizing/loader"
+      },
+      "oj-sp-horizontal-overview": {
+        "path": "oj-sp/horizontal-overview/loader"
+      },
+      "oj-sp-vertical-overview": {
+        "path": "oj-sp/vertical-overview/loader"
+      }
+
+    }
+  },
+  "@dt": {
+    "iconClass": "vbdt-dynamic-icon-67-icoFoldoutLayout48Svg"
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

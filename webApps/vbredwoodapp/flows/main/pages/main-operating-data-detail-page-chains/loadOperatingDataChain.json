@@ -1,0 +1,36 @@
+{
+  "root": "loadOperatingData",
+  "actions": {
+    "loadOperatingData": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "businessObjects/get_OperatingData",
+        "uriParams": {
+          "OperatingData_Id": "[[ $page.variables.operatingDataId ]]"
+        },
+        "responseType": "page:getOperatingDataResponse"
+      },
+      "outcomes": {
+        "success": "assignPayload",
+        "failure": "fireErrorNotification"
+      }
+    },
+    "assignPayload": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.operatingData": {
+          "source": "[[ $chain.results.loadOperatingData.body ]]"
+        }
+      }
+    },
+    "fireErrorNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "summary": "Could not load data",
+        "message": "[[ 'Could not load data: status ' + $chain.results.loadOperatingData.status ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    }
+  }
+}

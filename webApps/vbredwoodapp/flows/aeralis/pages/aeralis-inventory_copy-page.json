@@ -1,0 +1,199 @@
+{
+  "title": "inventory-page",
+  "description": "",
+  "variables": {
+    "appliedFilters": {
+      "type": "filterChip[]",
+      "defaultValue": []
+    },
+    "getAllTokens": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getAllTokens",
+        "keyAttributes": "key"
+      }
+    },
+    "goToParentOption": {
+      "type": "string"
+    },
+    "pageTitle": {
+      "type": "string"
+    },
+    "retrieveAllTokens": {
+      "type": "getAllTokens"
+    },
+    "retrieveToken": {
+      "type": "retrieveSingleToken"
+    },
+    "setReqAllTokens": {
+      "type": "setRequestAllTokens"
+    },
+    "setReqSingleToken": {
+      "type": "setRequestSingleToken"
+    },
+    "subtitle": {
+      "type": "string"
+    }
+
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getAllTokens": {
+      "endpoint": "getAllTokens",
+      "service": "Retrieve-All-Tokens",
+      "path": "response"
+    },
+    "@decorators.retrieveSingleToken": {
+      "endpoint": "postRestproxy",
+      "service": "GetSingleToken",
+      "path": "response"
+    },
+    "@decorators.setRequestAllTokens": {
+      "endpoint": "getAllTokens",
+      "service": "Retrieve-All-Tokens",
+      "path": "request"
+    },
+    "@decorators.setRequestSingleToken": {
+      "endpoint": "postRestproxy",
+      "service": "GetSingleToken",
+      "path": "request"
+    },
+    "getAllTokens": {
+      "key": "string",
+      "assemblyDate": "string",
+      "assetType": "string",
+      "behaviors": "string[]",
+      "createdBy": "string",
+      "creationDate": "string",
+      "isBurned": "boolean",
+      "landingGearCollection": "string[]",
+      "mintable": {
+        "max_mint_quantity": "number"
+      },
+      "newPart": "boolean",
+      "owner": "string",
+      "quantity": "number",
+      "replacementDate": "string",
+      "roles": {
+        "minter_role_name": "string"
+      },
+      "subSystemComponentCollection": "string[]",
+      "subSystemsCollection": "string[]",
+      "tokenDesc": "string",
+      "tokenId": "string",
+      "tokenMetadata": {
+        "assetType": "string",
+        "definition1": "string",
+        "description": "string",
+        "figther": "string",
+        "id": "string",
+        "landingGear": "string",
+        "maintenanceDateAction": "string",
+        "name": "string",
+        "parent_nft": "string",
+        "serialNumber": "string",
+        "subsystemCode": "string",
+        "subsystemdefinition": "string",
+        "subSystems": "string",
+        "subsystemtitle": "string",
+        "systemDefinition": "string",
+        "title": "string"
+      },
+      "tokenName": "string",
+      "tokenStandard": "string",
+      "tokenType": "string",
+      "tokenUnit": "string",
+      "tokenUri": "string"
+    },
+    "retrieveSingleToken": {
+      "assemblyDate": "string",
+      "assetType": "string",
+      "behaviors": "string[]",
+      "createdBy": "string",
+      "creationDate": "string",
+      "isBurned": "boolean",
+      "mintable": {
+        "max_mint_quantity": "number"
+      },
+      "newPart": "boolean",
+      "owner": "string",
+      "quantity": "number",
+      "replacementDate": "string",
+      "roles": {
+        "minter_role_name": "string"
+      },
+      "tokenDesc": "string",
+      "tokenId": "string",
+      "tokenMetadata": {
+        "description": "string",
+        "id": "string",
+        "maintenanceDateAction": "string",
+        "name": "string",
+        "serialNumber": "string",
+        "subSystems": "string"
+      },
+      "tokenName": "string",
+      "tokenStandard": "string",
+      "tokenType": "string",
+      "tokenUnit": "string",
+      "tokenUri": "string"
+    },
+    "setRequestAllTokens": {
+      "args": "string[]",
+      "chaincode": "string",
+      "sync": "boolean",
+      "timeout": "number"
+    },
+    "setRequestSingleToken": {
+      "args": "string[]",
+      "chaincode": "string",
+      "sync": "boolean",
+      "timeout": "number"
+    },
+    "filterChip": {
+      "filter": "string",
+      "filterLabel": "string",
+      "dependencies": "string[]",
+      "label": "string",
+      "value": "any",
+      "count": "number"
+    }
+  },
+  "eventListeners": {
+    "vbEnter": {
+      "chains": [
+        {
+          "chainId": "PageVbEnterChain"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-input-search": {
+        "path": "ojs/ojinputsearch"
+      },
+      "oj-list-item-layout": {
+        "path": "ojs/ojlistitemlayout"
+      },
+      "oj-list-view": {
+        "path": "ojs/ojlistview"
+      },
+      "oj-sp-card": {
+        "path": "oj-sp/card/loader"
+      },
+      "oj-sp-object-card": {
+        "path": "oj-sp/object-card/loader"
+      },
+      "oj-sp-smart-search-page": {
+        "path": "oj-sp/smart-search-page/loader"
+      }
+
+    }
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "oj_table_2083428117_1SelectedId": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "subSystemsListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_SubSystems",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallSubSystemsResponse"
+      }
+    }
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getallSubSystemsResponse": {
+      "endpoint": "getall_SubSystems",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "action": {
+      "id": "string",
+      "label": "string",
+      "display": "string",
+      "icon": "string"
+    },
+    "getallSubSystemsResponse": {
+      "items": [
+        {
+          "id": "number",
+          "landingGear": "number",
+          "landingGearObject": {
+            "items": [
+              {
+                "title": "string"
+              }
+            ]
+          },
+          "subsystemCode": "string",
+          "subsystemdefinition": "string",
+          "subsystemtitle": "string"
+        }
+      ]
+    }
+  },
+  "eventListeners": {
+    "createSubSystemsButtonClicked": {
+      "chains": [
+        {
+          "chainId": "navigateToCreateSubSystemsChain"
+        }
+      ]
+    },
+    "deleteSubSystemsButtonClicked": {
+      "chains": [
+        {
+          "chainId": "deleteSubSystemsChain",
+          "parameters": {
+            "subSystemsId": "[[ $variables.oj_table_2083428117_1SelectedId ]]"
+          }
+        }
+      ]
+    },
+    "editSubSystemsButtonClicked": {
+      "chains": [
+        {
+          "chainId": "navigateToEditSubSystemsChain",
+          "parameters": {
+            "subSystemsId": "[[ $variables.oj_table_2083428117_1SelectedId ]]"
+          }
+        }
+      ]
+    },
+    "oj_table_2083428117_1SelectionChanged": {
+      "chains": [
+        {
+          "chainId": "oj_table_2083428117_1ChangeSelectionChain",
+          "parameters": {
+            "subSystemsId": "[[ $event.detail.value.key || '' ]]"
+          }
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-sp-general-overview-page": {
+        "path": "oj-sp/general-overview-page/loader"
+      },
+      "oj-table": {
+        "path": "ojs/ojtable"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      }
+    }
+  },
+  "@dt": {
+    "iconClass": "vbdt-dynamic-icon-68-icoOverviewPageTemplateSvg"
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

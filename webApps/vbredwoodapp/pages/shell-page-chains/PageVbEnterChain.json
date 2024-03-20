@@ -1,0 +1,57 @@
+{
+  "description": "",
+  "root": "assignVariablesNavigationADP",
+  "actions": {
+    "assignVariablesNavigationADP": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.NavigationADP": {
+          "source": {
+            "data": [
+              {
+                "label": "Aircraft",
+                "id": "aircraft",
+                "badgeValue": 0,
+                "icon": "oj-ux-ico-airport"
+              },
+              {
+                "label": "System",
+                "id": "system",
+                "badgeValue": 0,
+                "icon": "oj-ux-ico-add-to-assets"
+              },
+              {
+                "label": "Subsystem",
+                "id": "subsystem",
+                "badgeValue": 0,
+                "icon": "oj-ux-ico-add-node"
+              },
+{
+                "label": "Component",
+                "id": "component",
+                "badgeValue": 0,
+                "icon": "oj-ux-ico-add-sibling"
+              },
+              {
+                "label": "Home",
+                "id": "home",
+                "badgeValue": 0,
+                "icon": "oj-ux-ico-home"
+              }
+            ]
+          },
+          "reset": "none",
+          "auto": "always",
+          "mapping": {
+            "$target.data": {
+              "source": "$source.data",
+              "reset": "empty",
+              "auto": "always"
+            }
+          }
+        }
+      }
+    }
+  },
+  "variables": {}
+}

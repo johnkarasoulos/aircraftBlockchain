@@ -1,0 +1,112 @@
+{
+  "description": "Submit form data",
+  "variables": {},
+  "root": "assignVariablesCreateTokenComponent",
+  "actions": {
+
+    "resetDirtyDataFlag": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.dirtyDataFlag"
+        ]
+      },
+      "outcomes": {
+        "success": "setVariableIsSaved"
+      }
+    },
+    "setVariableIsSaved": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.isSaved": {
+          "source": true,
+          "auto": "always"
+        }
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPostTransactions.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callFunctionScapedStr": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "scapedStr",
+        "params": [
+          "{{ $page.variables.createTokenComponent }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionPrepareData4CreateComponent"
+      }
+    },
+    "callFunctionPrepareData4CreateComponent": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "prepareData4CreateComponent",
+        "params": [
+          "\"createSubSystemComponentToken\"",
+          "{{ $chain.results.callFunctionScapedStr }}",
+          "{{ $flow.variables.bcchaincodename }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callRestPostTransactions"
+      }
+    },
+    "callRestPostTransactions": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "createSubSystemsComponent/postTransactions",
+        "body": "{{ $chain.results.callFunctionPrepareData4CreateComponent }}"
+      },
+      "outcomes": {
+        "success": "resetDirtyDataFlag",
+        "failure": "fireNotification"
+      }
+    },
+    "assignVariablesCreateTokenComponent": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.createTokenComponent": {
+          "source": {
+            "tokenId": "{{ $page.variables.subSystemComponent.tokenId }}",
+            "tokenUri": "{{ $page.variables.subSystemComponent.tokenUri }}",
+            "tokenDesc": "{{ $page.variables.subSystemComponent.tokenDesc }}",
+            "tokenMetadata": {
+              "assemblyDate": "{{ $page.variables.subSystemComponent.assemblyDate }}",
+              "assetType": "{{ $page.variables.subSystemComponent.AssetType }}",
+              "description": "{{ $page.variables.subSystemComponent.description }}",
+              "maintenanceDateAction": "{{ $page.variables.subSystemComponent.maintenanceActions }}",
+              "name": "{{ $page.variables.subSystemComponent.name }}",
+              "newPart": "{{ $page.variables.subSystemComponent.newPart }}",
+              "replacementDate": "{{ $page.variables.subSystemComponent.replacementDate }}",
+              "serialNumber": "{{ $page.variables.subSystemComponent.serialNumber }}",
+              "id": "{{ $page.variables.subSystemComponent.subsystemcomponentID }}",
+              "subSystems": "{{ $page.variables.subSystemComponent.subSystems }}"
+            }
+          },
+          "reset": "none",
+          "auto": "always",
+          "mapping": {
+            "$target.tokenMetadata": {
+              "source": "$source.tokenMetadata",
+              "reset": "none",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "callFunctionScapedStr"
+      }
+    }
+  }
+}

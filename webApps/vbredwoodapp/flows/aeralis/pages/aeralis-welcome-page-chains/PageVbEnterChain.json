@@ -1,0 +1,65 @@
+{
+  "description": "",
+  "root": "resetVariablesAllTokens",
+  "actions": {
+    "resetVariablesAllTokens": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.allTokens"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionSetBody2RetrieveAllTokens"
+      }
+    },
+    "callFunctionSetBody2RetrieveAllTokens": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "setBody2RetrieveAllTokens",
+        "params": [
+          "getAllTokens",
+          [],
+          "{{ $flow.variables.bcchaincodename }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callRestGetAllTokens"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetAllTokens.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callRestGetAllTokens": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "Retrieve-All-Tokens/getAllTokens",
+        "body": "{{ $chain.results.callFunctionSetBody2RetrieveAllTokens }}"
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "assignVariablesAllTokens"
+      }
+    },
+    "assignVariablesAllTokens": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.allTokens": {
+          "source": {
+            "data": "{{ $chain.results.callRestGetAllTokens.body.result.payload }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    }
+  },
+  "variables": {}
+}

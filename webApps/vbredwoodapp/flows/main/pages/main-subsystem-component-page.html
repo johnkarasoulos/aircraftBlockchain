@@ -1,0 +1,50 @@
+<oj-sp-general-overview-page id="oj_gop1" display-options.responsive-padding="on" page-title="Sub system Component"
+  page-subtitle="Component definition">
+
+    
+  <div slot="main">
+        <!-- Main Content goes here... It is recommended to have a heading element title as well -->
+        <oj-table scroll-policy="loadMoreOnScroll" data="[[$variables.subSystemComponentListSDP]]"
+          columns='[{"headerText":"subsystemtitle","field":"subSystemsObject","sortProperty":"subSystemsObject.subsystemtitle","template":"subsystemtitleCellTemplate1"},{"headerText":"name","field":"name"},{"headerText":" serial number","field":"serialNumber"},{"headerText":"Operating Data Name","field":"operatingDataObject","sortProperty":"operatingDataObject.operatingDataName","template":"operatingDataNameCellTemplate4"},{"headerText":"new part","sortable":"disabled","template":"multiFieldCellTemplate5"},{"headerText":"Assembly Date","sortable":"disabled","template":"multiFieldCellTemplate6"},{"headerText":"Replacement Date","sortable":"disabled","template":"multiFieldCellTemplate7"},{"headerText":"Description","field":"maintenanceActionsObject","sortProperty":"maintenanceActionsObject.description","template":"descriptionCellTemplate8"}]'
+          id="oj-table--688018712-1" selection-mode.row="single" selection-mode.column="single"
+          on-first-selected-row-changed="[[ $listeners.oj_table_688018712_1SelectionChanged ]]">
+              <template slot="multiFieldCellTemplate5">
+                    <oj-switch value="[[ $current.row.newPart ]]" readonly="true"></oj-switch>
+              </template>
+              <template slot="multiFieldCellTemplate6">
+                    <oj-input-date value="[[ $current.row.assemblyDate ]]" readonly="true"></oj-input-date>
+              </template>
+              <template slot="multiFieldCellTemplate7">
+                    <oj-input-date value="[[ $current.row.replacementDate ]]" readonly="true"></oj-input-date>
+              </template>
+              <template slot="operatingDataNameCellTemplate4">
+                    <oj-bind-text
+                      value="[[ $current.data.items[0] ? $current.data.items[0].operatingDataName : undefined ]]"></oj-bind-text>
+              </template>
+              <template slot="descriptionCellTemplate8">
+                    <oj-bind-text value="[[ $current.data.items[0] ? $current.data.items[0].description : undefined ]]"></oj-bind-text>
+              </template>
+              <template slot="subsystemtitleCellTemplate1">
+                    <oj-bind-text
+                      value="[[ $current.data.items[0] ? $current.data.items[0].subsystemtitle : undefined ]]"></oj-bind-text>
+              </template>
+        </oj-table>
+  </div>
+
+    
+  <div slot="info">
+        <!-- Complementary Content goes here... It is recommended to have a heading element title as well --></div>
+
+
+</oj-sp-general-overview-page>
+<div class="oj-flex">
+  <oj-toolbar id="oj-toolbar-for-oj-table--688018712-1" chroming="solid" class="oj-flex-item oj-sm-12 oj-md-12">
+        <oj-button on-oj-action="[[$listeners.createSubSystemComponentButtonClicked]]">Create</oj-button>
+        <oj-button disabled="[[ $variables.oj_table_688018712_1SelectedId === '' ]]"
+          on-oj-action="[[$listeners.editSubSystemComponentButtonClicked]]">Edit</oj-button>
+        <oj-button disabled="[[ $variables.oj_table_688018712_1SelectedId === '' ]]"
+          on-oj-action="[[$listeners.deleteSubSystemComponentButtonClicked]]">Delete SubSystemComponent</oj-button>
+        <oj-button disabled="[[ $variables.oj_table_688018712_1SelectedId === '' ]]"
+          on-oj-action="[[$listeners.subSystemComponentDetailButtonClicked]]">Detail</oj-button>
+  </oj-toolbar>
+</div>

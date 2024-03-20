@@ -1,0 +1,10 @@
+{
+    "chaincode": "gt1155",
+    "args": [
+        "createAirplane",
+        "{\"tokenId\":\"050000000000000\",\"tokenDesc\":\"OracleAircraft\",\"tokenUri\":\"OracleAircraft\",\"tokenMetadata\":{\"id\":\"0200000000000000\",\"definition1\":\"OracleAircraft\",\"title\":\"Oracle Cloud\",\"assetType\":\"airplane\"}}",
+        "1"
+    ],
+    "timeout": 6000,
+    "sync": true
+}

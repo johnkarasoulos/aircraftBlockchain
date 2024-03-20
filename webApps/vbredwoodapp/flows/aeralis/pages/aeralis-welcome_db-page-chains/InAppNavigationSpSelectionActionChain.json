@@ -1,0 +1,75 @@
+{
+  "description": "",
+  "root": "switch",
+  "actions": {
+    "switch": {
+      "module": "vb/action/builtin/switchAction",
+      "parameters": {
+        "possibleValues": [
+          "welcome",
+          "systems",
+          "maintenance",
+          "operating",
+          "lifecycle",
+          "actors"
+        ]
+      },
+      "outcomes": {
+        "welcome": "navigateToAeralisWelcomeCopy",
+        "systems": "navigateToAeralisSystemOverview",
+        "maintenance": "navigateToAeralisMaintenance",
+        "operating": "navigateToAeralisOperatingData",
+        "lifecycle": "navigateToAeralisLifecycle",
+        "actors": "navigateToAeralisActors"
+      }
+    },
+    "navigateToAeralisWelcomeCopy": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "aeralis-welcome_db"
+      }
+    },
+    "navigateToAeralisSystemOverview": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "aeralis-system-overview"
+      }
+    },
+    "navigateToAeralisMaintenance": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "aeralis-maintenance"
+      }
+    },
+    "navigateToAeralisOperatingData": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "aeralis-operating-data"
+      }
+    },
+    "navigateToAeralisLifecycle": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "aeralis-lifecycle"
+      }
+    },
+    "navigateToAeralisActors": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "aeralis-actors"
+      }
+    }
+  },
+  "variables": {
+    "currentId": {
+      "required": true,
+      "type": "string",
+      "input": "fromCaller"
+    },
+    "previousId": {
+      "required": true,
+      "type": "string",
+      "input": "fromCaller"
+    }
+  }
+}

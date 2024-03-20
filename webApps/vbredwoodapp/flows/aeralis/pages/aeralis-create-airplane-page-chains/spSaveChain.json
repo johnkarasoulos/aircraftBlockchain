@@ -1,0 +1,106 @@
+{
+  "description": "Submit form data",
+  "variables": {},
+  "root": "assignVariables",
+  "actions": {
+
+    "resetDirtyDataFlag": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.dirtyDataFlag"
+        ]
+      },
+      "outcomes": {
+        "success": "setVariableIsSaved"
+      }
+    },
+    "setVariableIsSaved": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.isSaved": {
+          "source": true,
+          "auto": "always"
+        }
+      }
+    },
+    "callFunctionPrepareData4CreateAirplane": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "prepareData4CreateAirplane",
+        "params": [
+          "createAirplaneToken",
+"{{ $chain.results.callFunctionScapedStr }}",
+          "{{ $flow.variables.bcchaincodename }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callRestPostTransactions"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPostTransactions.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callRestPostTransactions": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "createAirplane/postTransactions",
+        "body": "{{ $chain.results.callFunctionPrepareData4CreateAirplane }}"
+      },
+      "outcomes": {
+        "success": "resetDirtyDataFlag",
+        "failure": "fireNotification"
+      }
+    },
+    "callFunctionScapedStr": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "scapedStr",
+        "params": [
+          "{{ $page.variables.createTokenAirplane }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionPrepareData4CreateAirplane"
+      }
+    },
+    "assignVariables": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.createTokenAirplane": {
+          "source": {
+            "tokenId": "{{ $page.variables.colonialViper.tokenId }}",
+            "tokenDesc": "{{ $page.variables.colonialViper.tokenDesc }}",
+            "tokenUri": "{{ $page.variables.colonialViper.tokenURI }}",
+            "tokenMetadata": {
+              "assetType": "{{ $page.variables.colonialViper.aircraftAssetType }}",
+              "definition1": "{{ $page.variables.colonialViper.aircraftDefinition }}",
+              "id": "{{ $page.variables.colonialViper.aircraftId }}",
+              "title": "{{ $page.variables.colonialViper.aircraftTitle }}"
+            }
+          },
+          "reset": "none",
+          "auto": "always",
+          "mapping": {
+            "$target.tokenMetadata": {
+              "source": "$source.tokenMetadata",
+              "reset": "none",
+              "auto": "always"
+            }
+          }
+        }
+    },
+      "outcomes": {
+        "success": "callFunctionScapedStr"
+      }
+    }
+  }
+}

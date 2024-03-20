@@ -1,0 +1,192 @@
+{
+  "variables": {
+    "saveFailureResult": {
+      "type": "page:businessObjectsServiceErrorResponseType"
+    },
+    "errorMessage": {
+      "type": "string"
+    },
+    "saveHeaders": {
+      "type": "object"
+    }
+  },
+  "root": "markSaveStarted",
+  "actions": {
+    "markSaveStarted": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.saveMaintenanceActionsChainInProgress": {
+          "source": true
+        }
+      },
+      "outcomes": {
+        "success": "validateMaintenanceActions"
+      },
+      "description": "Sets the progress variable to true",
+      "label": "Mark Save in progress"
+    },
+    "validateMaintenanceActions": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "flow:validateFormChain",
+        "params": {
+          "validationGroupId": "validation-group"
+        }
+      },
+      "outcomes": {
+        "success": "isFormValid"
+      },
+      "label": "Validate",
+      "description": "Validates MaintenanceActions form"
+    },
+    "isFormValid": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.validateMaintenanceActions === true ]]"
+      },
+      "outcomes": {
+        "true": "checkETag",
+        "false": "markSaveEnded"
+      },
+      "label": "Is Form valid",
+      "description": "Tests if form passed validation"
+    },
+    "checkETag": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $page.variables.maintenanceActionsETag ]]"
+      },
+      "outcomes": {
+        "true": "assignIfMatchHeader",
+        "false": "saveMaintenanceActions"
+      }
+    },
+    "assignIfMatchHeader": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.saveHeaders": {
+          "source": "[[ { 'If-Match': $page.variables.maintenanceActionsETag } ]]"
+        }
+      },
+      "outcomes": {
+        "success": "saveMaintenanceActions"
+      }
+    },
+    "saveMaintenanceActions": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "businessObjects/update_MaintenanceActions",
+        "body": "{{ $page.variables.maintenanceActions }}",
+        "requestType": "json",
+        "uriParams": {
+          "MaintenanceActions_Id": "[[ $page.variables.maintenanceActionsId ]]"
+        },
+        "headers": "[[ $variables.saveHeaders ]]"
+      },
+      "outcomes": {
+        "success": "assignPayload",
+        "failure": "assignFailureResult"
+      }
+    },
+    "assignPayload": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.maintenanceActions": {
+          "source": "{{ $chain.results.saveMaintenanceActions.body }}"
+        },
+        "$page.variables.maintenanceActionsETag": {
+          "source": "[[ $chain.results.saveMaintenanceActions.headers.get('ETag') ]]"
+        }
+      },
+      "outcomes": {
+        "success": "fireSuccessNotification"
+      }
+    },
+    "fireSuccessNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "summary": "MaintenanceActions saved",
+        "message": "MaintenanceActions record successfully updated",
+        "type": "confirmation",
+        "displayMode": "transient"
+      },
+      "outcomes": {
+        "success": "callGoBackChain"
+      }
+    },
+    "callGoBackChain": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "goBackChain"
+      },
+      "outcomes": {
+        "success": "markSaveEnded"
+      }
+    },
+    "assignFailureResult": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.saveFailureResult": {
+          "source": "[[ $chain.results.saveMaintenanceActions ]]"
+        }
+      },
+      "outcomes": {
+        "success": "testFailureDetails"
+      }
+    },
+    "testFailureDetails": {
+      "module": "vb/action/builtin/ifAction",
+      "outcomes": {
+        "true": "handleDetailedErrorMessage",
+        "false": "handleDefaultErrorMessage"
+      },
+      "parameters": {
+        "condition": "[[ $variables.saveFailureResult.body['o:errorDetails'][0] ]]"
+      }
+    },
+    "handleDetailedErrorMessage": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "outcomes": {
+        "success": "fireErrorNotification"
+      },
+      "parameters": {
+        "$variables.errorMessage": {
+          "source": "[[ $variables.saveFailureResult.body['o:errorDetails'][0].detail ]]"
+        }
+      }
+    },
+    "handleDefaultErrorMessage": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "outcomes": {
+        "success": "fireErrorNotification"
+      },
+      "parameters": {
+        "$variables.errorMessage": {
+          "source": "[[ 'Could not update MaintenanceActions: status ' + $chain.results.saveMaintenanceActions.status ]]"
+        }
+      }
+    },
+    "fireErrorNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "summary": "Save failed",
+        "message": "[[ $variables.errorMessage ]]",
+        "type": "error",
+        "displayMode": "persist"
+      },
+      "outcomes": {
+        "success": "markSaveEnded"
+      }
+    },
+    "markSaveEnded": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.saveMaintenanceActionsChainInProgress": {
+          "source": false
+        }
+      },
+      "description": "Sets the progress variable to false",
+      "label": "Mark Save done"
+    }
+  }
+}

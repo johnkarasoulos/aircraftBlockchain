@@ -1,0 +1,26 @@
+{
+  "root": "runInParallel",
+  "actions": {
+    "runInParallel": {
+      "module": "vb/action/builtin/forkAction",
+      "parameters": {
+        "actions": {
+          "callChainFetch_KPI_1_data": "callChainFetch_KPI_1_data",
+          "callChainFetch_KPI_2_data": "callChainFetch_KPI_2_data"
+        }
+      }
+    },
+    "callChainFetch_KPI_1_data": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "load_KPI_1_data"
+      }
+    },
+    "callChainFetch_KPI_2_data": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "load_KPI_2_data"
+      }
+    }
+  }
+}

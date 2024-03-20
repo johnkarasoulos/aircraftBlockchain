@@ -1,0 +1,33 @@
+<oj-sp-general-overview-page id="oj_gop1" display-options.responsive-padding="on" page-title="System 32"
+  page-subtitle="Landing Gear">
+
+    
+  <div slot="main">
+        <!-- Main Content goes here... It is recommended to have a heading element title as well -->
+        <oj-table scroll-policy="loadMoreOnScroll" data="[[$variables.landingGearListSDP]]"
+          columns='[{"headerText":"SubSystemID","field":"subSystemID"},{"headerText":"Title","field":"title"},{"headerText":"definition","field":"SystemDefinition"},{"headerText":"title","field":"figtherObject","sortProperty":"figtherObject.title","template":"titleCellTemplate4"}]'
+          id="oj-table-628944390-1" selection-mode.row="single" selection-mode.column="single"
+          on-first-selected-row-changed="[[ $listeners.ojTable6289443901Selection ]]">
+              <template slot="titleCellTemplate4">
+                    <oj-bind-text value="[[ $current.data.items[0] ? $current.data.items[0].title : undefined ]]"></oj-bind-text>
+              </template>
+        </oj-table>
+  </div>
+
+    
+  <div slot="info">
+        <!-- Complementary Content goes here... It is recommended to have a heading element title as well --></div>
+
+
+</oj-sp-general-overview-page>
+<div class="oj-flex">
+  <oj-toolbar id="oj-toolbar-for-oj-table-628944390-1" chroming="solid" class="oj-flex-item oj-sm-12 oj-md-12">
+        <oj-button on-oj-action="[[$listeners.createLandingGearButtonClicked]]">Create</oj-button>
+        <oj-button disabled="[[ $variables.oj_table_628944390_1SelectedId === '' ]]"
+          on-oj-action="[[$listeners.editLandingGearButtonClicked]]">Edit</oj-button>
+        <oj-button disabled="[[ $variables.oj_table_628944390_1SelectedId === '' ]]"
+          on-oj-action="[[$listeners.landingGearDetailButtonClicked]]">Detail</oj-button>
+        <oj-button disabled="[[ $variables.oj_table_628944390_1SelectedId === '' ]]"
+          on-oj-action="[[$listeners.deleteLandingGearButtonClicked]]">Delete LandingGear</oj-button>
+  </oj-toolbar>
+</div>

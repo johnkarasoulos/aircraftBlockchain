@@ -1,0 +1,123 @@
+{
+  "title": "Edit LandingGear",
+  "description": "Updates single LandingGear record",
+  "variables": {
+    "colonialViperListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_ColonialViper",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallColonialViperResponse",
+        "uriParameters": {}
+      }
+    },
+    "landingGear": {
+      "type": "page:getLandingGearResponse"
+    },
+    "landingGearETag": {
+      "type": "string"
+    },
+    "landingGearId": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "saveLandingGearChainInProgress": {
+      "type": "boolean",
+      "defaultValue": false
+    }
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getallColonialViperResponse": {
+      "endpoint": "getall_ColonialViper",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.getLandingGearResponse": {
+      "endpoint": "get_LandingGear",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "businessObjectsServiceErrorResponseType": {
+      "body": {
+        "status": "string",
+        "title": "string",
+        "o:errorDetails": [
+          {
+            "detail": "string",
+            "o:errorCode": "string"
+          }
+        ]
+      },
+      "status": "number"
+    },
+    "getallColonialViperResponse": {
+      "items": [
+        {
+          "id": "number",
+          "title": "string"
+        }
+      ]
+    },
+    "getLandingGearResponse": {
+      "figther": "number",
+      "subSystemID": "string",
+      "SystemDefinition": "string",
+      "systemImage": "string",
+      "title": "string"
+
+    }
+  },
+  "eventListeners": {
+    "backButtonClicked": {
+      "chains": [
+        {
+          "chainId": "goBackChain"
+        }
+      ]
+    },
+    "saveButtonClicked": {
+      "chains": [
+        {
+          "chainId": "saveLandingGearChain"
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "chainId": "loadLandingGearChain"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-select-single": {
+        "path": "ojs/ojselectsingle"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      },
+      "oj-validation-group": {
+        "path": "ojs/ojvalidationgroup"
+      }
+    }
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

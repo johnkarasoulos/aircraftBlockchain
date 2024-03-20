@@ -1,0 +1,61 @@
+<div>
+  <oj-sp-foldout-layout id="foldout_layout_Horizontal_page" animate="[[$page.variables.animate]]"
+    previous-step="[[$variables.previousStep]]" next-step="[[$variables.nextStep]]"
+    on-sp-go-to-parent="[[$listeners.onSpGoToParent]]" selected-panel="{{$variables.selectedPanel}}"
+    on-sp-previous="[[$listeners.onSpPrevious]]" on-sp-next="[[$listeners.onSpNext]]" display-mode="mixed"
+    display-options.bidirectional-navigation="true">
+
+    
+    
+    <!-- the below is default slot, maximum 6 oj-sp-foldout-panel could be added -->
+
+    
+
+    
+    
+    <oj-sp-horizontal-overview id="foldout_layout_h_overview" display-mode="[[$page.variables.displayMode]]"
+      item-title="{{ $variables.getSingleToken.assetType }}" slot="overview"></oj-sp-horizontal-overview>
+    <oj-sp-foldout-panel-summarizing panel-title="Token Metadata" class="profile-panel">
+      <oj-form-layout readonly="true">
+        <oj-input-text label-hint="Asset Description" value="{{ $variables.getSingleToken.tokenMetadata.description }}"
+          readonly="true"></oj-input-text>
+        <oj-input-text label-hint="Asset Name" value="{{ $variables.getSingleToken.tokenMetadata.name }}"
+          readonly="true"></oj-input-text>
+        <oj-input-text label-hint="Asset SubSystem" value="{{ $variables.getSingleToken.tokenMetadata.subSystems }}"
+          readonly="true"></oj-input-text>
+        <oj-input-text label-hint="Asset Identification" readonly="true"
+          value="{{ $variables.getSingleToken.tokenMetadata.id }}"></oj-input-text>
+        <oj-input-text label-hint="Asset Serial Number"
+          value="{{ $variables.getSingleToken.tokenMetadata.serialNumber }}" readonly="true"></oj-input-text>
+      </oj-form-layout>
+    </oj-sp-foldout-panel-summarizing>
+    <oj-vb-content config="[[ vbRouterFlow ]]" slot="drilldown"></oj-vb-content>
+    <oj-sp-foldout-panel-summarizing panel-title="Token attributes" class="profile-panel">
+      <oj-form-layout readonly="true">
+        <oj-input-text label-hint="Token Id" value="{{ $variables.getSingleToken.tokenId }}" readonly="true"></oj-input-text>
+        <oj-input-text label-hint="Token Description" value="{{ $variables.getSingleToken.tokenDesc }}" readonly="true"></oj-input-text>
+        <oj-input-text label-hint="Token Name" value="{{ $variables.getSingleToken.tokenName }}" readonly="true"></oj-input-text>
+        <oj-input-text label-hint="Token Standard" value="{{ $variables.getSingleToken.tokenStandard }}"
+          readonly="true"></oj-input-text>
+        <oj-input-text label-hint="Token Type" value="{{ $variables.getSingleToken.tokenType }}" readonly="true"></oj-input-text>
+        <oj-input-text label-hint="Token Unit" value="{{ $variables.getSingleToken.tokenUnit }}" readonly="true"></oj-input-text>
+        <oj-input-text label-hint="Token URI" value="{{ $variables.getSingleToken.tokenUri }}" readonly="true"></oj-input-text>
+      </oj-form-layout>
+    </oj-sp-foldout-panel-summarizing>
+    <oj-sp-foldout-panel-summarizing panel-title="Token Properties" class="panel-profile">
+      <oj-form-layout readonly="true">
+        <oj-input-number label-hint="Token Quantity" value="{{ $variables.getSingleToken.quantity }}" readonly="true"></oj-input-number>
+        <oj-input-text label-hint="Token Owner" value="{{ $variables.getSingleToken.owner }}" readonly="true"></oj-input-text>
+        <oj-switch label-hint="Token is new part" value="{{ $variables.getSingleToken.newPart }}" readonly="true"
+          class="oj-switch"></oj-switch>
+        <oj-input-text label-hint="Token Asset Type" readonly="true" value="{{ $variables.getSingleToken.assetType }}"></oj-input-text>
+        <oj-switch label-hint="Token is Burned" readonly="true" class="oj-switch"
+          value="{{ $variables.getSingleToken.isBurned }}"></oj-switch>
+        <oj-input-date label-hint="Token Assembly Date" readonly="true"
+          value="{{ $variables.getSingleToken.assemblyDate }}"></oj-input-date>
+        <oj-input-date label-hint="Token Replacement Date" value="{{ $variables.getSingleToken.replacementDate }}"
+          readonly="true"></oj-input-date>
+      </oj-form-layout>
+    </oj-sp-foldout-panel-summarizing>
+  </oj-sp-foldout-layout>
+</div>

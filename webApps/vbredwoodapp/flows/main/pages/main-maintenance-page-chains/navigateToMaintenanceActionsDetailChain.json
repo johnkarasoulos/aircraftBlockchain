@@ -1,0 +1,21 @@
+{
+  "root": "navigateToDetail",
+  "variables": {
+    "maintenanceActionsId": {
+      "type": "string",
+      "input": "fromCaller",
+      "required": true
+    }
+  },
+  "actions": {
+    "navigateToDetail": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "main-maintenance-actions-detail",
+        "params": {
+          "maintenanceActionsId": "[[ $variables.maintenanceActionsId ]]"
+        }
+      }
+    }
+  }
+}

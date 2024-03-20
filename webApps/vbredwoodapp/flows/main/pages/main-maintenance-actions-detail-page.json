@@ -1,0 +1,66 @@
+{
+  "title": "MaintenanceActions Detail",
+  "description": "Displays MaintenanceActions record",
+  "variables": {
+    "maintenanceActions": {
+      "type": "page:getMaintenanceActionsResponse"
+    },
+    "maintenanceActionsId": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    }
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getMaintenanceActionsResponse": {
+      "endpoint": "get_MaintenanceActions",
+      "service": "businessObjects",
+      "path": "request"
+    },
+    "getMaintenanceActionsResponse": {
+      "description": "string",
+      "maintenaceDateAction": "string"
+    }
+  },
+  "eventListeners": {
+    "backButtonClicked": {
+      "chains": [
+        {
+          "chainId": "goBackChain"
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "chainId": "loadMaintenanceActionsChain"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-date": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      }
+    }
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

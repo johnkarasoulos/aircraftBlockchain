@@ -1,0 +1,46 @@
+<oj-sp-welcome-page id="oj-sp-wp1" background-color="[[ $page.variables.backgroundColor ]]"
+  illustration-background="[[ require.toUrl($page.variables.illustrationBackground) ]]"
+  illustration-foreground="[[ require.toUrl($page.variables.illustrationForeground) ]]"
+  display-options.image-stretch="[[ $page.variables.imageStretch ]]"
+  display-options.mobile-image="[[ $page.variables.mobileImage ]]" display-options.responsive-padding="on"
+  page-title="Air vehicle, engines and equipment SNS" description-text="Coding and definitions for the AVEE SNS"
+  overline-text="The SNS is used in this specification as a method to describe the functional and/or physicalbreakdown of items of the Product.">
+  <oj-input-text label-hint="System" slot="search" value="{{ $variables.selectSubSystemStr }}"></oj-input-text>
+  <oj-sp-collection-container display-options.add="on" display-options.delete="disabled" display-options.columns="on"
+    display-options.selector="on"
+    functional-primary-actions='[{"id":"foldout","label":"Foldout Detail","display":"","icon":""},{"id":"guidedGUI","label":"Guided Process Detail","display":"","icon":""},{"id":"NewSystem","label":"Create new system","display":"","icon":""}]'
+    selected-items-count="ALL" display-options.export="disabled"
+    layout-context-options='[{"value":"Editsystem","label":"Edit System"},{"value":"AssignSubsystems","label":"Assign SubSystem"}]'
+    selector="indeterminate" on-sp-primary-action="[[$listeners.collectionContainerSpPrimaryAction]]">
+    <oj-list-view data="[[$variables.landingGearListSDP]]" selection-mode="single" scroll-policy="loadAll">
+      <template slot="itemTemplate">
+        <oj-sp-list-item-template badge.status="info" badge.position="leading" badge.text="[[ $variables.badgeText ]]"
+          primary-action.display="on" primary-action.label="Overview" display-options.column-layout="one"
+          columns='[[ [{"columnType":"primary","primaryText":$current.data.title},{"primaryText":$current.data.subSystemID}] ]]'
+          on-sp-primary-action="[[$listeners.listItemTemplateSpPrimaryAction]]"
+          secondary-actions='[{"id":"foldout","label":"Fold Out SubSystem","display":"on","icon":"oj-ux-ico-foldout-layout"}]'
+          primary-action.icon="oj-ux-ico-foldout-layout">
+          <div slot="leading">
+          <img id="subsystemImageId" :src="[[ $current.data.systemImage ]]"
+            on-click="[[$listeners.subsystemImageIdClick]]">
+          <oj-bind-text value="[[ $current.data.title ]]"></oj-bind-text>
+          </div>
+          <div slot="overline">
+          <oj-bind-text value="[[ $current.data.subSystemID ]]"></oj-bind-text>
+          </div>
+          <div>
+          <oj-bind-text value="[[ $current.data.SystemDefinition ]]"></oj-bind-text>
+          </div>
+          <div slot="secondary">
+          <oj-bind-text value="[[ $current.data.figther ]]"></oj-bind-text>
+          </div>
+          </oj-sp-list-item-template>
+      </template>
+    </oj-list-view>
+  </oj-sp-collection-container>
+  <oj-sp-in-app-navigation application-action.disabled="false" id="in-app-navigation"
+    application-action.label="Navigation" class="oj-flex-item oj-md-12 oj-sm-12"
+    navigation-data="[[ $flow.variables.navigationItemsAdp ]]" selection="welcome"
+    on-sp-selection-action="[[$listeners.inAppNavigationSpSelectionAction]]"></oj-sp-in-app-navigation>
+
+</oj-sp-welcome-page>

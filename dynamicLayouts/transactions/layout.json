@@ -1,0 +1,36 @@
+{
+  "layoutTypes": {
+    "createAirplane": {
+      "kind": "operationRef",
+      "serviceId": "createAirplane",
+      "operations": [
+        "postTransactions"
+      ]
+    }
+  },
+  "layouts": {
+    "isDefault": {
+      "description": "Default Rule",
+      "type": "createAirplane",
+      "expression": "default"
+    },
+    "createAircraft": {
+      "type": "createAirplane",
+      "layoutType": "form",
+      "label": "CreateAircraft",
+      "rules": [
+        "isDefault"
+      ],
+      "layouts": {
+        "default": {
+          "layoutType": "form",
+          "layout": {
+            "displayProperties": [
+              "args"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

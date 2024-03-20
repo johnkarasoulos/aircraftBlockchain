@@ -1,0 +1,121 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "lifeCycleStatusListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_LifeCycleStatus",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallLifeCycleStatusResponse"
+      }
+    },
+    "oj_table_1351110846_1SelectedId": {
+      "type": "string",
+      "defaultValue": ""
+    }
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getallLifeCycleStatusResponse": {
+      "endpoint": "getall_LifeCycleStatus",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "action": {
+      "id": "string",
+      "label": "string",
+      "display": "string",
+      "icon": "string"
+    },
+    "getallLifeCycleStatusResponse": {
+      "items": [
+        {
+          "actorsObject": {
+            "items": [
+              {
+                "actorName": "string"
+              }
+            ]
+          },
+          "id": "number",
+          "systemLifeCycleDescription": "string"
+        }
+      ]
+    }
+  },
+  "eventListeners": {
+    "createLifeCycleStatusButtonClicked": {
+      "chains": [
+        {
+          "chainId": "navigateToCreateLifeCycleStatusChain"
+        }
+      ]
+    },
+    "deleteLifeCycleStatusButtonClicked": {
+      "chains": [
+        {
+          "chainId": "deleteLifeCycleStatusChain",
+          "parameters": {
+            "lifeCycleStatusId": "[[ $variables.oj_table_1351110846_1SelectedId ]]"
+          }
+        }
+      ]
+    },
+    "editLifeCycleStatusButtonClicked": {
+      "chains": [
+        {
+          "chainId": "navigateToEditLifeCycleStatusChain",
+          "parameters": {
+            "lifeCycleStatusId": "[[ $variables.oj_table_1351110846_1SelectedId ]]"
+          }
+        }
+      ]
+    },
+    "lifeCycleStatusDetailButtonClicked": {
+      "chains": [
+        {
+          "chainId": "navigateToLifeCycleStatusDetailChain",
+          "parameters": {
+            "lifeCycleStatusId": "[[ $variables.oj_table_1351110846_1SelectedId ]]"
+          }
+        }
+      ]
+    },
+    "oj_table_1351110846_1SelectionChanged": {
+      "chains": [
+        {
+          "chainId": "oj_table_1351110846_1ChangeSelectionChain",
+          "parameters": {
+            "lifeCycleStatusId": "[[ $event.detail.value.key || '' ]]"
+          }
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-sp-general-overview-page": {
+        "path": "oj-sp/general-overview-page/loader"
+      },
+      "oj-table": {
+        "path": "ojs/ojtable"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      }
+    }
+  },
+  "@dt": {
+    "iconClass": "vbdt-dynamic-icon-7-icoOverviewPageTemplateSvg"
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

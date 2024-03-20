@@ -1,0 +1,162 @@
+{
+  "title": "Create SubSystemComponent",
+  "description": "Creates new SubSystemComponent",
+  "variables": {
+    "createSubSystemComponentChainInProgress": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "maintenanceActionsListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_MaintenanceActions",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallMaintenanceActionsResponse",
+        "uriParameters": {}
+      }
+    },
+    "operatingDataListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_OperatingData",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallOperatingDataResponse",
+        "uriParameters": {}
+      }
+    },
+    "subSystemComponent": {
+      "type": "page:createSubSystemComponentRequest"
+    },
+    "subSystemsListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_SubSystems",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallSubSystemsResponse",
+        "uriParameters": {}
+      }
+    }
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.createSubSystemComponentRequest": {
+      "endpoint": "create_SubSystemComponent",
+      "service": "businessObjects",
+      "path": "request"
+    },
+    "@decorators.getallMaintenanceActionsResponse": {
+      "endpoint": "getall_MaintenanceActions",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.getallOperatingDataResponse": {
+      "endpoint": "getall_OperatingData",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.getallSubSystemsResponse": {
+      "endpoint": "getall_SubSystems",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "businessObjectsServiceErrorResponseType": {
+      "body": {
+        "status": "string",
+        "title": "string",
+        "o:errorDetails": [
+          {
+            "detail": "string",
+            "o:errorCode": "string"
+          }
+        ]
+      },
+      "status": "number"
+    },
+    "createSubSystemComponentRequest": {
+      "assemblyDate": "string",
+      "maintenanceActions": "number",
+      "name": "string",
+      "newPart": "boolean",
+      "operatingData": "number",
+      "replacementDate": "string",
+      "serialNumber": "string",
+      "subSystems": "number"
+    },
+    "getallMaintenanceActionsResponse": {
+      "items": [
+        {
+          "description": "string",
+          "id": "number"
+        }
+      ]
+    },
+    "getallOperatingDataResponse": {
+      "items": [
+        {
+          "id": "number",
+          "operatingDataName": "string"
+        }
+      ]
+    },
+    "getallSubSystemsResponse": {
+      "items": [
+        {
+          "id": "number",
+          "subsystemtitle": "string"
+        }
+      ]
+    }
+  },
+  "eventListeners": {
+    "backButtonClicked": {
+      "chains": [
+        {
+          "chainId": "goBackChain"
+        }
+      ]
+    },
+    "saveButtonClicked": {
+      "chains": [
+        {
+          "chainId": "createSubSystemComponentChain"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-date": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-select-single": {
+        "path": "ojs/ojselectsingle"
+      },
+      "oj-switch": {
+        "path": "ojs/ojswitch"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      },
+      "oj-validation-group": {
+        "path": "ojs/ojvalidationgroup"
+      }
+    }
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

@@ -1,0 +1,32 @@
+<oj-sp-general-overview-page id="oj_gop1" display-options.responsive-padding="on" page-title="Phases"
+  page-subtitle="Lifecycle of system">
+
+    
+  <div>
+        <!-- Main Content goes here... It is recommended to have a heading element title as well --></div>
+
+    
+  <div slot="info">
+        <!-- Complementary Content goes here... It is recommended to have a heading element title as well --></div>
+  <oj-table scroll-policy="loadMoreOnScroll" slot="main" data="[[$variables.lifeCycleStatusListSDP]]"
+    columns='[{"headerText":"System Life Cycle Description","field":"systemLifeCycleDescription"},{"headerText":"Actor Name","field":"actorsObject","sortProperty":"actorsObject.actorName","template":"actorNameCellTemplate2"}]'
+    id="oj-table--1351110846-1" selection-mode.row="single" selection-mode.column="single"
+    on-first-selected-row-changed="[[ $listeners.oj_table_1351110846_1SelectionChanged ]]">
+        <template slot="actorNameCellTemplate2">
+              <oj-bind-text value="[[ $current.data.items[0] ? $current.data.items[0].actorName : undefined ]]"></oj-bind-text>
+        </template>
+  </oj-table>
+
+
+</oj-sp-general-overview-page>
+<div class="oj-flex">
+  <oj-toolbar id="oj-toolbar-for-oj-table--1351110846-1" chroming="solid" class="oj-flex-item oj-sm-12 oj-md-12">
+        <oj-button on-oj-action="[[$listeners.createLifeCycleStatusButtonClicked]]">Create</oj-button>
+        <oj-button disabled="[[ $variables.oj_table_1351110846_1SelectedId === '' ]]"
+          on-oj-action="[[$listeners.editLifeCycleStatusButtonClicked]]">Edit</oj-button>
+        <oj-button disabled="[[ $variables.oj_table_1351110846_1SelectedId === '' ]]"
+          on-oj-action="[[$listeners.lifeCycleStatusDetailButtonClicked]]">LifeCycleStatus Detail</oj-button>
+        <oj-button disabled="[[ $variables.oj_table_1351110846_1SelectedId === '' ]]"
+          on-oj-action="[[$listeners.deleteLifeCycleStatusButtonClicked]]">Delete LifeCycleStatus</oj-button>
+  </oj-toolbar>
+</div>

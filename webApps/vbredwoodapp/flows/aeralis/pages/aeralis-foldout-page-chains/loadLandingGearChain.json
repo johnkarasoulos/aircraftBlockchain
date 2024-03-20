@@ -1,0 +1,74 @@
+{
+  "root": "testValidInput",
+  "description": "Loads LandingGear record data",
+  "variables": {
+    "landingGearId": {
+      "type": "string",
+      "input": "fromCaller"
+    }
+  },
+  "actions": {
+    "testValidInput": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ true && $variables.landingGearId !== undefined ]]"
+      },
+      "outcomes": {
+        "true": "resetLandingGearData"
+      },
+      "description": "Tests the REST call can be initiated",
+      "label": "Test valid input"
+    },
+    "resetLandingGearData": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.landingGear"
+        ]
+      },
+      "outcomes": {
+        "success": "loadLandingGear"
+      },
+      "description": "Clears LandingGear data the variable holds",
+      "label": "Reset LandingGear variable"
+    },
+    "loadLandingGear": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "businessObjects/get_LandingGear",
+        "responseType": "getLandingGearResponse",
+        "uriParams": {
+          "LandingGear_Id": "[[ $variables.landingGearId ]]"
+        }
+      },
+      "outcomes": {
+        "success": "assignLandingGearData",
+        "failure": "fireErrorNotification"
+      },
+      "description": "Initiates REST call loading LandingGear data",
+      "label": "Load LandingGear record"
+    },
+    "assignLandingGearData": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.landingGear": {
+          "source": "[[ $chain.results.loadLandingGear.body ]]",
+          "auto": "always"
+        }
+      },
+      "description": "Assigns data loaded by the REST call to the LandingGear variable",
+      "label": "Assign LandingGear data"
+    },
+    "fireErrorNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "summary": "Could not load data",
+        "message": "[[ 'Could not load data: status ' + $chain.results.loadLandingGear.status ]]",
+        "type": "error",
+        "displayMode": "persist"
+      },
+      "description": "Shows an error message informing about data load failure",
+      "label": "Show error message"
+    }
+  }
+}

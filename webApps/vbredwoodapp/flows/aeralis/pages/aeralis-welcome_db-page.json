@@ -1,0 +1,173 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "backgroundColor": {
+      "type": "string",
+      "defaultValue": "dark-ocean"
+    },
+    "badgeText": {
+      "type": "string",
+      "defaultValue": "System"
+    },
+    "illustrationBackground": {
+      "type": "string",
+      "defaultValue": "https://objectstorage.eu-frankfurt-1.oraclecloud.com/p/pgC2P_qbm8iTpaU0T_Dvpx2p32k4-qvgIbmSi2R25jO4UPpN18c5omwzKFKPL6aD/n/frsxwtjslf35/b/vbcsBucket/o/Simpler-fleetsAsset-20@72x.png"
+    },
+    "illustrationForeground": {
+      "type": "string",
+      "defaultValue": "https://objectstorage.eu-frankfurt-1.oraclecloud.com/p/KetyGorupmoxxgsTJesZmOu2cB4JJwtykbFaa_YHBfCt1nTuQ5U30GyAXu4YnDZ5/n/frsxwtjslf35/b/vbcsBucket/o/aeralislogo-small.jpg"
+    },
+    "imageStretch": {
+      "type": "string",
+      "defaultValue": "none"
+    },
+    "landingGearListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_LandingGear",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallLandingGearResponse2"
+      }
+    },
+    "mobileImage": {
+      "type": "string",
+      "defaultValue": "on"
+    },
+    "selectSubSystemStr": {
+      "type": "string"
+    }
+
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getallColonialViperResponse": {
+      "endpoint": "getall_ColonialViper",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.getallLandingGearResponse": {
+      "endpoint": "getall_LandingGear",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.getallLandingGearResponse2": {
+      "endpoint": "getall_LandingGear",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "getallColonialViperResponse": {
+      "items": [
+        {
+          "definition1": "string",
+          "id": "number",
+          "title": "string"
+        }
+      ]
+    },
+    "getallLandingGearResponse": {
+      "items": [
+        {
+          "figther": "number",
+          "id": "number",
+          "subSystemID": "string",
+          "SystemDefinition": "string",
+          "systemImage": "string",
+          "title": "string"
+
+        }
+      ]
+    },
+    "getallLandingGearResponse2": {
+      "items": [
+        {
+          "figther": "number",
+          "id": "number",
+          "subSystemID": "string",
+          "SystemDefinition": "string",
+          "systemImage": "string",
+          "title": "string"
+
+        }
+      ]
+    }
+  },
+  "eventListeners": {
+    "collectionContainerSpPrimaryAction": {
+      "chains": [
+        {
+          "chainId": "CollectionContainerSpPrimaryActionChain"
+        }
+      ]
+    },
+    "inAppNavigationSpSelectionAction": {
+      "chains": [
+        {
+          "chainId": "InAppNavigationSpSelectionActionChain",
+          "parameters": {
+            "currentId": "{{$event.detail.currentId}}",
+            "previousId": "{{$event.detail.previousId}}"
+          }
+        }
+      ]
+    },
+    "listItemTemplateSpPrimaryAction": {
+      "chains": [
+        {
+          "chainId": "ListItemTemplateSpPrimaryActionChain",
+          "parameters": {
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "subsystemImageIdClick": {
+      "chains": [
+        {
+          "chainId": "ImageClickChain",
+          "parameters": {
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    }
+
+  },
+  "imports": {
+    "components": {
+
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-list-view": {
+        "path": "ojs/ojlistview"
+      },
+      "oj-sp-collection-container": {
+        "path": "oj-sp/collection-container/loader"
+      },
+      "oj-sp-in-app-navigation": {
+        "path": "oj-sp/in-app-navigation/loader"
+      },
+      "oj-sp-list-item-template": {
+        "path": "oj-sp/list-item-template/loader"
+      },
+      "oj-sp-welcome-page": {
+        "path": "oj-sp/welcome-page/loader"
+      }
+
+    }
+  },
+  "@dt": {
+    "iconClass": "vbdt-dynamic-icon-73-icoWelcomePageTemplate48Svg"
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

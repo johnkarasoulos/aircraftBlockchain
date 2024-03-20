@@ -1,0 +1,12 @@
+{
+  "root": "returnSuccessResponse",
+  "actions": {
+    "returnSuccessResponse": {
+      "module": "vb/action/builtin/returnAction",
+      "parameters": {
+        "outcome": "success",
+        "payload": "{{ $chain.results }}"
+      }
+    }
+  }
+}

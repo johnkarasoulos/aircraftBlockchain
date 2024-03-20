@@ -1,0 +1,123 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "landingGearListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_LandingGear",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallLandingGearResponse"
+      }
+    },
+    "oj_table_628944390_1SelectedId": {
+      "type": "string",
+      "defaultValue": ""
+    }
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getallLandingGearResponse": {
+      "endpoint": "getall_LandingGear",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "action": {
+      "id": "string",
+      "label": "string",
+      "display": "string",
+      "icon": "string"
+    },
+    "getallLandingGearResponse": {
+      "items": [
+        {
+          "figtherObject": {
+            "items": [
+              {
+                "title": "string"
+              }
+            ]
+          },
+          "id": "number",
+          "subSystemID": "string",
+          "SystemDefinition": "string",
+          "title": "string"
+        }
+      ]
+    }
+  },
+  "eventListeners": {
+    "createLandingGearButtonClicked": {
+      "chains": [
+        {
+          "chainId": "navigateToCreateLandingGearChain"
+        }
+      ]
+    },
+    "deleteLandingGearButtonClicked": {
+      "chains": [
+        {
+          "chainId": "deleteLandingGearChain",
+          "parameters": {
+            "landingGearId": "[[ $variables.oj_table_628944390_1SelectedId ]]"
+          }
+        }
+      ]
+    },
+    "editLandingGearButtonClicked": {
+      "chains": [
+        {
+          "chainId": "navigateToEditLandingGearChain",
+          "parameters": {
+            "landingGearId": "[[ $variables.oj_table_628944390_1SelectedId ]]"
+          }
+        }
+      ]
+    },
+    "landingGearDetailButtonClicked": {
+      "chains": [
+        {
+          "chainId": "navigateToLandingGearDetailChain",
+          "parameters": {
+            "landingGearId": "[[ $variables.oj_table_628944390_1SelectedId ]]"
+          }
+        }
+      ]
+    },
+    "ojTable6289443901Selection": {
+      "chains": [
+        {
+          "chainId": "oj_table_628944390_1ChangeSelectionChain",
+          "parameters": {
+            "landingGearId": "[[ $event.detail.value.key || '' ]]"
+          }
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-sp-general-overview-page": {
+        "path": "oj-sp/general-overview-page/loader"
+      },
+      "oj-table": {
+        "path": "ojs/ojtable"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      }
+    }
+  },
+  "@dt": {
+    "iconClass": "vbdt-dynamic-icon-7-icoOverviewPageTemplateSvg"
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

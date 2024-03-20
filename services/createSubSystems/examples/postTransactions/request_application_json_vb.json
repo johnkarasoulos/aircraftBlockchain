@@ -1,0 +1,10 @@
+{
+    "chaincode": "gt1155",
+    "args": [
+        "createSubSystemsToken",
+        "{\"tokenId\":\"0434001400010000\",\"tokenDesc\":\"Flight environment data of colonial viper 4\",\"tokenUri\":\"tokenUri value\",\"tokenMetadata\":{\"id\":\"id value\",\"landingGear\":\"0434001000000000\",\"subsystemCode\":\"0434001400010000\",\"subsystemdefinition\":\"That portion of the system which senses environmental conditions and uses the data to influence navigation. Includes such items as Central Air Data Computers, pitot/static systems, air temperature, rate-of-climb, airspeed, high speed warning, altitude, altitude reporting, altimeter correction system, air disturbance detection system, etc.\",\"subsystemtitle\":\"Flight environment data of colonial viper 4\",\"parent_nft\":\"0434001000000000\",\"assetType\":\"subsystems\"}}",
+        "1"
+    ],
+    "timeout": 6000,
+    "sync": true
+}

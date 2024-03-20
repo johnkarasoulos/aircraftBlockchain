@@ -1,0 +1,66 @@
+{
+  "root": "deleteColonialViper",
+  "variables": {
+    "colonialViperId": {
+      "type": "string",
+      "input": "fromCaller",
+      "required": true
+    }
+  },
+  "actions": {
+    "deleteColonialViper": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "businessObjects/delete_ColonialViper",
+        "uriParams": {
+          "ColonialViper_Id": "[[ $variables.colonialViperId ]]"
+        }
+      },
+      "outcomes": {
+        "success": "resetSelection",
+        "failure": "fireErrorNotification"
+      }
+    },
+    "resetSelection": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "[[ '$page.variables.oj_table_2078512949_1SelectedId' ]]"
+        ]
+      },
+      "outcomes": {
+        "success": "refreshDataProvider"
+      },
+      "description": "Resets selection variable",
+      "label": "Reset selection"
+    },
+    "refreshDataProvider": {
+      "module": "vb/action/builtin/fireDataProviderEventAction",
+      "outcomes": {
+        "success": "fireSuccessNotification"
+      },
+      "parameters": {
+        "refresh": null,
+        "target": "[[ $page.variables.colonialViperListSDP ]]"
+      }
+    },
+    "fireSuccessNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "summary": "ColonialViper deleted",
+        "message": "[[ 'ColonialViper [' + $variables.colonialViperId + '] successfully deleted' ]]",
+        "type": "confirmation",
+        "displayMode": "transient"
+      }
+    },
+    "fireErrorNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "summary": "Delete failed",
+        "message": "[[ 'Could not delete data: status ' + $chain.results.deleteColonialViper.status ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    }
+  }
+}

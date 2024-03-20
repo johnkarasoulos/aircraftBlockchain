@@ -1,0 +1,63 @@
+{
+  "description": "",
+  "root": "resetVariablesGetSingleToken",
+  "actions": {
+    "resetVariablesGetSingleToken": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.getSingleToken"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionSetBody2RetrieveTokenByID"
+      }
+    },
+    "callFunctionSetBody2RetrieveTokenByID": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "setBody2RetrieveTokenByID",
+        "params": [
+          "getTokenById",
+          [],
+          "{{ $flow.variables.bcchaincodename }}",
+          "{{ $page.variables.inputToken }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callRestPostRestproxy"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPostRestproxy.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callRestPostRestproxy": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "GetSingleToken/postRestproxy",
+        "body": "{{ $chain.results.callFunctionSetBody2RetrieveTokenByID }}"
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "assignVariablesGetSingleToken"
+      }
+    },
+    "assignVariablesGetSingleToken": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.getSingleToken": {
+          "source": "{{ $chain.results.callRestPostRestproxy.body.result.payload }}",
+          "auto": "always"
+        }
+      }
+    }
+  },
+  "variables": {}
+}

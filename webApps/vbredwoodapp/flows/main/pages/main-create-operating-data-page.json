@@ -1,0 +1,78 @@
+{
+  "title": "Create OperatingData",
+  "description": "Creates new OperatingData",
+  "variables": {
+    "createOperatingDataChainInProgress": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "operatingData": {
+      "type": "page:createOperatingDataRequest"
+    }
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.createOperatingDataRequest": {
+      "endpoint": "create_OperatingData",
+      "service": "businessObjects",
+      "path": "request"
+    },
+    "businessObjectsServiceErrorResponseType": {
+      "body": {
+        "status": "string",
+        "title": "string",
+        "o:errorDetails": [
+          {
+            "detail": "string",
+            "o:errorCode": "string"
+          }
+        ]
+      },
+      "status": "number"
+    },
+    "createOperatingDataRequest": {
+      "operatingDataDescription": "string",
+      "operatingDataName": "string"
+    }
+  },
+  "eventListeners": {
+    "backButtonClicked": {
+      "chains": [
+        {
+          "chainId": "goBackChain"
+        }
+      ]
+    },
+    "saveButtonClicked": {
+      "chains": [
+        {
+          "chainId": "createOperatingDataChain"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      },
+      "oj-validation-group": {
+        "path": "ojs/ojvalidationgroup"
+      }
+    }
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

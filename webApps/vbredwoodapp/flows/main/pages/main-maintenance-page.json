@@ -1,0 +1,118 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "maintenanceActionsListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_MaintenanceActions",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallMaintenanceActionsResponse"
+      }
+    },
+    "oj_table_38475812_1SelectedId": {
+      "type": "string",
+      "defaultValue": ""
+    }
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getallMaintenanceActionsResponse": {
+      "endpoint": "getall_MaintenanceActions",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "action": {
+      "id": "string",
+      "label": "string",
+      "display": "string",
+      "icon": "string"
+    },
+    "getallMaintenanceActionsResponse": {
+      "items": [
+        {
+          "description": "string",
+          "id": "number",
+          "maintenaceDateAction": "string"
+        }
+      ]
+    }
+  },
+  "eventListeners": {
+    "createMaintenanceActionsButtonClicked": {
+      "chains": [
+        {
+          "chainId": "navigateToCreateMaintenanceActionsChain"
+        }
+      ]
+    },
+    "deleteMaintenanceActionsButtonClicked": {
+      "chains": [
+        {
+          "chainId": "deleteMaintenanceActionsChain",
+          "parameters": {
+            "maintenanceActionsId": "[[ $variables.oj_table_38475812_1SelectedId ]]"
+          }
+        }
+      ]
+    },
+    "editMaintenanceActionsButtonClicked": {
+      "chains": [
+        {
+          "chainId": "navigateToEditMaintenanceActionsChain",
+          "parameters": {
+            "maintenanceActionsId": "[[ $variables.oj_table_38475812_1SelectedId ]]"
+          }
+        }
+      ]
+    },
+    "maintenanceActionsDetailButtonClicked": {
+      "chains": [
+        {
+          "chainId": "navigateToMaintenanceActionsDetailChain",
+          "parameters": {
+            "maintenanceActionsId": "[[ $variables.oj_table_38475812_1SelectedId ]]"
+          }
+        }
+      ]
+    },
+    "oj_table_38475812_1SelectionChanged": {
+      "chains": [
+        {
+          "chainId": "oj_table_38475812_1ChangeSelectionChain",
+          "parameters": {
+            "maintenanceActionsId": "[[ $event.detail.value.key || '' ]]"
+          }
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-input-date": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-sp-general-overview-page": {
+        "path": "oj-sp/general-overview-page/loader"
+      },
+      "oj-table": {
+        "path": "ojs/ojtable"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      }
+    }
+  },
+  "@dt": {
+    "iconClass": "vbdt-dynamic-icon-7-icoOverviewPageTemplateSvg"
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

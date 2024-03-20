@@ -1,0 +1,140 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "oj_table_688018712_1SelectedId": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "subSystemComponentListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_SubSystemComponent",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallSubSystemComponentResponse"
+      }
+    }
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getallSubSystemComponentResponse": {
+      "endpoint": "getall_SubSystemComponent",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "action": {
+      "id": "string",
+      "label": "string",
+      "display": "string",
+      "icon": "string"
+    },
+    "getallSubSystemComponentResponse": {
+      "items": [
+        {
+          "assemblyDate": "string",
+          "id": "number",
+          "maintenanceActionsObject": {
+            "items": [
+              {
+                "description": "string"
+              }
+            ]
+          },
+          "name": "string",
+          "newPart": "boolean",
+          "operatingDataObject": {
+            "items": [
+              {
+                "operatingDataName": "string"
+              }
+            ]
+          },
+          "replacementDate": "string",
+          "serialNumber": "string",
+          "subSystemsObject": {
+            "items": [
+              {
+                "subsystemtitle": "string"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "eventListeners": {
+    "createSubSystemComponentButtonClicked": {
+      "chains": [
+        {
+          "chainId": "navigateToCreateSubSystemComponentChain"
+        }
+      ]
+    },
+    "deleteSubSystemComponentButtonClicked": {
+      "chains": [
+        {
+          "chainId": "deleteSubSystemComponentChain",
+          "parameters": {
+            "subSystemComponentId": "[[ $variables.oj_table_688018712_1SelectedId ]]"
+          }
+        }
+      ]
+    },
+    "editSubSystemComponentButtonClicked": {
+      "chains": [
+        {
+          "chainId": "navigateToEditSubSystemComponentChain",
+          "parameters": {
+            "subSystemComponentId": "[[ $variables.oj_table_688018712_1SelectedId ]]"
+          }
+        }
+      ]
+    },
+    "oj_table_688018712_1SelectionChanged": {
+      "chains": [
+        {
+          "chainId": "oj_table_688018712_1ChangeSelectionChain",
+          "parameters": {
+            "subSystemComponentId": "[[ $event.detail.value.key || '' ]]"
+          }
+        }
+      ]
+    },
+    "subSystemComponentDetailButtonClicked": {
+      "chains": [
+        {
+          "chainId": "navigateToSubSystemComponentDetailChain",
+          "parameters": {
+            "subSystemComponentId": "[[ $variables.oj_table_688018712_1SelectedId ]]"
+          }
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-input-date": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-sp-general-overview-page": {
+        "path": "oj-sp/general-overview-page/loader"
+      },
+      "oj-switch": {
+        "path": "ojs/ojswitch"
+      },
+      "oj-table": {
+        "path": "ojs/ojtable"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      }
+    }
+  },
+  "@dt": {
+    "iconClass": "vbdt-dynamic-icon-68-icoOverviewPageTemplateSvg"
+  }
+}

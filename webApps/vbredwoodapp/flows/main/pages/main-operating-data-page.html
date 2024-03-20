@@ -1,0 +1,29 @@
+<oj-sp-general-overview-page id="oj_gop1" display-options.responsive-padding="on" page-title="Operating data"
+  page-subtitle="Specifications">
+
+    
+  <div slot="main">
+        <!-- Main Content goes here... It is recommended to have a heading element title as well -->
+        <oj-table scroll-policy="loadMoreOnScroll" data="[[$variables.operatingDataListSDP]]"
+          columns='[{"headerText":"Operating Data Name","field":"operatingDataName"},{"headerText":"Operating Data Description","field":"operatingDataDescription"}]'
+          id="oj-table--1667474073-1" selection-mode.row="single" selection-mode.column="single"
+          on-first-selected-row-changed="[[ $listeners.oj_table_1667474073_1SelectionChanged ]]"></oj-table>
+  </div>
+
+    
+  <div slot="info">
+        <!-- Complementary Content goes here... It is recommended to have a heading element title as well --></div>
+
+
+</oj-sp-general-overview-page>
+<div class="oj-flex">
+  <oj-toolbar id="oj-toolbar-for-oj-table--1667474073-1" chroming="solid" class="oj-flex-item oj-sm-12 oj-md-12">
+        <oj-button on-oj-action="[[$listeners.createOperatingDataButtonClicked]]">Create</oj-button>
+        <oj-button disabled="[[ $variables.oj_table_1667474073_1SelectedId === '' ]]"
+          on-oj-action="[[$listeners.editOperatingDataButtonClicked]]">Edit</oj-button>
+        <oj-button disabled="[[ $variables.oj_table_1667474073_1SelectedId === '' ]]"
+          on-oj-action="[[$listeners.operatingDataDetailButtonClicked]]">Detail</oj-button>
+        <oj-button disabled="[[ $variables.oj_table_1667474073_1SelectedId === '' ]]"
+          on-oj-action="[[$listeners.deleteOperatingDataButtonClicked]]">Delete OperatingData</oj-button>
+  </oj-toolbar>
+</div>

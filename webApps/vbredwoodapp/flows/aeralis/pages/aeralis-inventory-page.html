@@ -1,0 +1,24 @@
+<!-- vb default-layout:flex -->
+<oj-sp-smart-search-page id="aeralis-system-inventory" page-title="[[ $page.variables.pageTitle ]]"
+  page-subtitle="[[ $page.variables.subtitle ]]" display-options.go-to-parent="[[ $page.variables.goToParentOption ]]"
+  display-mode="mixed" display-options.in-flow-back="true">
+     <oj-list-view id="inventory-system-list" display="card" selection-mode="single" scroll-policy="loadMoreOnScroll"
+       class="oj-flex-item oj-listview-card-layout oj-group-header-sm"
+       scroll-policy-options.scroller="[[document.documentElement]]" data="[[$variables.landingGearListSDP]]" >
+          <template slot="itemTemplate">
+               <oj-list-item-layout>
+                    <div slot="secondary">
+                    </div>
+                    <img slot="leading" :src="[[ $current.data.systemImage ]]" on-click="[[$listeners.imageClick]]">
+                         <oj-bind-text value="[[ $current.data.title ]]"></oj-bind-text>
+                         <div>
+                              <oj-bind-text value="[[ $current.data.subSystemID ]]"></oj-bind-text>
+                         </div>
+                         <div>
+                              <oj-bind-text value="[[ $current.data.SystemDefinition ]]"></oj-bind-text>
+                         </div>
+                    
+               </oj-list-item-layout>
+          </template>
+  </oj-list-view>
+</oj-sp-smart-search-page>

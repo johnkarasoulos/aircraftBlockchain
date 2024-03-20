@@ -1,0 +1,39 @@
+{
+  "root": "loadLandingGear",
+  "actions": {
+    "loadLandingGear": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "businessObjects/get_LandingGear",
+        "uriParams": {
+          "LandingGear_Id": "[[ $page.variables.landingGearId ]]"
+        },
+        "responseType": "page:getLandingGearResponse"
+      },
+      "outcomes": {
+        "success": "assignPayload",
+        "failure": "fireErrorNotification"
+      }
+    },
+    "assignPayload": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.landingGear": {
+          "source": "{{ $chain.results.loadLandingGear.body }}"
+        },
+        "$page.variables.landingGearETag": {
+          "source": "[[ $chain.results.loadLandingGear.headers.get('ETag') ]]"
+        }
+      }
+    },
+    "fireErrorNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "summary": "Could not load data",
+        "message": "{{ 'Could not load data: status ' + $chain.results.loadLandingGear.status }}",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    }
+  }
+}

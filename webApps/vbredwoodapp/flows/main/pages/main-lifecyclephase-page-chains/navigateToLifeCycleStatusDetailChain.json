@@ -1,0 +1,21 @@
+{
+  "root": "navigateToDetail",
+  "variables": {
+    "lifeCycleStatusId": {
+      "type": "string",
+      "input": "fromCaller",
+      "required": true
+    }
+  },
+  "actions": {
+    "navigateToDetail": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "main-life-cycle-status-detail",
+        "params": {
+          "lifeCycleStatusId": "[[ $variables.lifeCycleStatusId ]]"
+        }
+      }
+    }
+  }
+}

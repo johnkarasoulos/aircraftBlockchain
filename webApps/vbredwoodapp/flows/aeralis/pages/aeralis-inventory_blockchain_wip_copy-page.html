@@ -1,0 +1,8 @@
+<!-- vb default-layout:flex -->
+<oj-sp-smart-search-page id="aeralis-system-inventory" page-title="[[ $page.variables.pageTitle ]]"
+  page-subtitle="[[ $page.variables.subtitle ]]" display-options.go-to-parent="[[ $page.variables.goToParentOption ]]"
+  display-mode="mixed" display-options.in-flow-back="true" primary-action.label="Create System"
+  secondary-actions='[{"id":"DetailedSystem","label":"System Details","display":"on"},{"id":"DetailedSubSystem","label":"Detailed Subsystem","display":"on"},{"id":"DetailComponent","label":"Detailed Component","display":"on"}]'>
+  <oj-select-single label-hint="Select (Single)" slot="search" on-value-item-changed="[[$listeners.selectValueItem]]"
+    data="[[ $variables.getAllTokens ]]" class="oj-form-control-max-width-md"></oj-select-single>
+</oj-sp-smart-search-page>

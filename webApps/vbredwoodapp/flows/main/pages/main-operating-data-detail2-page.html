@@ -1,0 +1,18 @@
+<div class="oj-flex">
+  <h1 class="oj-flex-item oj-sm-12 oj-md-12">OperatingData Detail</h1>
+</div>
+<div class="oj-flex">
+  <div class="oj-flex-item oj-sm-12 oj-md-12">
+    <oj-form-layout label-edge="start">
+      <oj-input-text value="[[ $variables.operatingData.operatingDataName ]]" readonly="true"
+        label-hint="Operating Data Name"></oj-input-text>
+      <oj-input-text value="[[ $variables.operatingData.operatingDataDescription ]]" readonly="true"
+        label-hint="Operating Data Description"></oj-input-text>
+    </oj-form-layout>
+  </div>
+</div>
+<div class="oj-flex">
+  <oj-toolbar chroming="solid" class="oj-flex-item oj-sm-12 oj-md-12">
+    <oj-button on-oj-action="[[$listeners.backButtonClicked]]">Back</oj-button>
+  </oj-toolbar>
+</div>

@@ -1,0 +1,93 @@
+{
+  "title": "Edit ColonialViper",
+  "description": "Updates single ColonialViper record",
+  "variables": {
+    "colonialViper": {
+      "type": "page:getColonialViperResponse"
+    },
+    "colonialViperETag": {
+      "type": "string"
+    },
+    "colonialViperId": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "saveColonialViperChainInProgress": {
+      "type": "boolean",
+      "defaultValue": false
+    }
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getColonialViperResponse": {
+      "endpoint": "get_ColonialViper",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "businessObjectsServiceErrorResponseType": {
+      "body": {
+        "status": "string",
+        "title": "string",
+        "o:errorDetails": [
+          {
+            "detail": "string",
+            "o:errorCode": "string"
+          }
+        ]
+      },
+      "status": "number"
+    },
+    "getColonialViperResponse": {
+      "definition1": "string",
+      "title": "string"
+    }
+  },
+  "eventListeners": {
+    "backButtonClicked": {
+      "chains": [
+        {
+          "chainId": "goBackChain"
+        }
+      ]
+    },
+    "saveButtonClicked": {
+      "chains": [
+        {
+          "chainId": "saveColonialViperChain"
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "chainId": "loadColonialViperChain"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      },
+      "oj-validation-group": {
+        "path": "ojs/ojvalidationgroup"
+      }
+    }
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

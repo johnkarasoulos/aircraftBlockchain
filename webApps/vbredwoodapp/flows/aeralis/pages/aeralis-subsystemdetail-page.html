@@ -1,0 +1,27 @@
+<div>
+  <oj-sp-foldout-layout id="foldout_layout_Horizontal_page" animate="[[$page.variables.animate]]"
+    previous-step="[[$variables.previousStep]]" next-step="[[$variables.nextStep]]" display-options.go-to-parent="false"
+    on-sp-go-to-parent="[[$listeners.onSpGoToParent]]" selected-panel="{{$variables.selectedPanel}}"
+    on-sp-previous="[[$listeners.onSpPrevious]]" on-sp-next="[[$listeners.onSpNext]]" orientation="vertical"
+    display-mode="[[$page.variables.displayMode]]" display-options.background="transparent">
+
+    
+    
+    <!-- the below is default slot, maximum 6 oj-sp-foldout-panel could be added -->
+
+    
+
+    
+    <oj-sp-collection-container></oj-sp-collection-container>
+    <oj-sp-vertical-overview slot="overview">
+      <div slot="body">
+        <oj-bind-if test="[[ $flow.variables.systemDetails.subSystemID !== undefined]]">
+          <oj-dyn-form id="item_overview_detail" layout="viewSystemLayout" value="{{ $flow.variables.systemDetails }}"></oj-dyn-form>
+        </oj-bind-if>
+        <oj-bind-if test="[[ $flow.variables.aircraftSystemDetails.hasSystemsErrorMessages ]]">
+          <oj-sp-empty-state></oj-sp-empty-state>
+        </oj-bind-if>
+      </div>
+    </oj-sp-vertical-overview>
+  </oj-sp-foldout-layout>
+</div>

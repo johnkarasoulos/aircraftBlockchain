@@ -1,0 +1,126 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "CreateAirplane",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "vb-catalog://backends/CreateAirplane",
+            "description": "CreateAirplane"
+        }
+    ],
+    "paths": {
+        "/restproxy/api/v2/channels/goldenthread/transactions": {
+            "post": {
+                "operationId": "postTransactions",
+                "requestBody": {
+                    "description": "Request for application/json",
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PostRestproxyApiV2ChannelsGoldenthreadTransactionsRequest"
+                            },
+                            "examples": {
+                                "vb": {
+                                    "summary": "Example stored by VB User",
+                                    "externalValue": "./examples/postTransactions/request_application_json_vb.json"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PostTransactionsResponse"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/postTransactions/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "create"
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "PostTransactionsResponse": {
+                "type": "object",
+                "properties": {
+                    "returnCode": {
+                        "type": "string"
+                    },
+                    "error": {
+                        "type": "string"
+                    },
+                    "result": {
+                        "type": "object",
+                        "properties": {
+                            "txid": {
+                                "type": "string"
+                            },
+                            "payload": {
+                                "type": "string"
+                            },
+                            "encode": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            },
+            "PostTransactionsRequest": {
+                "type": "object",
+                "properties": {
+                    "chaincode": {
+                        "type": "string"
+                    },
+                    "args": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "timeout": {
+                        "type": "integer"
+                    },
+                    "sync": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "PostRestproxyApiV2ChannelsGoldenthreadTransactionsRequest": {
+                "type": "object",
+                "properties": {
+                    "chaincode": {
+                        "type": "string"
+                    },
+                    "args": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "timeout": {
+                        "type": "integer"
+                    },
+                    "sync": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        }
+    }
+}

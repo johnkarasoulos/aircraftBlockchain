@@ -1,0 +1,34 @@
+{
+  "description": "",
+  "root": "navigateToAeralisSystemDetail",
+  "actions": {
+    "navigateToAeralisSystemDetail": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "aeralis-system-detail",
+        "params": {
+          "rowIndex": "{{ $variables.index }}",
+          "goToParent": "{{ true }}",
+          "parentPage": "{{ $application.currentPage.id }}"
+        }
+      }
+    }
+  },
+  "variables": {
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "index": {
+      "required": true,
+      "type": "number",
+      "input": "fromCaller"
+    },
+    "current": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

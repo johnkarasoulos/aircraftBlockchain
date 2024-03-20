@@ -1,0 +1,64 @@
+{
+  "title": "LandingGear Detail",
+  "description": "Displays LandingGear record",
+  "variables": {
+    "landingGear": {
+      "type": "page:getLandingGearResponse"
+    },
+    "landingGearId": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    }
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getLandingGearResponse": {
+      "endpoint": "get_LandingGear",
+      "service": "businessObjects",
+      "path": "request"
+    },
+    "getLandingGearResponse": {
+      "subSystemID": "string",
+      "SystemDefinition": "string",
+      "title": "string"
+    }
+  },
+  "eventListeners": {
+    "backButtonClicked": {
+      "chains": [
+        {
+          "chainId": "goBackChain"
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "chainId": "loadLandingGearChain"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      }
+    }
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

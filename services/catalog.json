@@ -1,0 +1,46 @@
+{
+    "backends": {
+        "CreateAirplane": {
+            "servers": [
+                {
+                    "url": "https://wedobcstd2-wedoinfra-fra.blockchain.ocp.oraclecloud.com:7443",
+                    "description": "Restproxy Api V2",
+                    "x-vb": {
+                        "authentication": {
+                            "authenticated": {
+                                "type": "basic",
+                                "credentials": "vb_27d514fd-abf6-4d06-b875-39f913186e1d"
+                            },
+                            "anonymous": {
+                                "type": "basic",
+                                "credentials": "vb_c056e225-0e3f-49a0-8622-a97e1fa2b7cc"
+                            }
+                        },
+                        "anonymousAccess": true
+                    }
+                }
+            ]
+        },
+        "CreateLandingGear": {
+            "servers": [
+                {
+                    "url": "https://wedobcstd2-wedoinfra-fra.blockchain.ocp.oraclecloud.com:7443/restproxy/api/v2/channels/goldenthread",
+                    "description": "Restproxy Api V2",
+                    "x-vb": {
+                        "authentication": {
+                            "authenticated": {
+                                "type": "basic",
+                                "credentials": "vb_b35ad977-2010-49ab-be19-1b2d57081cd2"
+                            },
+                            "anonymous": {
+                                "type": "basic",
+                                "credentials": "vb_5b2f24a0-6e5c-4df6-a43a-d1420337ec97"
+                            }
+                        },
+                        "anonymousAccess": true
+                    }
+                }
+            ]
+        }
+      }
+}

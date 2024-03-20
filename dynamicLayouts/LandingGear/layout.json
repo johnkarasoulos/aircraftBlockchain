@@ -1,0 +1,66 @@
+{
+  "layoutTypes": {
+    "businessObjects": {
+      "kind": "operationRef",
+      "serviceId": "businessObjects",
+      "operations": [
+        "get_LandingGear"
+      ]
+    }
+  },
+  "layouts": {
+    "isDefault": {
+      "description": "Default Rule",
+      "type": "businessObjects",
+      "expression": "default"
+    },
+    "aeralislandingGear": {
+      "type": "businessObjects",
+      "layoutType": "form",
+      "label": "LandingGear",
+      "description": "System details ",
+      "rules": [
+        "isDefault_copy",
+        "isDefault"
+      ],
+      "layouts": {
+        "default": {
+          "layoutType": "form",
+          "layout": {
+            "displayProperties": [
+              "figther",
+              "subSystemID",
+              "title",
+              "SystemDefinition"
+            ],
+            "readonly": true
+          },
+          "usedIn": [
+            "isDefault"
+          ]
+        },
+        "isDefault_copy": {
+          "layoutType": "form",
+          "layout": {
+            "displayProperties": [
+              "figther",
+              "subSystemID",
+              "title",
+              "SystemDefinition",
+              "systemImage"
+            ],
+            "readonly": true
+          },
+          "usedIn": [
+            "isDefault_copy"
+          ]
+        }
+      }
+    },
+    "isDefault_copy": {
+      "description": "Default Rule",
+      "type": "businessObjects",
+      "expression": "[[ 'isDefault_copy' ]]"
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "root": "navigateToParentPage",
+  "description": "Go to parent page",
+  "actions": {
+    "navigateToParentPage": {
+      "module": "vb/action/builtin/navigateToPageAction",
+      "parameters": {
+        "page": "{{ $chain.variables.parentPage }}",
+        "params": "{{$page.variables.parentUrlParams}}"
+      }
+    }
+  },
+  "variables": {
+    "parentPage": {
+      "type": "string",
+      "required": true,
+      "input": "fromCaller"
+    }
+  }
+}

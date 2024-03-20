@@ -1,0 +1,119 @@
+{
+  "title": "Edit LifeCycleStatus",
+  "description": "Updates single LifeCycleStatus record",
+  "variables": {
+    "actorsListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_Actors",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallActorsResponse",
+        "uriParameters": {}
+      }
+    },
+    "lifeCycleStatus": {
+      "type": "page:getLifeCycleStatusResponse"
+    },
+    "lifeCycleStatusETag": {
+      "type": "string"
+    },
+    "lifeCycleStatusId": {
+      "type": "string",
+      "required": true,
+      "input": "fromUrl"
+    },
+    "saveLifeCycleStatusChainInProgress": {
+      "type": "boolean",
+      "defaultValue": false
+    }
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getallActorsResponse": {
+      "endpoint": "getall_Actors",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.getLifeCycleStatusResponse": {
+      "endpoint": "get_LifeCycleStatus",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "businessObjectsServiceErrorResponseType": {
+      "body": {
+        "status": "string",
+        "title": "string",
+        "o:errorDetails": [
+          {
+            "detail": "string",
+            "o:errorCode": "string"
+          }
+        ]
+      },
+      "status": "number"
+    },
+    "getallActorsResponse": {
+      "items": [
+        {
+          "actorName": "string",
+          "id": "number"
+        }
+      ]
+    },
+    "getLifeCycleStatusResponse": {
+      "actors": "number",
+      "systemLifeCycleDescription": "string"
+    }
+  },
+  "eventListeners": {
+    "backButtonClicked": {
+      "chains": [
+        {
+          "chainId": "goBackChain"
+        }
+      ]
+    },
+    "saveButtonClicked": {
+      "chains": [
+        {
+          "chainId": "saveLifeCycleStatusChain"
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "chainId": "loadLifeCycleStatusChain"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-select-single": {
+        "path": "ojs/ojselectsingle"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      },
+      "oj-validation-group": {
+        "path": "ojs/ojvalidationgroup"
+      }
+    }
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

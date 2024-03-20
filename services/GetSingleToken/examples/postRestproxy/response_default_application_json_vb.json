@@ -1,0 +1,41 @@
+{
+    "returnCode": "Success",
+    "error": "",
+    "result": {
+        "payload": {
+            "tokenMetadata": {
+                "assetType": "airplane",
+                "id": "0200000000000000",
+                "definition1": "OracleAircraft",
+                "title": "Oracle Cloud"
+            },
+            "assetType": "otoken",
+            "tokenId": "050000000000000",
+            "tokenName": "airplane",
+            "tokenDesc": "OracleAircraft",
+            "tokenStandard": "erc1155+",
+            "tokenType": "nonfungible",
+            "tokenUnit": "whole",
+            "behaviors": [
+                "indivisible",
+                "mintable",
+                "transferable",
+                "burnable",
+                "roles"
+            ],
+            "roles": {
+                "minter_role_name": "minter"
+            },
+            "mintable": {
+                "max_mint_quantity": 0
+            },
+            "quantity": 1,
+            "createdBy": "oaccount~b55b00b5401e70e56fc22d5680bbd9f88f0f40c095a29e2d270d9a30de99fd8f",
+            "creationDate": "2024-02-09T12:33:17.000Z",
+            "owner": "oaccount~b55b00b5401e70e56fc22d5680bbd9f88f0f40c095a29e2d270d9a30de99fd8f",
+            "isBurned": false,
+            "tokenUri": "OracleAircraft"
+        },
+        "encode": "JSON"
+    }
+}

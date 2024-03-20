@@ -1,0 +1,62 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "AttachDocToSubSystemComponent",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "vb-catalog://backends/CreateAirplane",
+            "description": "CreateAirplane"
+        }
+    ],
+    "paths": {
+        "/transactions": {
+            "post": {
+                "operationId": "AttachDocToSubSystemComponent",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/PostTransactionsRequest"
+                            },
+                            "examples": {
+                                "vb": {
+                                    "externalValue": "./examples/AttachDocToSubSystemComponent/request_application_json_vb.json"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {},
+                "x-vb": {
+                    "actionHint": "create"
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "PostTransactionsRequest": {
+                "type": "object",
+                "properties": {
+                    "chaincode": {
+                        "type": "string"
+                    },
+                    "args": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "timeout": {
+                        "type": "integer"
+                    },
+                    "sync": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        }
+    }
+}

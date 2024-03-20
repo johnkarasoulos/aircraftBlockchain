@@ -1,0 +1,86 @@
+{
+  "description": "",
+  "root": "resetVariablesSingleToken",
+  "actions": {
+    "callFunctionSetBody2RetrieveTokenByID": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "setBody2RetrieveTokenByID",
+        "params": [
+          "getTokenById",
+          [],
+          "{{ $flow.variables.bcchaincodename }}",
+          "{{ $variables.value }}"
+        ]
+      },
+      "outcomes": {
+        "success": "assignVariablesSetRequestToken"
+      }
+    },
+    "assignVariablesSetRequestToken": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.setRequestToken": {
+          "source": "{{ $chain.results.callFunctionSetBody2RetrieveTokenByID }}",
+          "auto": "always"
+        }
+      },
+      "outcomes": {
+        "success": "callRestPostRestproxy"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPostRestproxy.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callRestPostRestproxy": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "GetSingleToken/postRestproxy",
+        "body": "{{ $chain.results.callFunctionSetBody2RetrieveTokenByID }}"
+      },
+      "outcomes": {
+        "failure": "fireNotification",
+        "success": "assignVariablesSingleToken"
+      }
+    },
+    "assignVariablesSingleToken": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.singleToken": {
+          "source": "{{ $chain.results.callRestPostRestproxy.body.result.payload }}",
+          "auto": "always"
+        }
+      }
+    },
+    "resetVariablesSingleToken": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.singleToken"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionSetBody2RetrieveTokenByID"
+      }
+    }
+  },
+  "variables": {
+    "value": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "itemContext": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

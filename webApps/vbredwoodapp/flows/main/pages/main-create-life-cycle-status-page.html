@@ -1,0 +1,20 @@
+<div class="oj-flex">
+  <h1 class="oj-flex-item oj-sm-12 oj-md-12">Create LifeCycleStatus</h1>
+</div>
+<div class="oj-flex">
+  <oj-validation-group id="validation-group" class="oj-flex-item oj-sm-12 oj-md-12">
+    <oj-form-layout class="oj-formlayout-full-width" label-edge="start">
+      <oj-input-text value="{{ $variables.lifeCycleStatus.systemLifeCycleDescription }}"
+        label-hint="System Life Cycle Description"></oj-input-text>
+      <oj-select-single value="{{ $variables.lifeCycleStatus.actors }}" label-hint="Actors" required="true"
+        data="[[ $variables.actorsListSDP ]]" item-text="actorName"></oj-select-single>
+    </oj-form-layout>
+  </oj-validation-group>
+</div>
+<div class="oj-flex">
+  <oj-toolbar chroming="solid" class="oj-flex-item oj-sm-12 oj-md-12">
+    <oj-button on-oj-action="[[$listeners.backButtonClicked]]">Cancel</oj-button>
+    <oj-button on-oj-action="[[$listeners.saveButtonClicked]]"
+      disabled="[[ $variables.createLifeCycleStatusChainInProgress ]]">Save</oj-button>
+  </oj-toolbar>
+</div>

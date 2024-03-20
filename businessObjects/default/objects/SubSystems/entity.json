@@ -1,0 +1,190 @@
+{
+    "fields": [
+        {
+            "type": "number",
+            "name": "id",
+            "internal": false,
+            "key": true,
+            "oid": "11b802a8-cbcb-495b-93e7-5bff13a8abad",
+            "required": true,
+            "unique": true,
+            "displayLabel": "Id"
+        },
+        {
+            "type": "datetime",
+            "name": "creationDate",
+            "internal": false,
+            "oid": "fe8790ad-a2be-4b51-98d7-8670d72cc54a",
+            "displayLabel": "Created",
+            "historyType": "timeCreated"
+        },
+        {
+            "type": "datetime",
+            "name": "lastUpdateDate",
+            "internal": false,
+            "oid": "b679cfe1-2792-41bf-874c-353d3e50829d",
+            "displayLabel": "Last Updated",
+            "historyType": "timeUpdated"
+        },
+        {
+            "type": "string",
+            "name": "createdBy",
+            "internal": false,
+            "oid": "40a01e80-882d-4ed9-8140-8e192e620bd7",
+            "displayLabel": "Created By",
+            "historyType": "createdBy"
+        },
+        {
+            "type": "string",
+            "name": "lastUpdatedBy",
+            "internal": false,
+            "oid": "57119d62-4ad9-4b10-8825-82f6bc7d5638",
+            "displayLabel": "Last Updated By",
+            "historyType": "updatedBy"
+        },
+{
+            "type": "number",
+            "name": "versionNumber",
+            "internal": false,
+            "oid": "d2a26fa7-f1fd-4866-9cb0-1faf595c65e4",
+            "displayLabel": "Version Number",
+            "historyType": "versionNumber"
+        },
+        {
+            "type": "string",
+            "name": "subsystemtitle",
+            "oid": "df71cbf5-8248-4ad8-8ba3-daebfd7f09cd",
+            "displayLabel": "subsystemtitle"
+        }        ,
+        {
+            "type": "string",
+            "name": "subsystemdefinition",
+            "oid": "8aceb3ad-6ebb-4afc-8674-2672b98ea4d3",
+            "displayLabel": "subsystemdefinition"
+        }        ,
+{
+            "type": "number",
+            "name": "landingGear",
+            "oid": "545d0710-a391-4584-9064-c3fc4098f758",
+            "required": true,
+            "displayLabel": "Landing Gear"
+        },
+{
+            "type": "string",
+            "name": "subsystemCode",
+            "oid": "16abe432-4172-45e9-8f3d-a033b5276a00",
+            "required": true,
+            "displayLabel": "Subsystem Code"
+        },
+        {
+            "type": "string",
+            "name": "tokenId",
+            "oid": "71cdefe4-ed2e-47c7-9ae7-f3ae1ea399e6",
+            "displayLabel": "tokenId"
+        }        ,
+        {
+            "type": "string",
+            "name": "tokenDesc",
+            "oid": "a91281bf-ee10-470f-8bcc-1096c50be07a",
+            "displayLabel": "tokenDesc"
+        }        ,
+        {
+            "type": "string",
+            "name": "tokenUri",
+            "oid": "640e62d5-cb63-4f20-b476-2a88447ee2f1",
+            "displayLabel": "tokenUri"
+        }        ,
+        {
+            "type": "string",
+            "name": "subsystemId",
+            "oid": "b65cfdb4-4598-45eb-874c-953c5be622f9",
+            "displayLabel": "subsystemId"
+        }        ,
+        {
+            "type": "string",
+            "name": "parentSystem",
+            "oid": "5a1ece34-d778-4f4c-ad64-da4e85def040",
+            "displayLabel": "parentSystem"
+        }        ,
+        {
+            "type": "string",
+            "name": "parentNft",
+            "oid": "4f4e2a09-c972-42fe-969c-a8bc51784e6a",
+            "displayLabel": "parent_nft"
+        }        ,
+        {
+            "type": "string",
+            "name": "subsystemAssetType",
+            "oid": "ef62a2df-c86e-4db7-af86-e870c2b6d2a6",
+            "displayLabel": "subsystemAssetType"
+        }
+    ],
+    "name": "SubSystems",
+    "oid": "687dce42-9cad-4f70-aace-8b0780ef68b7",
+    "displayLabel": "Sub Systems",
+    "relationships": [
+{
+            "name": "landingGearObject",
+            "reverseRelationship": "subSystemsCollection",
+            "targetEntity": "LandingGear",
+            "type": "outgoing",
+            "exposeAccessor": true,
+            "mappingField": "landingGear",
+            "deleteRule": "restrict"
+        },
+        {
+            "name": "subSystemComponentCollection",
+            "reverseRelationship": "subSystemsObject",
+            "targetEntity": "SubSystemComponent",
+            "type": "incoming",
+            "displayField": "subsystemtitle"
+        }
+    ],
+    "security": {
+        "type": "local",
+        "acl": [
+            {
+                "roleId": "approle.anonymous.user",
+                "privileges": [
+                    {
+                        "name": "view",
+                        "value": true
+                    },
+                    {
+                        "name": "create",
+                        "value": true
+                    },
+                    {
+                        "name": "update",
+                        "value": true
+                    },
+                    {
+                        "name": "delete",
+                        "value": true
+                    }
+                ]
+            },
+            {
+                "roleId": "approle.authenticated.user",
+                "privileges": [
+                    {
+                        "name": "view",
+                        "value": true
+                    },
+                    {
+                        "name": "create",
+                        "value": true
+                    },
+                    {
+                        "name": "update",
+                        "value": true
+                    },
+                    {
+                        "name": "delete",
+                        "value": true
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,10 @@
+{
+  "root": "assignVariables",
+  "description": "",
+  "actions": {
+    "assignVariables": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {}
+    }
+  }
+}

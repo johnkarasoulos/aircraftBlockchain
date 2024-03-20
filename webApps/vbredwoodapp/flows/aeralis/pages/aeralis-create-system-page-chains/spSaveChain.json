@@ -1,0 +1,107 @@
+{
+  "description": "Submit form data",
+  "variables": {},
+  "root": "assignVariables",
+  "actions": {
+
+    "resetDirtyDataFlag": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.dirtyDataFlag"
+        ]
+      },
+      "outcomes": {
+        "success": "setVariableIsSaved"
+      }
+    },
+    "setVariableIsSaved": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.isSaved": {
+          "source": true,
+          "auto": "always"
+        }
+      }
+    },
+    "assignVariables": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.createTokenSystem": {
+          "source": {
+            "tokenId": "{{ $page.variables.landingGear.tokenId }}",
+            "tokenUri": "{{ $page.variables.landingGear.tokenURI }}",
+            "tokenDesc": "{{ $page.variables.landingGear.tokenDec }}",
+            "tokenMetadata": {
+              "assetType": "{{ $page.variables.landingGear.systemAssetType }}",
+              "systemDefinition": "{{ $page.variables.landingGear.SystemDefinition }}",
+              "title": "{{ $page.variables.landingGear.title }}",
+              "id": "{{ $page.variables.landingGear.subSystemID }}",
+              "figther": "{{ $page.variables.landingGear.aircraftID }}"
+            }
+          },
+          "reset": "none",
+          "auto": "always",
+          "mapping": {
+            "$target.tokenMetadata": {
+              "source": "$source.tokenMetadata",
+              "reset": "none",
+              "auto": "always"
+            }
+          }
+        }
+      },
+      "outcomes": {
+        "success": "callFunctionScapedStr"
+      }
+    },
+    "callFunctionScapedStr": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "scapedStr",
+        "params": [
+          "{{ $page.variables.createTokenSystem }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionPrepareData4CreateSystem"
+      }
+    },
+    "callFunctionPrepareData4CreateSystem": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "prepareData4CreateSystem",
+        "params": [
+          "createLandingGearToken",
+          "{{ $chain.results.callFunctionScapedStr }}",
+          "{{ $flow.variables.bcchaincodename }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callRestPostTransactions"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestPostTransactions.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callRestPostTransactions": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "createLandingGear/postTransactions",
+        "body": "{{ $chain.results.callFunctionPrepareData4CreateSystem }}"
+      },
+      "outcomes": {
+        "success": "resetDirtyDataFlag",
+        "failure": "fireNotification"
+      }
+    }
+  }
+}

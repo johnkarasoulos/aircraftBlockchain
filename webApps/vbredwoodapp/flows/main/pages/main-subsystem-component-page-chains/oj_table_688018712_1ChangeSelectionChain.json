@@ -1,0 +1,20 @@
+{
+  "variables": {
+    "subSystemComponentId": {
+      "type": "string",
+      "input": "fromCaller",
+      "defaultValue": ""
+    }
+  },
+  "root": "assignVariable",
+  "actions": {
+    "assignVariable": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.oj_table_688018712_1SelectedId": {
+          "source": "[[ $variables.subSystemComponentId ]]"
+        }
+      }
+    }
+  }
+}

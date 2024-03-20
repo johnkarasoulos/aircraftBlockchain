@@ -1,0 +1,234 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "goToParentOption": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "landingGearListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_LandingGear",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallLandingGearResponse3"
+      }
+    },
+    "landingGearListSDP2": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_LandingGear",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallLandingGearResponse2"
+      }
+    },
+    "pageTitle": {
+      "type": "string",
+      "defaultValue": "Systems"
+    },
+    "subtitle": {
+      "type": "string"
+    }
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getallLandingGearResponse": {
+      "endpoint": "getall_LandingGear",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.getallLandingGearResponse2": {
+      "endpoint": "getall_LandingGear",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.getallLandingGearResponse3": {
+      "endpoint": "getall_LandingGear",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.retrieveAllTokens": {
+      "endpoint": "getAllTokens",
+      "service": "Retrieve-All-Tokens",
+      "path": "response"
+    },
+    "@decorators.retrieveSingleToken": {
+      "endpoint": "postRestproxy",
+      "service": "GetSingleToken",
+      "path": "response"
+    },
+    "@decorators.setRequestAllTokens": {
+      "endpoint": "getAllTokens",
+      "service": "Retrieve-All-Tokens",
+      "path": "request"
+    },
+    "@decorators.setRequestSingleToken": {
+      "endpoint": "postRestproxy",
+      "service": "GetSingleToken",
+      "path": "request"
+    },
+    "getallLandingGearResponse": {
+      "items": [
+        {
+          "id": "number",
+          "subSystemID": "string",
+          "SystemDefinition": "string",
+          "systemImage": "string",
+          "title": "string"
+        }
+      ]
+    },
+    "getallLandingGearResponse2": {
+      "items": [
+        {
+          "figther": "number",
+          "id": "number",
+          "subSystemID": "string",
+          "SystemDefinition": "string",
+          "systemImage": "string",
+          "title": "string"
+        }
+      ]
+    },
+    "getallLandingGearResponse3": {
+      "items": [
+        {
+          "id": "number",
+          "subSystemID": "string",
+          "SystemDefinition": "string",
+          "systemImage": "string",
+          "title": "string"
+        }
+      ]
+    },
+    "retrieveAllTokens": {
+      "key": "string",
+      "assemblyDate": "string",
+      "assetType": "string",
+      "behaviors": "string[]",
+      "createdBy": "string",
+      "creationDate": "string",
+      "isBurned": "boolean",
+      "landingGearCollection": "string[]",
+      "mintable": {
+        "max_mint_quantity": "number"
+      },
+      "newPart": "boolean",
+      "owner": "string",
+      "quantity": "number",
+      "replacementDate": "string",
+      "roles": {
+        "minter_role_name": "string"
+      },
+      "subSystemComponentCollection": "string[]",
+      "subSystemsCollection": "string[]",
+      "tokenDesc": "string",
+      "tokenId": "string",
+      "tokenMetadata": {
+        "assetType": "string",
+        "definition1": "string",
+        "description": "string",
+        "figther": "string",
+        "id": "string",
+        "landingGear": "string",
+        "maintenanceDateAction": "string",
+        "name": "string",
+        "parent_nft": "string",
+        "serialNumber": "string",
+        "subsystemCode": "string",
+        "subsystemdefinition": "string",
+        "subSystems": "string",
+        "subsystemtitle": "string",
+        "systemDefinition": "string",
+        "title": "string"
+      },
+      "tokenName": "string",
+      "tokenStandard": "string",
+      "tokenType": "string",
+      "tokenUnit": "string",
+      "tokenUri": "string"
+    },
+    "retrieveSingleToken": {
+      "assemblyDate": "string",
+      "assetType": "string",
+      "behaviors": "string[]",
+      "createdBy": "string",
+      "creationDate": "string",
+      "isBurned": "boolean",
+      "mintable": {
+        "max_mint_quantity": "number"
+      },
+      "newPart": "boolean",
+      "owner": "string",
+      "quantity": "number",
+      "replacementDate": "string",
+      "roles": {
+        "minter_role_name": "string"
+      },
+      "tokenDesc": "string",
+      "tokenId": "string",
+      "tokenMetadata": {
+        "description": "string",
+        "id": "string",
+        "maintenanceDateAction": "string",
+        "name": "string",
+        "serialNumber": "string",
+        "subSystems": "string"
+      },
+      "tokenName": "string",
+      "tokenStandard": "string",
+      "tokenType": "string",
+      "tokenUnit": "string",
+      "tokenUri": "string"
+    },
+    "setRequestAllTokens": {
+      "args": "string[]",
+      "chaincode": "string",
+      "sync": "boolean",
+      "timeout": "number"
+    },
+    "setRequestSingleToken": {
+      "args": "string[]",
+      "chaincode": "string",
+      "sync": "boolean",
+      "timeout": "number"
+    }
+  },
+  "eventListeners": {
+    "imageClick": {
+      "chains": [
+        {
+          "chainId": "ImageClickChain",
+          "parameters": {
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-list-item-layout": {
+        "path": "ojs/ojlistitemlayout"
+      },
+      "oj-list-view": {
+        "path": "ojs/ojlistview"
+      },
+      "oj-sp-smart-search-page": {
+        "path": "oj-sp/smart-search-page/loader"
+      }
+    }
+  },
+  "@dt": {
+    "iconClass": "vbdt-dynamic-icon-75-icoSmartSearchPage48Svg"
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

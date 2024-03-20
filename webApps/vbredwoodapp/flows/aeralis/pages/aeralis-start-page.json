@@ -1,0 +1,64 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getallLandingGearResponse": {
+      "endpoint": "getall_LandingGear",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.getallLandingGearResponse2": {
+      "endpoint": "getall_LandingGear",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.getallLandingGearResponse3": {
+      "endpoint": "getall_LandingGear",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "getallLandingGearResponse": {
+      "items": [
+        {
+          "id": "number",
+          "subSystemID": "string",
+          "SystemDefinition": "string",
+          "title": "string"
+        }
+      ]
+    },
+    "getallLandingGearResponse2": {
+      "items": [
+        {
+          "id": "number",
+          "subSystemID": "string",
+          "SystemDefinition": "string",
+          "title": "string"
+        }
+      ]
+    },
+    "getallLandingGearResponse3": {
+      "items": [
+        {
+          "id": "number",
+          "subSystemID": "string",
+          "SystemDefinition": "string",
+          "title": "string"
+        }
+      ]
+    }
+  },
+  "eventListeners": {},
+  "imports": {
+    "components": {
+    }
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

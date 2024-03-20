@@ -1,0 +1,18 @@
+<div class="oj-flex">
+  <h1 class="oj-flex-item oj-sm-12 oj-md-12">Edit ColonialViper</h1>
+</div>
+<div class="oj-flex">
+  <oj-validation-group id="validation-group" class="oj-flex-item oj-sm-12 oj-md-12">
+    <oj-form-layout class="oj-formlayout-full-width" label-edge="start">
+      <oj-input-text value="{{ $variables.colonialViper.title }}" label-hint="title"></oj-input-text>
+      <oj-input-text value="{{ $variables.colonialViper.definition1 }}" label-hint="Definition"></oj-input-text>
+    </oj-form-layout>
+  </oj-validation-group>
+</div>
+<div class="oj-flex">
+  <oj-toolbar chroming="solid" class="oj-flex-item oj-sm-12 oj-md-12">
+    <oj-button on-oj-action="[[$listeners.backButtonClicked]]">Cancel</oj-button>
+    <oj-button on-oj-action="[[$listeners.saveButtonClicked]]"
+      disabled="[[ $variables.saveColonialViperChainInProgress ]]">Save</oj-button>
+  </oj-toolbar>
+</div>

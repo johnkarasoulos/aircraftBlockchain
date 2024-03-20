@@ -1,0 +1,21 @@
+{
+  "root": "navigateToDetail",
+  "variables": {
+    "subSystemComponentId": {
+      "type": "string",
+      "input": "fromCaller",
+      "required": true
+    }
+  },
+  "actions": {
+    "navigateToDetail": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "main-sub-system-component-detail",
+        "params": {
+          "subSystemComponentId": "[[ $variables.subSystemComponentId ]]"
+        }
+      }
+    }
+  }
+}

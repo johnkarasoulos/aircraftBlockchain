@@ -1,0 +1,35 @@
+{
+  "description": "",
+  "root": "navigateToAeralisFoldout",
+  "actions": {
+    "navigateToAeralisFoldout": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "aeralis-foldout",
+        "params": {
+          "rowIndex": "{{ $variables.index }}",
+          "goToParent": "{{ yes }}",
+          "bidirectionalNavigation": "yes",
+          "parentPage": "{{ $variables.current }}"
+        }
+      }
+    }
+  },
+  "variables": {
+    "key": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    },
+    "index": {
+      "required": true,
+      "type": "number",
+      "input": "fromCaller"
+    },
+    "current": {
+      "required": true,
+      "type": "any",
+      "input": "fromCaller"
+    }
+  }
+}

@@ -1,0 +1,115 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "oj_table_1667474073_1SelectedId": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "operatingDataListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_OperatingData",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallOperatingDataResponse"
+      }
+    }
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getallOperatingDataResponse": {
+      "endpoint": "getall_OperatingData",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "action": {
+      "id": "string",
+      "label": "string",
+      "display": "string",
+      "icon": "string"
+    },
+    "getallOperatingDataResponse": {
+      "items": [
+        {
+          "id": "number",
+          "operatingDataDescription": "string",
+          "operatingDataName": "string"
+        }
+      ]
+    }
+  },
+  "eventListeners": {
+    "createOperatingDataButtonClicked": {
+      "chains": [
+        {
+          "chainId": "navigateToCreateOperatingDataChain"
+        }
+      ]
+    },
+    "deleteOperatingDataButtonClicked": {
+      "chains": [
+        {
+          "chainId": "deleteOperatingDataChain",
+          "parameters": {
+            "operatingDataId": "[[ $variables.oj_table_1667474073_1SelectedId ]]"
+          }
+        }
+      ]
+    },
+    "editOperatingDataButtonClicked": {
+      "chains": [
+        {
+          "chainId": "navigateToEditOperatingDataChain",
+          "parameters": {
+            "operatingDataId": "[[ $variables.oj_table_1667474073_1SelectedId ]]"
+          }
+        }
+      ]
+    },
+    "oj_table_1667474073_1SelectionChanged": {
+      "chains": [
+        {
+          "chainId": "oj_table_1667474073_1ChangeSelectionChain",
+          "parameters": {
+            "operatingDataId": "[[ $event.detail.value.key || '' ]]"
+          }
+        }
+      ]
+    },
+    "operatingDataDetailButtonClicked": {
+      "chains": [
+        {
+          "chainId": "navigateToOperatingDataDetailChain",
+          "parameters": {
+            "operatingDataId": "[[ $variables.oj_table_1667474073_1SelectedId ]]"
+          }
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-sp-general-overview-page": {
+        "path": "oj-sp/general-overview-page/loader"
+      },
+      "oj-table": {
+        "path": "ojs/ojtable"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      }
+    }
+  },
+  "@dt": {
+    "iconClass": "vbdt-dynamic-icon-7-icoOverviewPageTemplateSvg"
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

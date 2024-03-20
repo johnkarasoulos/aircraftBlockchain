@@ -1,0 +1,280 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "animate": {
+      "type": "string",
+      "defaultValue": "auto"
+    },
+    "bidirectionalNavigation": {
+      "type": "boolean",
+      "defaultValue": true,
+      "input": "fromCaller"
+    },
+    "displayMode": {
+      "type": "string"
+    },
+    "getSingleToken": {
+      "type": "retrieveToken"
+    },
+    "goToParent": {
+      "type": "boolean",
+      "defaultValue": true,
+      "input": "fromCaller"
+    },
+    "inputToken": {
+      "type": "string",
+      "input": "fromUrl"
+    },
+    "itemSubTitle": {
+      "type": "string"
+    },
+    "itemTitle": {
+      "type": "string"
+    },
+    "nextStep": {
+      "type": "any",
+      "defaultValue": {}
+    },
+    "pageTitle": {
+      "type": "string",
+      "defaultValue": "Horizontal Overview Title"
+    },
+    "panelOneTitle": {
+      "type": "string",
+      "defaultValue": "Panel one title"
+    },
+    "panelTwoTitle": {
+      "type": "string",
+      "defaultValue": "Panel two title"
+    },
+    "parentPage": {
+      "type": "string",
+      "input": "fromCaller"
+    },
+    "previousStep": {
+      "type": "any"
+    },
+    "requestToken": {
+      "type": "setRequestToken"
+    },
+    "rowIndex": {
+      "type": "number",
+      "input": "fromUrl",
+      "description": "Zero-based index referring to the current row",
+      "onValueChanged": {
+        "chains": [
+{
+            "chainId": "fetchChain",
+            "parameters": {
+              "limit": 3,
+              "offset": "{{ $page.variables.rowIndex > 0 ? ($page.variables.rowIndex - 1) : 0 }}"
+            }
+          },
+          {
+            "parameters": {
+              "event": "{{ $event }}"
+            },
+            "chainId": "PageVbEnterChain"
+          }
+        ]
+      }
+    },
+    "selectedPanel": {
+      "type": "number",
+      "input": "fromUrl"
+    }
+
+  },
+  "metadata": {
+    "dynamicContainerMetadata": {
+      "type": "vb/ContainerMetadataProviderDescriptor"
+    }
+  },
+  "types": {
+    "@decorators.retrieveToken": {
+      "endpoint": "postRestproxy",
+      "service": "GetSingleToken",
+      "path": "response"
+    },
+    "@decorators.setRequestToken": {
+      "endpoint": "postRestproxy",
+      "service": "GetSingleToken",
+      "path": "request"
+    },
+    "retrieveToken": {
+      "assemblyDate": "string",
+      "assetType": "string",
+      "behaviors": "string[]",
+      "createdBy": "string",
+      "creationDate": "string",
+      "isBurned": "boolean",
+      "mintable": {
+        "max_mint_quantity": "number"
+      },
+      "newPart": "boolean",
+      "owner": "string",
+      "quantity": "number",
+      "replacementDate": "string",
+      "roles": {
+        "minter_role_name": "string"
+      },
+      "tokenDesc": "string",
+      "tokenId": "string",
+      "tokenMetadata": {
+        "description": "string",
+        "id": "string",
+        "maintenanceDateAction": "string",
+        "name": "string",
+        "serialNumber": "string",
+        "subSystems": "string"
+      },
+      "tokenName": "string",
+      "tokenStandard": "string",
+      "tokenType": "string",
+      "tokenUnit": "string",
+      "tokenUri": "string"
+    },
+    "setRequestToken": {
+      "args": "string[]",
+      "chaincode": "string",
+      "sync": "boolean",
+      "timeout": "number"
+    }
+  },
+  "eventListeners": {
+    "onSpGoToParent": {
+      "chains": [
+        {
+          "chainId": "goToParentChain",
+          "parameters": {
+            "parentPage": "{{ $page.variables.parentPage }}"
+          }
+        }
+      ]
+    },
+    "onSpNext": {
+      "chains": [
+        {
+          "chainId": "next",
+          "parameters": {
+            "event": "{{ $event }}"
+          }
+        }
+      ]
+    },
+    "onSpPrevious": {
+      "chains": [
+        {
+          "chainId": "previous",
+          "parameters": {
+            "event": "{{ $event }}"
+          }
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+{
+          "chainId": "firePageLayoutEventChain"
+        },
+        {
+          "chainId": "PageVbEnterChain"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-dyn-container": {
+        "path": "oj-dyn/container/loader"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-date": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-input-number": {
+        "path": "ojs/ojinputnumber"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-sp-foldout-layout": {
+        "path": "oj-sp/foldout-layout/loader"
+      },
+      "oj-sp-foldout-panel-summarizing": {
+        "path": "oj-sp/foldout-panel-summarizing/loader"
+      },
+      "oj-sp-horizontal-overview": {
+        "path": "oj-sp/horizontal-overview/loader"
+      },
+      "oj-sp-input-rich-text-2": {
+        "path": "oj-sp/input-rich-text-2/loader"
+      },
+      "oj-sp-vertical-overview": {
+        "path": "oj-sp/vertical-overview/loader"
+      },
+      "oj-switch": {
+        "path": "ojs/ojswitch"
+      }
+    }
+  },
+  "@dt": {
+    "iconClass": "vbdt-dynamic-icon-66-icoFoldoutLayout48Svg"
+  },
+  "layouts": {
+    "containerLayout1": {
+      "label": "Container Rule Set 1",
+      "layoutType": "container",
+      "layouts": {
+        "case1": {
+          "label": "Case 1",
+          "layoutType": "container",
+          "layout": {
+            "sectionTemplateMap": {
+              "template1": "template1",
+              "componentDetails": "componentDetails"
+            },
+            "displayProperties": [
+              "template1",
+              "componentDetails"
+            ]
+          }
+        }
+      },
+      "rules": [
+        "containerLayout1-rule1"
+      ]
+    },
+    "containerLayout1-rule1": {
+      "expression": "case1"
+    }
+  },
+  "templates": {
+    "componentDetails": {
+      "title": "Component Details",
+      "description": "",
+      "extensible": "byReference",
+      "@dt": {
+        "type": "section",
+        "layout": "containerLayout1"
+      }
+    },
+    "template1": {
+      "title": "Default Section",
+      "extensible": "byReference",
+      "@dt": {
+        "type": "section",
+        "layout": "containerLayout1"
+      }
+    }
+
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

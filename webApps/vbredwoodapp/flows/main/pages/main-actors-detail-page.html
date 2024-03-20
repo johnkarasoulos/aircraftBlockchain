@@ -1,0 +1,17 @@
+<div class="oj-flex">
+  <h1 class="oj-flex-item oj-sm-12 oj-md-12">Actors Detail</h1>
+</div>
+<div class="oj-flex">
+  <div class="oj-flex-item oj-sm-12 oj-md-12">
+    <oj-form-layout label-edge="start">
+      <oj-input-text value="[[ $variables.actors.actorName ]]" readonly="true" label-hint="Actor Name"></oj-input-text>
+      <oj-input-text value="[[ $variables.actors.actorDescription ]]" readonly="true" label-hint="Actor Description"></oj-input-text>
+      <oj-input-date-time value="[[ $variables.actors.lastUpdateDate ]]" readonly="true" label-hint="Last Updated"></oj-input-date-time>
+    </oj-form-layout>
+  </div>
+</div>
+<div class="oj-flex">
+  <oj-toolbar chroming="solid" class="oj-flex-item oj-sm-12 oj-md-12">
+    <oj-button on-oj-action="[[$listeners.backButtonClicked]]">Back</oj-button>
+  </oj-toolbar>
+</div>

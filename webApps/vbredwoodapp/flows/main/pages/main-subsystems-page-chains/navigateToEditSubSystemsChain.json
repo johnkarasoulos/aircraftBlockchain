@@ -1,0 +1,21 @@
+{
+  "root": "navigateToEdit",
+  "variables": {
+    "subSystemsId": {
+      "type": "string",
+      "input": "fromCaller",
+      "required": true
+    }
+  },
+  "actions": {
+    "navigateToEdit": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "main-edit-sub-systems",
+        "params": {
+          "subSystemsId": "[[ $variables.subSystemsId ]]"
+        }
+      }
+    }
+  }
+}

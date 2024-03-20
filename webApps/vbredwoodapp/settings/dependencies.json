@@ -1,0 +1,45 @@
+{
+  "component-dependencies": {
+    "oj-sp": {
+      "version": "2310.0.1",
+      "components": {
+        "simple-create-edit": "2310.0.1",
+        "message-unsaved-changes": "2310.0.1",
+        "general-overview-page": "2310.0.1",
+        "welcome-page": "2310.0.1",
+        "collection-container": "2310.0.1",
+        "list-item-template": "2310.0.1",
+        "item-overview-page": "2310.0.1",
+        "item-overview": "2310.0.1",
+        "foldout-layout": "2310.0.1",
+        "horizontal-overview": "2310.0.1",
+        "foldout-panel-summarizing": "2310.0.1",
+        "smart-search-page": "2310.0.1",
+        "object-card": "2310.0.1",
+        "vertical-overview": "2310.0.1",
+        "empty-state": "2310.0.1",
+        "in-app-navigation": "2310.0.1",
+        "create-edit-drawer-template": "2310.0.1",
+        "dashboard-landing-page": "2310.0.1",
+        "scoreboard": "2310.0.1",
+        "dashboard-grid": "2310.0.1",
+        "dashboard-panel": "2310.0.1",
+        "analytics-canvas": "2310.0.1",
+        "input-rich-text-2": "2310.0.1",
+        "foldout-panel-overflow": "2310.0.1"
+      }
+    },
+    "oj-dynamic": {
+      "version": "14.1.2",
+      "components": {
+        "form": "14.1.2"
+      }
+    },
+    "oj-dyn": {
+      "version": "14.1.2",
+      "components": {
+        "form": "14.1.2"
+      }
+    }
+  }
+ }

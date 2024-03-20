@@ -1,0 +1,338 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "allTokens": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getTokens",
+        "keyAttributes": "key"
+      }
+    },
+    "backgroundColor": {
+      "type": "string",
+      "defaultValue": "dark-ocean"
+    },
+    "badgeText": {
+      "type": "string",
+      "defaultValue": "System"
+    },
+    "illustrationBackground": {
+      "type": "string",
+      "defaultValue": "https://objectstorage.eu-frankfurt-1.oraclecloud.com/p/1h-uXImnuXB-H-yYs9k7UAMHL-1EDJ4iWa2R12rt0ogQ_KNb52vI9o7eXOspHJ_H/n/frsxwtjslf35/b/vbcsBucket/o/aeralisbackground.png"
+    },
+    "illustrationForeground": {
+      "type": "string",
+      "defaultValue": "https://objectstorage.eu-frankfurt-1.oraclecloud.com/p/1h-uXImnuXB-H-yYs9k7UAMHL-1EDJ4iWa2R12rt0ogQ_KNb52vI9o7eXOspHJ_H/n/frsxwtjslf35/b/vbcsBucket/o/aeralisbackground.png"
+    },
+    "imageStretch": {
+      "type": "string",
+      "defaultValue": "none"
+    },
+    "landingGearListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_LandingGear",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallLandingGearResponse2"
+      }
+    },
+    "mobileImage": {
+      "type": "string",
+      "defaultValue": "on"
+    },
+    "selectSubSystemStr": {
+      "type": "string"
+    },
+    "selectTokenID": {
+      "type": "string"
+    },
+    "token": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "getToken",
+        "keyAttributes": "tokenId"
+      }
+    },
+    "tokenIDSelected": {
+      "type": "string"
+    }
+
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getallColonialViperResponse": {
+      "endpoint": "getall_ColonialViper",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.getallLandingGearResponse": {
+      "endpoint": "getall_LandingGear",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.getallLandingGearResponse2": {
+      "endpoint": "getall_LandingGear",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.getToken": {
+      "endpoint": "postRestproxy",
+      "service": "GetSingleToken",
+      "path": "response"
+    },
+    "@decorators.getTokens": {
+      "endpoint": "getAllTokens",
+      "service": "Retrieve-All-Tokens",
+      "path": "response"
+    },
+    "@decorators.setRequestAllTokens": {
+      "endpoint": "getAllTokens",
+      "service": "Retrieve-All-Tokens",
+      "path": "request"
+    },
+    "@decorators.setRequestSingleToken": {
+      "endpoint": "postRestproxy",
+      "service": "GetSingleToken",
+      "path": "request"
+    },
+    "getallColonialViperResponse": {
+      "items": [
+        {
+          "definition1": "string",
+          "id": "number",
+          "title": "string"
+        }
+      ]
+    },
+    "getallLandingGearResponse": {
+      "items": [
+        {
+          "figther": "number",
+          "id": "number",
+          "subSystemID": "string",
+          "SystemDefinition": "string",
+          "systemImage": "string",
+          "title": "string"
+        }
+      ]
+    },
+    "getallLandingGearResponse2": {
+      "items": [
+        {
+          "figther": "number",
+          "id": "number",
+          "subSystemID": "string",
+          "SystemDefinition": "string",
+          "systemImage": "string",
+          "title": "string"
+        }
+      ]
+    },
+    "getToken": {
+      "assemblyDate": "string",
+      "assetType": "string",
+      "behaviors": "string[]",
+      "createdBy": "string",
+      "creationDate": "string",
+      "isBurned": "boolean",
+      "mintable": {
+        "max_mint_quantity": "number"
+      },
+      "newPart": "boolean",
+      "owner": "string",
+      "quantity": "number",
+      "replacementDate": "string",
+      "roles": {
+        "minter_role_name": "string"
+      },
+      "tokenDesc": "string",
+      "tokenId": "string",
+      "tokenMetadata": {
+        "description": "string",
+        "id": "string",
+        "maintenanceDateAction": "string",
+        "name": "string",
+        "serialNumber": "string",
+        "subSystems": "string"
+      },
+      "tokenName": "string",
+      "tokenStandard": "string",
+      "tokenType": "string",
+      "tokenUnit": "string",
+      "tokenUri": "string"
+    },
+    "getTokens": {
+      "key": "string",
+      "valueJson": {
+        "assemblyDate": "string",
+        "assetType": "string",
+        "behaviors": "string[]",
+        "createdBy": "string",
+        "creationDate": "string",
+        "isBurned": "boolean",
+        "landingGearCollection": "string[]",
+        "mintable": {
+          "max_mint_quantity": "number"
+        },
+        "newPart": "boolean",
+        "owner": "string",
+        "quantity": "number",
+        "replacementDate": "string",
+        "roles": {
+          "minter_role_name": "string"
+        },
+        "subSystemComponentCollection": "string[]",
+        "subSystemsCollection": "string[]",
+        "tokenDesc": "string",
+        "tokenId": "string",
+        "tokenMetadata": {
+          "assetType": "string",
+          "definition1": "string",
+          "description": "string",
+          "figther": "string",
+          "id": "string",
+          "landingGear": "string",
+          "maintenanceDateAction": "string",
+          "name": "string",
+          "parent_nft": "string",
+          "serialNumber": "string",
+          "subsystemCode": "string",
+          "subsystemdefinition": "string",
+          "subSystems": "string",
+          "subsystemtitle": "string",
+          "systemDefinition": "string",
+          "title": "string"
+        },
+        "tokenName": "string",
+        "tokenStandard": "string",
+        "tokenType": "string",
+        "tokenUnit": "string",
+        "tokenUri": "string"
+      }
+    },
+    "setRequestAllTokens": {
+      "args": "string[]",
+      "chaincode": "string",
+      "sync": "boolean",
+      "timeout": "number"
+    },
+    "setRequestSingleToken": {
+      "args": "string[]",
+      "chaincode": "string",
+      "sync": "boolean",
+      "timeout": "number"
+    }
+  },
+  "eventListeners": {
+    "collectionContainerFunctionalPrimaryActions": {
+      "chains": [
+        {
+          "chain": "CollectionContainerFunctionalPrimaryActionsChangeChain",
+          "parameters": {
+            "functionalPrimaryActions": "{{ $event.detail.value === 1 }}"
+          }
+        },
+        {
+          "chain": "CollectionContainerFunctionalPrimaryActionsChangeChain1",
+          "parameters": {
+            "functionalPrimaryActions": "{{ $event.detail.value === 2}}"
+          }
+        }
+      ],
+      "@dt": {
+        "showInDiagram": "on"
+      }
+    },
+    "collectionContainerSpPrimaryAction": {
+      "chains": [
+        {
+          "chain": "spPrimaryActionChainGo2CreateAirplaine"
+        }
+      ]
+    },
+    "inputTextValue": {
+      "chains": [
+        {
+          "chain": "InputTextValueChangeChain",
+          "parameters": {
+            "value": "[[ $event.detail.value ]]",
+            "current": "[[ $application.currentPage ]]"
+          }
+        }
+      ]
+    },
+    "listItemTemplateDblclick": {
+      "chains": [
+        {
+          "chainId": "ListItemTemplateSpPrimaryActionChain",
+          "parameters": {
+            "current": "{{ $current }}",
+            "index": "{{ $current.index }}",
+            "key": "[[ $current.data.valueJson.tokenId ]]"
+          }
+        }
+      ]
+    },
+    "listItemTemplateSpPrimaryAction": {
+      "chains": [
+        {
+          "chainId": "ListItemTemplateSpPrimaryActionChain",
+          "parameters": {
+            "key": "[[ $current.data.valueJson.tokenId ]]",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "subsystemImageIdClick": {
+      "chains": [
+        {
+          "chainId": "ImageClickChain",
+          "parameters": {
+            "key": "{{ $current.key }}",
+            "index": "{{ $current.index }}",
+            "current": "{{ $current }}"
+          }
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+        {
+          "chainId": "PageVbEnterChain"
+        }
+      ]
+    }
+
+  },
+  "imports": {
+    "components": {
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-list-view": {
+        "path": "ojs/ojlistview"
+      },
+      "oj-sp-collection-container": {
+        "path": "oj-sp/collection-container/loader"
+      },
+      "oj-sp-list-item-template": {
+        "path": "oj-sp/list-item-template/loader"
+      },
+      "oj-sp-welcome-page": {
+        "path": "oj-sp/welcome-page/loader"
+      }
+    }
+  },
+  "@dt": {
+    "iconClass": "vbdt-dynamic-icon-73-icoWelcomePageTemplate48Svg"
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

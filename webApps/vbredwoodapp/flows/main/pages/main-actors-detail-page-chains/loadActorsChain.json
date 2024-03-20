@@ -1,0 +1,36 @@
+{
+  "root": "loadActors",
+  "actions": {
+    "loadActors": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "businessObjects/get_Actors",
+        "uriParams": {
+          "Actors_Id": "[[ $page.variables.actorsId ]]"
+        },
+        "responseType": "page:getActorsResponse"
+      },
+      "outcomes": {
+        "success": "assignPayload",
+        "failure": "fireErrorNotification"
+      }
+    },
+    "assignPayload": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.actors": {
+          "source": "[[ $chain.results.loadActors.body ]]"
+        }
+      }
+    },
+    "fireErrorNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "summary": "Could not load data",
+        "message": "[[ 'Could not load data: status ' + $chain.results.loadActors.status ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    }
+  }
+}

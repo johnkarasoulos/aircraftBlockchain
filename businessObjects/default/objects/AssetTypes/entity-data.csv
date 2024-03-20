@@ -1,0 +1,80 @@
+id,creationDate,lastUpdateDate,createdBy,lastUpdatedBy,assetType
+1,2023-11-23T09:27:03,2023-11-23T09:27:03.015,john.karasoulos@oracle.com,john.karasoulos@oracle.com,airplane
+2,2023-11-23T09:27:40,2023-11-23T09:27:40.008,john.karasoulos@oracle.com,john.karasoulos@oracle.com,"Standard practices, Airframe systems"
+3,2023-11-23T09:27:53,2023-11-23T09:27:53.005,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Environmental control
+4,2023-11-23T09:28:05,2023-11-23T09:28:05.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Auto flight
+5,2023-11-23T09:28:15,2023-11-23T09:28:15.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Communications
+6,2023-11-23T09:28:25,2023-11-23T09:28:25.007,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Electrical power
+7,2023-11-23T09:28:33,2023-11-23T09:28:33.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Equipment/furnishings
+8,2023-11-23T09:28:57,2023-11-23T09:28:57.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Fire protection
+9,2023-11-23T09:29:04,2023-11-23T09:29:04.009,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Flight controls
+10,2023-11-23T09:29:54,2023-11-23T09:29:54.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Fuel
+11,2023-11-23T09:30:03,2023-11-23T09:30:03.012,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Hydraulic power
+12,2023-11-23T09:30:14,2023-11-23T09:30:14.005,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Ice and rain protection
+13,2023-11-23T09:30:23,2023-11-23T09:30:23.007,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Indicating/recording systems
+14,2023-11-23T09:30:31,2023-11-23T09:30:31.031,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Landing gear
+15,2023-11-23T09:30:40,2023-11-23T09:30:40.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Lights
+16,2023-11-23T09:30:47,2023-11-23T09:30:47.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Navigation
+17,2023-11-23T09:30:55,2023-11-23T09:30:55.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Oxygen
+18,2023-11-23T09:31:02,2023-11-23T09:31:02.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Pneumatic
+19,2023-11-23T09:31:09,2023-11-23T09:31:09.007,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Vacuum
+20,2023-11-23T09:31:17,2023-11-23T09:31:17.012,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Water/waste
+21,2023-11-23T09:31:23,2023-11-23T09:31:23.008,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Attack system management
+22,2023-11-23T09:31:30,2023-11-23T09:31:30.011,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Operational attack functions
+23,2023-11-23T09:31:36,2023-11-23T09:31:36.014,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Water ballast
+24,2023-11-23T09:31:43,2023-11-23T09:31:43.005,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Cross-technical attack functions
+25,2023-11-23T09:31:51,2023-11-23T09:31:51.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Integrated Modular Avionics
+26,2023-11-23T09:31:58,2023-11-23T09:31:58.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Tactical communications
+27,2023-11-23T09:32:05,2023-11-23T09:32:05.007,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Cabin System
+28,2023-11-23T09:32:12,2023-11-23T09:32:12.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Central maintenance system (CMS)
+29,2023-11-23T09:32:21,2023-11-23T09:32:21.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Systems integration and display
+30,2023-11-23T09:32:27,2023-11-23T09:32:27.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Information system
+31,2023-11-23T09:32:35,2023-11-23T09:32:35.008,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Liquid nitrogen
+32,2023-11-23T09:32:42,2023-11-23T09:32:42.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,In-flight refueling tanker
+33,2023-11-23T09:32:49,2023-11-23T09:32:49.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Airborne auxiliary power
+34,2023-11-23T09:32:57,2023-11-23T09:32:57.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Cargo and accessory compartment
+35,2023-11-23T09:33:05,2023-11-23T09:33:05.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,"Standard practices, Structures"
+36,2023-11-23T09:33:12,2023-11-23T09:33:12.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Doors
+37,2023-11-23T09:33:18,2023-11-23T09:33:18.021,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Fuselage
+39,2023-11-23T09:37:29,2023-11-23T09:37:29.007,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Nacelles/pylons
+40,2023-11-23T09:37:38,2023-11-23T09:37:38.01,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Stabilizers
+41,2023-11-23T09:37:44,2023-11-23T09:37:44.019,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Windows and canopies
+42,2023-11-23T09:37:53,2023-11-23T09:37:53.007,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Wings
+43,2023-11-23T09:40:43,2023-11-23T09:40:43.005,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Not available for projects
+44,2023-11-23T09:40:51,2023-11-23T09:40:51.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,"Standard practices, Propeller/rotor"
+45,2023-11-23T09:40:59,2023-11-23T09:40:59.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Propellers/propulsors
+46,2023-11-23T09:41:08,2023-11-23T09:41:08.007,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Main rotors
+47,2023-11-23T09:41:15,2023-11-23T09:41:15.005,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Main rotor drives
+48,2023-11-23T09:41:21,2023-11-23T09:41:21.005,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Tail rotor
+49,2023-11-23T09:41:29,2023-11-23T09:41:29.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Tail rotor drive
+50,2023-11-23T09:41:36,2023-11-23T09:41:36.005,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Folding blades/pylon
+51,2023-11-23T09:41:43,2023-11-23T09:41:43.008,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Rotors flight control
+53,2023-11-23T09:42:15,2023-11-23T09:42:15.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,"Standard practices, Engine"
+54,2023-11-23T09:42:22,2023-11-23T09:42:22.007,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Power plant
+55,2023-11-23T09:42:28,2023-11-23T09:42:28.01,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Engine
+56,2023-11-23T09:42:35,2023-11-23T09:42:35.008,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Engine turbine/turboprop Ducted fan/inducted fan
+57,2023-11-23T09:42:42,2023-11-23T09:42:42.009,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Engine reciprocating
+58,2023-11-23T09:42:49,2023-11-23T09:42:49.007,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Engine fuel and control
+59,2023-11-23T09:42:55,2023-11-23T09:42:55.007,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Ignition
+60,2023-11-23T09:43:03,2023-11-23T09:43:03.007,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Air
+61,2023-11-23T09:43:10,2023-11-23T09:43:10.01,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Engine controls
+62,2023-11-23T09:43:20,2023-11-23T09:43:20.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Engine indicating
+63,2023-11-23T09:43:26,2023-11-23T09:43:26.005,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Exhaust
+64,2023-11-23T09:43:34,2023-11-23T09:43:34.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Oil
+65,2023-11-23T09:43:39,2023-11-23T09:43:39.011,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Starting
+66,2023-11-23T09:43:45,2023-11-23T09:43:45.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Turbines
+67,2023-11-23T09:43:52,2023-11-23T09:43:52.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Water injection
+68,2023-11-23T09:44:06,2023-11-23T09:44:06.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Accessory gearboxes
+69,2023-11-23T09:44:14,2023-11-23T09:44:14.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Propulsion augmentation
+70,2023-11-23T09:44:20,2023-11-23T09:44:20.011,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Fuel cell system
+71,2023-11-23T09:44:28,2023-11-23T09:44:28.012,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Lift system
+72,2023-11-23T09:44:34,2023-11-23T09:44:34.016,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Recovery
+73,2023-11-23T09:44:40,2023-11-23T09:44:40.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Air vehicle wiring
+74,2023-11-23T09:44:46,2023-11-23T09:44:46.005,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Radar
+75,2023-11-23T09:44:58,2023-11-23T09:44:58.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Surveillance
+76,2023-11-23T09:45:07,2023-11-23T09:45:07.005,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Weapons system
+77,2023-11-23T09:45:14,2023-11-23T09:45:14.006,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Crew escape and safety
+78,2023-11-23T09:45:21,2023-11-23T09:45:21.005,john.karasoulos@oracle.com,john.karasoulos@oracle.com,"Missiles, drones and telemetry"
+79,2023-11-23T09:45:28,2023-11-23T09:45:28.005,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Image recording
+80,2023-11-23T09:45:36,2023-11-23T09:45:36.005,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Meteorological and atmospheric research
+81,2023-11-23T09:45:46,2023-11-23T09:45:46.008,john.karasoulos@oracle.com,john.karasoulos@oracle.com,Electronic warfare

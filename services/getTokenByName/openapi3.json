@@ -1,0 +1,165 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "CreateAirplane",
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "vb-catalog://backends/CreateAirplane",
+            "description": "CreateAirplane"
+        }
+    ],
+    "paths": {
+        "/restproxy/api/v2/channels/goldenthread/chaincode-queries": {
+            "post": {
+                "operationId": "getTokenByNameVaalue",
+                "responses": {
+                    "default": {
+                        "description": "Response for default",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/PostRestproxyApiV2ChannelsGoldenthreadChaincode-queriesResponse"
+                                },
+                                "examples": {
+                                    "vb": {
+                                        "summary": "Example stored by VB User",
+                                        "externalValue": "./examples/getTokenByNameVaalue/response_default_application_json_vb.json"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "x-vb": {
+                    "actionHint": "getOne"
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "PostRestproxyApiV2ChannelsGoldenthreadChaincode-queriesResponse": {
+                "type": "object",
+                "properties": {
+                    "returnCode": {
+                        "type": "string"
+                    },
+                    "error": {
+                        "type": "string"
+                    },
+                    "result": {
+                        "type": "object",
+                        "properties": {
+                            "payload": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "key": {
+                                            "oneOf": [
+                                                {
+                                                    "type": "string"
+                                                },
+                                                {
+                                                    "type": "integer"
+                                                }
+                                            ]
+                                        },
+                                        "valueJson": {
+                                            "type": "object",
+                                            "properties": {
+                                                "tokenMetadata": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "definition1": {
+                                                            "type": "string"
+                                                        },
+                                                        "title": {
+                                                            "type": "string"
+                                                        },
+                                                        "assetType": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "assetType": {
+                                                    "type": "string"
+                                                },
+                                                "tokenId": {
+                                                    "type": "string"
+                                                },
+                                                "tokenName": {
+                                                    "type": "string"
+                                                },
+                                                "tokenDesc": {
+                                                    "type": "string"
+                                                },
+                                                "tokenStandard": {
+                                                    "type": "string"
+                                                },
+                                                "tokenType": {
+                                                    "type": "string"
+                                                },
+                                                "tokenUnit": {
+                                                    "type": "string"
+                                                },
+                                                "behaviors": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "roles": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "minter_role_name": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                "mintable": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "max_mint_quantity": {
+                                                            "type": "integer"
+                                                        }
+                                                    }
+                                                },
+                                                "quantity": {
+                                                    "type": "integer"
+                                                },
+                                                "createdBy": {
+                                                    "type": "string"
+                                                },
+                                                "creationDate": {
+                                                    "type": "string"
+                                                },
+                                                "owner": {
+                                                    "type": "string"
+                                                },
+                                                "isBurned": {
+                                                    "type": "boolean"
+                                                },
+                                                "tokenUri": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            },
+                            "encode": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

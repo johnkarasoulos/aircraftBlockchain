@@ -1,0 +1,327 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "assetTypesListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_AssetTypes",
+        "keyAttributes": "assetType",
+        "itemsPath": "items",
+        "responseType": "getallAssetTypesResponse",
+        "transformsContext": {
+          "vb-textFilterAttributes": [
+            "assetType"
+          ]
+        }
+      }
+    },
+    "assetTypesListTokenSDP": {
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_TokenAssetType",
+        "responseType": "getall_TokenAssetType",
+        "itemsPath": "items",
+        "keyAttributes": "assetType"
+      },
+      "type": "vb/ServiceDataProvider"
+    },
+    "avatar": {
+      "type": {
+        "initials": "string",
+        "src": "string"
+      },
+      "defaultValue": {
+        "initials": "",
+        "src": ""
+      }
+    },
+    "colonialViper": {
+      "type": "createColonialViperRequest"
+    },
+    "contextualInfoLabelVisible": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "contextualInfoSticky": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "createAirCraft": {
+      "type": "vb/ArrayDataProvider2",
+      "defaultValue": {
+        "itemType": "createAirplane"
+      }
+    },
+    "createColonialViperChainInProgress": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "createPostTransactionsChainInProgress": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "createTokenAirplane": {
+      "type": "createTokenAirplane"
+    },
+    "dirtyDataFlag": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "displayMode": {
+      "type": "string"
+    },
+    "formState": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "goToParentOption": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "isSaved": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "metadata_assetType": {
+      "type": "string"
+    },
+    "metadata_definition": {
+      "type": "string"
+    },
+    "metadata_title": {
+      "type": "string"
+    },
+    "objectId": {
+      "type": "string",
+      "defaultValue": ""
+    },
+    "postTransactions": {
+      "type": "object"
+    },
+    "primaryAlwaysOn": {
+      "type": "boolean",
+      "defaultValue": true
+    },
+    "saveOption": {
+      "type": "string",
+      "defaultValue": "off"
+    },
+    "token_id": {
+      "type": "string"
+    },
+    "tokenDesc": {
+      "type": "string"
+    },
+    "tokenID": {
+      "type": "string"
+    },
+    "tokenMetadata": {
+      "type": "string"
+    },
+    "tokenURI": {
+      "type": "string"
+    }
+
+  },
+  "metadata": {
+    "createAirplanePostTransactionsMetadata": {
+      "type": "vb/DynamicLayoutMetadataProviderDescriptor",
+      "defaultValue": {
+        "endpoint": "createAirplane/postTransactions"
+      }
+    }
+  },
+  "types": {
+    "@decorators.createAirplane": {
+      "endpoint": "postTransactions",
+      "service": "createAirplane",
+      "path": "request"
+    },
+    "@decorators.createColonialViperRequest": {
+      "endpoint": "create_ColonialViper",
+      "service": "businessObjects",
+      "path": "request"
+    },
+    "@decorators.getall_TokenAssetType": {
+      "endpoint": "getall_TokenAssetType",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.getallAssetTypesResponse": {
+      "endpoint": "getall_AssetTypes",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "createAirplane": {
+      "args": "string[]",
+      "chaincode": "string",
+      "sync": "boolean",
+      "timeout": "number"
+    },
+    "createColonialViperRequest": {
+      "aircraftAssetType": "string",
+      "aircraftDefinition": "string",
+      "aircraftId": "string",
+      "aircraftTitle": "string",
+      "tokenDesc": "string",
+      "tokenId": "string",
+      "tokenURI": "string"
+    },
+    "createTokenAirplane": {
+      "tokenDesc": "string",
+      "tokenId": "string",
+      "tokenMetadata": {
+        "assetType": "string",
+        "definition1": "string",
+        "id": "string",
+        "title": "string"
+      },
+      "tokenUri": "string"
+    },
+    "getall_TokenAssetType": {
+      "items": [
+        {
+          "assetType": "string"
+        }
+      ]
+    },
+    "getallAssetTypesResponse": {
+      "items": [
+        {
+          "assetType": "string"
+        }
+      ]
+    },
+    "tokenId": "object"
+
+  },
+  "eventListeners": {
+    "confirmNoOjAction": {
+      "chains": [
+        {
+          "chainId": "dialogResponseChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}",
+            "response": "NO"
+          }
+        }
+      ]
+    },
+    "confirmYesOjAction": {
+      "chains": [
+        {
+          "chainId": "dialogResponseChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}",
+            "response": "YES"
+          }
+        }
+      ]
+    },
+    "inputTextValue": {
+      "chains": [
+        {
+          "chain": "InputTextValueChangeChain",
+          "parameters": {
+            "value": "{{ $event.detail.value }}"
+          }
+        }
+      ]
+    },
+    "ojSpCancel": {
+      "chains": [
+        {
+          "chainId": "spCancelChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}"
+          }
+        }
+      ]
+    },
+    "ojSpGoToParent": {
+      "chains": [
+        {
+          "chainId": "goToParent",
+          "parameters": {}
+        }
+      ]
+    },
+    "ojSpSave": {
+      "chains": [
+        {
+          "chainId": "spSaveChain"
+        }
+      ]
+    },
+    "ojSpSubmit": {
+      "chains": [
+        {
+          "chainId": "spSubmitChain",
+          "parameters": {
+            "detail": "{{ $event.detail }}"
+          }
+        }
+      ]
+    },
+    "saveButtonClicked": {
+      "chains": [
+        {
+          "chain": "createPostTransactionsChain"
+        }
+      ]
+    },
+    "saveButtonClicked2": {
+      "chains": [
+        {
+          "chain": "createColonialViperChain"
+        }
+      ]
+    },
+    "vbBeforeExit": {
+      "chains": [
+        {
+          "chainId": "checkBeforeExit",
+          "parameters": {}
+        }
+      ]
+    }
+
+  },
+  "imports": {
+    "components": {
+
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-select-single": {
+        "path": "ojs/ojselectsingle"
+      },
+      "oj-sp-message-unsaved-changes": {
+        "path": "oj-sp/message-unsaved-changes/loader"
+      },
+      "oj-sp-simple-create-edit": {
+        "path": "oj-sp/simple-create-edit/loader"
+      },
+      "oj-validation-group": {
+        "path": "ojs/ojvalidationgroup"
+      }
+
+    }
+  },
+  "@dt": {
+    "iconClass": "vbdt-dynamic-icon-71-icoSimpleCreateAndEdit48Svg",
+    "chains": {
+      "createAircraft": {
+        "showInDiagram": "full"
+      }
+    }
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

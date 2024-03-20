@@ -1,0 +1,146 @@
+{
+  "root": "markCreateStarted",
+  "variables": {
+    "saveFailureResult": {
+      "type": "page:businessObjectsServiceErrorResponseType"
+    },
+    "errorMessage": {
+      "type": "string"
+    }
+  },
+  "actions": {
+    "markCreateStarted": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.createSubSystemsChainInProgress": {
+          "source": true
+        }
+      },
+      "outcomes": {
+        "success": "validateSubSystems"
+      },
+      "description": "Sets the progress variable to true",
+      "label": "Mark Create in progress"
+    },
+    "validateSubSystems": {
+      "module": "vb/action/builtin/callChainAction",
+      "parameters": {
+        "id": "flow:validateFormChain",
+        "params": {
+          "validationGroupId": "validation-group"
+        }
+      },
+      "outcomes": {
+        "success": "isFormValid"
+      },
+      "label": "Validate",
+      "description": "Validates SubSystems form"
+    },
+    "isFormValid": {
+      "module": "vb/action/builtin/ifAction",
+      "parameters": {
+        "condition": "[[ $chain.results.validateSubSystems === true ]]"
+      },
+      "outcomes": {
+        "true": "createSubSystems",
+        "false": "markCreateEnded"
+      },
+      "label": "Is Form valid",
+      "description": "Tests if form passed validation"
+    },
+    "createSubSystems": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "businessObjects/create_SubSystems",
+        "body": "[[ $page.variables.subSystems ]]"
+      },
+      "outcomes": {
+        "success": "fireSuccessNotification",
+        "failure": "assignFailureResult"
+      }
+    },
+    "fireSuccessNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "summary": "SubSystems saved",
+        "message": "SubSystems record successfully created",
+        "type": "confirmation",
+        "displayMode": "transient"
+      },
+      "outcomes": {
+        "success": "navigateBack"
+      }
+    },
+    "navigateBack": {
+      "module": "vb/action/builtin/navigateBackAction",
+      "outcomes": {
+        "success": "markCreateEnded"
+      }
+    },
+    "assignFailureResult": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$variables.saveFailureResult": {
+          "source": "[[ $chain.results.createSubSystems ]]"
+        }
+      },
+      "outcomes": {
+        "success": "testFailureDetails"
+      }
+    },
+    "testFailureDetails": {
+      "module": "vb/action/builtin/ifAction",
+      "outcomes": {
+        "true": "handleDetailedErrorMessage",
+        "false": "handleDefaultErrorMessage"
+      },
+      "parameters": {
+        "condition": "[[ $variables.saveFailureResult.body['o:errorDetails'][0] ]]"
+      }
+    },
+    "handleDetailedErrorMessage": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "outcomes": {
+        "success": "fireErrorNotification"
+      },
+      "parameters": {
+        "$variables.errorMessage": {
+          "source": "[[ $variables.saveFailureResult.body['o:errorDetails'][0].detail ]]"
+        }
+      }
+    },
+    "handleDefaultErrorMessage": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "outcomes": {
+        "success": "fireErrorNotification"
+      },
+      "parameters": {
+        "$variables.errorMessage": {
+          "source": "[[ 'Could not create new SubSystems: status ' + $variables.saveFailureResult.status ]]"
+        }
+      }
+    },
+    "fireErrorNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "summary": "Save failed",
+        "message": "[[ $variables.errorMessage ]]",
+        "type": "error",
+        "displayMode": "persist"
+      },
+      "outcomes": {
+        "success": "markCreateEnded"
+      }
+    },
+    "markCreateEnded": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.createSubSystemsChainInProgress": {
+          "source": false
+        }
+      },
+      "description": "Sets the progress variable to false",
+      "label": "Mark Create done"
+    }
+  }
+}

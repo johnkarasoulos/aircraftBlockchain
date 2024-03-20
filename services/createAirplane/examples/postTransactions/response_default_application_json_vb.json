@@ -1,0 +1,9 @@
+{
+    "returnCode": "Success",
+    "error": "",
+    "result": {
+        "txid": "2529d940a087eb09e08feab92f607a9967b5f240042452c558c7593ba02e4f7a",
+        "payload": "Aeralis airplane created : '050000000000000'",
+        "encode": "UTF-8"
+    }
+}

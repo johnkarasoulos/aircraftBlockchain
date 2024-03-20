@@ -1,0 +1,21 @@
+{
+  "root": "navigateToDetail",
+  "variables": {
+    "operatingDataId": {
+      "type": "string",
+      "input": "fromCaller",
+      "required": true
+    }
+  },
+  "actions": {
+    "navigateToDetail": {
+      "module": "vb/action/builtin/navigateAction",
+      "parameters": {
+        "page": "main-operating-data-detail",
+        "params": {
+          "operatingDataId": "[[ $variables.operatingDataId ]]"
+        }
+      }
+    }
+  }
+}

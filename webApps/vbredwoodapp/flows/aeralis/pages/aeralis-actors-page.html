@@ -1,0 +1,28 @@
+<div>
+  <oj-sp-item-overview-page id="item_overview_page" display-options.go-to-parent="[[! $page.variables.inFlowBack]]"
+    display-options.in-flow-back="[[$page.variables.inFlowBack]]"
+    display-options.bidirectional-navigation="[[$page.variables.bidirectionalNavigation]]"
+    overview-expanded="[[$page.variables.overviewExpanded]]" display-mode="[[$page.variables.displayMode]]"
+    next-item="[[$page.variables.itemIndex >= 0 ? $page.variables.nextItem : undefined]]"
+    previous-item="[[$page.variables.itemIndex > 0 ? $page.variables.previousItem : undefined]]"
+    on-sp-go-to-parent="[[$listeners.ojSpGoToParent]]" on-sp-next="[[$listeners.ojSpItemOverviewPageSpNext]]"
+    on-sp-previous="[[$listeners.ojSpItemOverviewPageSpPrevious]]"
+    on-sp-overview-collapse="[[$listeners.ojSpItemOverviewSpCollapse]]">
+    <oj-sp-item-overview id="item_overview" slot="overview"
+      expanded-state="[[ $page.variables.overviewExpanded ? 'expanded' : 'auto' ]]"
+      on-sp-expand="[[$listeners.ojSpItemOverviewSpExpand]]" display-options.edit="on" display-options.favorite="on"
+      display-options.share="on" item-title="System Details">
+      <div slot="body">
+        <oj-bind-if test="[[ ($variables.itemIndex) !== undefined ]]">
+          <oj-dynamic-form id="item_overview_detail" readonly="true"
+            metadata="[[ $metadata.businessObjectsGetLandingGearMetadata.provider ]]" layout="aeralislandingGear"
+            value="{{ $variables.landingGear }}" value-loading="[[ $variables.landingGearDetailFormLoadingStatus ]]"
+            rendered-fields="{{ $variables.landingGearDetailFormRenderedFields }}" operation="view"></oj-dynamic-form>
+        </oj-bind-if>
+      </div>
+    </oj-sp-item-overview>
+    <div class="oj-panel" slot="main">
+      <div class="oj-flex"></div>
+    </div>
+  </oj-sp-item-overview-page>
+</div>

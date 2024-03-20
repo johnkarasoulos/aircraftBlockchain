@@ -1,0 +1,22 @@
+<!-- Copyright (c) 2023, Oracle and/or its affiliates -->
+
+<div id="pageContent" class="oj-web-applayout-page">
+    <div class="oj-web-applayout-content-nopad oj-web-spacing oj-web-applayout-max-width">
+  
+      <div class="oj-flex oj-web-applayout-content oj-flex-items-pad">
+        <!-- Renders flow content -->
+        <oj-vb-content id="vbRouterContent" class="oj-flex-item" config="[[vbRouterFlow]]">
+    
+        </oj-vb-content>
+    
+      </div>
+    </div>
+  </div>
+<div class="oj-flex" style="background-color:rgb( 34, 126, 158 );">
+  <footer role="contentinfo" class="oj-flex-item oj-sm-12 oj-md-12">
+      <!-- <oj-bind-if test="[[ $variables.shownav ]]"> -->
+      <!-- </oj-bind-if> -->
+      <oj-sp-in-app-navigation style="" navigation-data="[[ $variables.NavigationADP ]]"
+        on-sp-selection-action="[[$listeners.inAppNavigationSpSelectionAction]]"></oj-sp-in-app-navigation>
+  </footer>
+</div>

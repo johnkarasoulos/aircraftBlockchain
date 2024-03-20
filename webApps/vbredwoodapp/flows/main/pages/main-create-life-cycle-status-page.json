@@ -1,0 +1,104 @@
+{
+  "title": "Create LifeCycleStatus",
+  "description": "Creates new LifeCycleStatus",
+  "variables": {
+    "actorsListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_Actors",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallActorsResponse",
+        "uriParameters": {}
+      }
+    },
+    "createLifeCycleStatusChainInProgress": {
+      "type": "boolean",
+      "defaultValue": false
+    },
+    "lifeCycleStatus": {
+      "type": "page:createLifeCycleStatusRequest"
+    }
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.createLifeCycleStatusRequest": {
+      "endpoint": "create_LifeCycleStatus",
+      "service": "businessObjects",
+      "path": "request"
+    },
+    "@decorators.getallActorsResponse": {
+      "endpoint": "getall_Actors",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "businessObjectsServiceErrorResponseType": {
+      "body": {
+        "status": "string",
+        "title": "string",
+        "o:errorDetails": [
+          {
+            "detail": "string",
+            "o:errorCode": "string"
+          }
+        ]
+      },
+      "status": "number"
+    },
+    "createLifeCycleStatusRequest": {
+      "actors": "number",
+      "systemLifeCycleDescription": "string"
+    },
+    "getallActorsResponse": {
+      "items": [
+        {
+          "actorName": "string",
+          "id": "number"
+        }
+      ]
+    }
+  },
+  "eventListeners": {
+    "backButtonClicked": {
+      "chains": [
+        {
+          "chainId": "goBackChain"
+        }
+      ]
+    },
+    "saveButtonClicked": {
+      "chains": [
+        {
+          "chainId": "createLifeCycleStatusChain"
+        }
+      ]
+    }
+  },
+  "imports": {
+    "components": {
+      "oj-button": {
+        "path": "ojs/ojbutton"
+      },
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+      "oj-select-single": {
+        "path": "ojs/ojselectsingle"
+      },
+      "oj-toolbar": {
+        "path": "ojs/ojtoolbar"
+      },
+      "oj-validation-group": {
+        "path": "ojs/ojvalidationgroup"
+      }
+    }
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

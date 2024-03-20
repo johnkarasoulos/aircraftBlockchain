@@ -1,0 +1,249 @@
+{
+  "title": "",
+  "description": "",
+  "variables": {
+    "animate": {
+      "type": "string",
+      "defaultValue": "auto"
+    },
+    "bidirectionalNavigation": {
+      "type": "boolean",
+      "defaultValue": true,
+      "input": "fromCaller"
+    },
+    "displayMode": {
+      "type": "string"
+    },
+    "goToParent": {
+      "type": "boolean",
+      "defaultValue": true,
+      "input": "fromCaller"
+    },
+    "landingGear": {
+      "type": "getLandingGearResponse"
+    },
+    "nextStep": {
+      "type": "any",
+      "defaultValue": {}
+    },
+    "pageTitle": {
+      "type": "string",
+      "defaultValue": "Horizontal Overview Title"
+    },
+    "panelOneTitle": {
+      "type": "string",
+      "defaultValue": "Panel one title"
+    },
+    "panelTwoTitle": {
+      "type": "string",
+      "defaultValue": "Panel two title"
+    },
+    "parentPage": {
+      "type": "string",
+      "input": "fromCaller"
+    },
+    "previousStep": {
+      "type": "any"
+    },
+    "rowIndex": {
+      "type": "number",
+      "input": "fromUrl",
+      "description": "Zero-based index referring to the current row",
+      "onValueChanged": {
+        "chains": [
+{
+            "chainId": "fetchChain",
+            "parameters": {
+              "limit": 3,
+              "offset": "{{ $page.variables.rowIndex > 0 ? ($page.variables.rowIndex - 1) : 0 }}"
+            }
+          },
+          {
+            "chainId": "loadLandingGearChain",
+            "parameters": {
+              "landingGearId": "{{ $variables.rowIndex }}"
+            }
+          }
+        ]
+      }
+    },
+    "selectedPanel": {
+      "type": "number",
+      "input": "fromUrl"
+    },
+    "selectedSubSystem": {
+      "type": "string"
+    },
+    "subSystemComponentListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_SubSystemComponent",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallSubSystemComponentResponse",
+        "filterCriterion": {
+          "op": "$co",
+          "attribute": "subSystems",
+          "value": "{{ $variables.selectedSubSystem }}"
+        }
+      }
+    },
+    "subSystemsListSDP": {
+      "type": "vb/ServiceDataProvider",
+      "defaultValue": {
+        "endpoint": "businessObjects/getall_SubSystems",
+        "keyAttributes": "id",
+        "itemsPath": "items",
+        "responseType": "getallSubSystemsResponse",
+        "filterCriterion": {
+          "op": "$eq",
+          "attribute": "landingGear",
+          "value": "{{ $variables.rowIndex }}"
+        }
+      }
+    }
+  },
+  "metadata": {},
+  "types": {
+    "@decorators.getallSubSystemComponentResponse": {
+      "endpoint": "getall_SubSystemComponent",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.getallSubSystemsResponse": {
+      "endpoint": "getall_SubSystems",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "@decorators.getLandingGearResponse": {
+      "endpoint": "get_LandingGear",
+      "service": "businessObjects",
+      "path": "response"
+    },
+    "getallSubSystemComponentResponse": {
+      "items": [
+        {
+          "assemblyDate": "string",
+          "id": "number",
+          "maintenanceActions": "number",
+          "name": "string",
+          "newPart": "boolean",
+          "operatingData": "number",
+          "replacementDate": "string",
+          "serialNumber": "string",
+          "subSystems": "number"
+        }
+      ]
+    },
+    "getallSubSystemsResponse": {
+      "items": [
+        {
+          "id": "number",
+          "subsystemCode": "string",
+          "subsystemdefinition": "string",
+          "subsystemtitle": "string"
+        }
+      ]
+    },
+    "getLandingGearResponse": {
+      "subSystemID": "string",
+      "SystemDefinition": "string",
+      "title": "string"
+    }
+  },
+  "eventListeners": {
+    "onSpGoToParent": {
+      "chains": [
+        {
+          "chainId": "goToParentChain",
+          "parameters": {
+            "parentPage": "{{ $page.variables.parentPage }}"
+          }
+        }
+      ]
+    },
+    "onSpNext": {
+      "chains": [
+        {
+          "chainId": "next",
+          "parameters": {
+            "event": "{{ $event }}"
+          }
+        }
+      ]
+    },
+    "onSpPrevious": {
+      "chains": [
+        {
+          "chainId": "previous",
+          "parameters": {
+            "event": "{{ $event }}"
+          }
+        }
+      ]
+    },
+    "subsystemDetailFirstSelectedRow": {
+      "chains": [
+        {
+          "chainId": "TableFirstSelectedRowChangeChain",
+          "parameters": {
+            "rowKey": "{{$event.detail.value.key}}",
+            "rowData": "{{$event.detail.value.data}}"
+          }
+        }
+      ]
+    },
+    "vbEnter": {
+      "chains": [
+{
+          "chainId": "firePageLayoutEventChain"
+        },
+        {
+          "chainId": "loadLandingGearChain",
+          "parameters": {
+            "landingGearId": "{{ $variables.rowIndex }}"
+          }
+        }
+      ]
+    }
+
+  },
+  "imports": {
+    "components": {
+      "oj-form-layout": {
+        "path": "ojs/ojformlayout"
+      },
+      "oj-input-date": {
+        "path": "ojs/ojdatetimepicker"
+      },
+      "oj-input-text": {
+        "path": "ojs/ojinputtext"
+      },
+
+      "oj-sp-foldout-layout": {
+        "path": "oj-sp/foldout-layout/loader"
+      },
+      "oj-sp-foldout-panel-summarizing": {
+        "path": "oj-sp/foldout-panel-summarizing/loader"
+      },
+      "oj-sp-horizontal-overview": {
+        "path": "oj-sp/horizontal-overview/loader"
+      },
+      "oj-switch": {
+        "path": "ojs/ojswitch"
+      },
+      "oj-table": {
+        "path": "ojs/ojtable"
+      }
+
+    }
+  },
+  "@dt": {
+    "iconClass": "vbdt-dynamic-icon-65-icoFoldoutLayout48Svg"
+  },
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

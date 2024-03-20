@@ -1,0 +1,16 @@
+{
+
+  "title": "",
+  "description": "",
+  "variables": {},
+  "metadata": {},
+  "types": {},
+  "chains": {},
+  "eventListeners": {},
+  "imports": {},
+  "security": {
+    "access": {
+      "requiresAuthentication": false
+    }
+  }
+}

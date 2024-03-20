@@ -1,0 +1,63 @@
+{
+  "root": "resetVariablesAllAircrafts",
+  "description": "",
+  "actions": {
+    "resetVariablesAllAircrafts": {
+      "module": "vb/action/builtin/resetVariablesAction",
+      "parameters": {
+        "variables": [
+          "$page.variables.allAircrafts"
+        ]
+      },
+      "outcomes": {
+        "success": "callFunctionSetBody2RetrieveAllAirplanes"
+      }
+    },
+    "callFunctionSetBody2RetrieveAllAirplanes": {
+      "module": "vb/action/builtin/callModuleFunctionAction",
+      "parameters": {
+        "module": "[[ $functions ]]",
+        "functionName": "setBody2RetrieveAllAirplanes",
+        "params": [
+          "{{ $page.variables.retrieveAllAirplanes }}",
+          "{{ $page.variables.bc_chaincode_name }}"
+        ]
+      },
+      "outcomes": {
+        "success": "callRestGetAllTokens"
+      }
+    },
+    "fireNotification": {
+      "module": "vb/action/builtin/fireNotificationEventAction",
+      "parameters": {
+        "target": "leaf",
+        "summary": "[[ $chain.results.callRestGetAllTokens.message.summary ]]",
+        "type": "error",
+        "displayMode": "persist"
+      }
+    },
+    "callRestGetAllTokens": {
+      "module": "vb/action/builtin/restAction",
+      "parameters": {
+        "endpoint": "Retrieve-All-Tokens/getAllTokens",
+        "body": "{{ $chain.results.callFunctionSetBody2RetrieveAllAirplanes }}"
+      },
+      "outcomes": {
+        "success": "assignVariablesAllAircrafts",
+        "failure": "fireNotification"
+      }
+    },
+    "assignVariablesAllAircrafts": {
+      "module": "vb/action/builtin/assignVariablesAction",
+      "parameters": {
+        "$page.variables.allAircrafts": {
+          "source": {
+            "data": "{{ $chain.results.callRestGetAllTokens.body.result.payload }}"
+          },
+          "reset": "none",
+          "auto": "always"
+        }
+      }
+    }
+  }
+}

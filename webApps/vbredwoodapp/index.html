@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html class="oj-html" lang="en">
+
+  <head>
+    <title>Oracle Applications</title>
+    <meta http-equiv="x-ua-compatible" content="IE=edge" />
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link rel="preconnect" href="https://static.oracle.com" />
+    <link rel="preconnect" href="https://static-stage.oracle.com" />
+    <link rel="preconnect" href="https://rt.oraclevb.com" />
+    <link rel="stylesheet" type="text/css" href="../resources/css/app.css" />
+    <!-- vb:inject id="headContent" theme="resources/css/dt.theme.redwood" -->
+    <!-- userPrefs -->
+    <!-- visualBuilderApplcoreHeadContent -->
+    <!-- vb:inject id="pwa" -->
+    <!-- Enable Ask Oracle in the shell and the dark header treatment -->
+
+    <script>
+      window.userPreferences = {};
+      window.userPreferences.locale = 'en';
+      window.userPreferences.dateFormatPattern = 'MM/dd/yy';
+      window.userPreferences.timeFormatPattern = 'HH:mm';
+      window.userPreferences.numberFormatPattern = '#,##0.###';
+      window.userPreferences.groupingSeparator = ',';
+      window.userPreferences.decimalSeparator = '.';
+      window.userPreferences.currencyCode = 'USD';
+      window.userPreferences.territory = 'US';
+
+      window.faConfig = window.faConfig || {};
+      window.faConfig.MANIFEST = window.faConfig.MANIFEST || {};
+      window.faConfig.PROFILE = window.faConfig.profiles || {};
+      window.faConfig.PROFILE.ORA_ASK_ORACLE_ENABLED = 'Y';
+      window.faConfig.extensibleApps = {};
+      window.faConfig.extensibleApps.fodorder = true;
+      window.faConfig.MANIFEST = {
+        bundles: [{
+          pillarTheme: 'ocean',
+          pillarThemeMode: 'mixed',
+        }, ],
+      };
+    </script>
+  </head>
+
+  <body class="oj-web-applayout-body oj-sp-rw-shell">
+    <oj-vb-content config="[[vbApplication]]"></oj-vb-content>
+    <!-- visualBuilderScripts -->
+    <!-- CSRFToken -->
+  </body>
+
+</html>

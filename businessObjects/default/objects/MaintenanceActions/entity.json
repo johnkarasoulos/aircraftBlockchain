@@ -1,0 +1,125 @@
+{
+    "fields": [
+        {
+            "type": "number",
+            "name": "id",
+            "internal": false,
+            "key": true,
+            "oid": "94be74d5-3cac-4082-ad8b-47a049a2bf06",
+            "required": true,
+            "unique": true,
+            "displayLabel": "Id"
+        },
+        {
+            "type": "datetime",
+            "name": "creationDate",
+            "internal": false,
+            "oid": "5f9e0289-8922-47ca-a9cd-bfb631f50ee5",
+            "displayLabel": "Created",
+            "historyType": "timeCreated"
+        },
+        {
+            "type": "datetime",
+            "name": "lastUpdateDate",
+            "internal": false,
+            "oid": "46f51ff0-1844-4c19-815b-e709954f80db",
+            "displayLabel": "Last Updated",
+            "historyType": "timeUpdated"
+        },
+        {
+            "type": "string",
+            "name": "createdBy",
+            "internal": false,
+            "oid": "1026b0da-e8e4-4575-b6fa-6df473bce6b8",
+            "displayLabel": "Created By",
+            "historyType": "createdBy"
+        },
+        {
+            "type": "string",
+            "name": "lastUpdatedBy",
+            "internal": false,
+            "oid": "c4d1e2ae-f988-426a-9878-7ea89f665a8d",
+            "displayLabel": "Last Updated By",
+            "historyType": "updatedBy"
+        },
+{
+            "type": "number",
+            "name": "versionNumber",
+            "internal": false,
+            "oid": "87090be1-5dcb-44c2-8013-5fc3ccbe9567",
+            "displayLabel": "Version Number",
+            "historyType": "versionNumber"
+        },
+        {
+            "type": "string",
+            "name": "description",
+            "oid": "3eb4d726-24df-430a-b34b-ab953f1e02bf",
+            "displayLabel": "Description"
+        }        ,
+        {
+            "type": "date",
+            "name": "maintenaceDateAction",
+            "oid": "2e61bd35-f48d-43a3-bc68-9fe86ca7c1fd",
+            "displayLabel": "Maintenace Date Action"
+        }
+    ],
+    "name": "MaintenanceActions",
+    "oid": "7a33ec04-9c4e-4615-8722-903207be9124",
+    "displayLabel": "Maintenance Actions",
+    "relationships": [
+        {
+            "name": "subSystemComponentCollection",
+            "reverseRelationship": "maintenanceActionsObject",
+            "targetEntity": "SubSystemComponent",
+            "type": "incoming",
+            "displayField": "description"
+        }
+    ],
+    "security": {
+        "type": "local",
+        "acl": [
+            {
+                "roleId": "approle.anonymous.user",
+                "privileges": [
+                    {
+                        "name": "view",
+                        "value": true
+                    },
+                    {
+                        "name": "create",
+                        "value": true
+                    },
+                    {
+                        "name": "update",
+                        "value": true
+                    },
+                    {
+                        "name": "delete",
+                        "value": true
+                    }
+                ]
+            },
+            {
+                "roleId": "approle.authenticated.user",
+                "privileges": [
+                    {
+                        "name": "view",
+                        "value": true
+                    },
+                    {
+                        "name": "create",
+                        "value": true
+                    },
+                    {
+                        "name": "update",
+                        "value": true
+                    },
+                    {
+                        "name": "delete",
+                        "value": true
+                    }
+                ]
+            }
+        ]
+    }
+}

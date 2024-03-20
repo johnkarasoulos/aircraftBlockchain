@@ -1,0 +1,50 @@
+<div>
+  <oj-sp-dashboard-landing-page id="oj-sp-dashboard-page-1" primary-action="[[ $page.variables.primaryAction]]">
+    <oj-bind-if test="[[ $page.variables.kpisArray.length > 0 ]]">
+      <oj-sp-scoreboard slot="kpi" id="oj-sp-scoreboard-1" data="[[$page.variables.kpisADP]]"
+        selection="{{ $page.variables.selectedKpi }}" selection-mode="single"></oj-sp-scoreboard>
+    </oj-bind-if>
+
+    
+    <oj-switcher id="kpi-switcher" value="[[ $page.variables.selectedKpi ]]">
+      <oj-defer slot="KPI_1_id" >
+        <oj-sp-dashboard-grid layout="[[ $page.variables.layout ]]">
+          <oj-sp-dashboard-panel panel-title="[[ $page.variables.primaryPanelTitle ]]" slot="">
+            <oj-list-view data="[[$variables.landingGearListSDP]]" class="oj-group-header-lg oj-listview-full-width"
+              selection-mode="single" display="card">
+              <template slot="itemTemplate">
+                <oj-list-item-layout class="oj-listitemlayout-padding-off">
+                  <img :src="[[ $current.data.systemImage ]]" width="55" height="55" slot="leading">
+                  <div></div>
+                  <p slot="leading"><oj-bind-text value="[['Sub System ID: '+ $current.data.subSystemID ]]"></oj-bind-text>
+                  </p>
+                  <div slot="trailing">
+                    <oj-bind-text value="[[ $current.data.SystemDefinition ]]"></oj-bind-text>
+                  </div>
+                </oj-list-item-layout>
+              </template>
+            </oj-list-view>
+          </oj-sp-dashboard-panel>
+        </oj-sp-dashboard-grid>
+      </oj-defer>
+      <oj-defer slot="KPI_2_id" >
+        <oj-sp-dashboard-grid layout="[[ $variables.layout ]]">
+          <oj-sp-dashboard-panel panel-title="[[ $page.variables.primaryPanelTitle ]]" slot="">
+            <oj-list-view data="[[$variables.maintenanceActionsListSDP]]">
+              <template slot="itemTemplate">
+                <oj-list-item-layout>
+                  <div>
+                    <oj-bind-text value="[[ $current.data.description ]]"></oj-bind-text>
+                  </div>
+                  <div slot="metadata">
+                    <oj-bind-text value="[[ $current.data.maintenaceDateAction ]]"></oj-bind-text>
+                  </div>
+                </oj-list-item-layout>
+              </template>
+            </oj-list-view>
+          </oj-sp-dashboard-panel>
+        </oj-sp-dashboard-grid>
+      </oj-defer>
+    </oj-switcher>
+  </oj-sp-dashboard-landing-page>
+</div>

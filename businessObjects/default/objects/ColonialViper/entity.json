@@ -1,0 +1,155 @@
+{
+    "fields": [
+        {
+            "type": "number",
+            "name": "id",
+            "internal": false,
+            "key": true,
+            "oid": "836f9979-4aa7-41ab-a6d2-1d817fe4cb15",
+            "required": true,
+            "unique": true,
+            "displayLabel": "Id"
+        },
+        {
+            "type": "datetime",
+            "name": "creationDate",
+            "internal": false,
+            "oid": "2f1ae68c-0b2d-4a1f-a9b5-c7262f805e2e",
+            "displayLabel": "Created",
+            "historyType": "timeCreated"
+        },
+        {
+            "type": "datetime",
+            "name": "lastUpdateDate",
+            "internal": false,
+            "oid": "99ae4744-831f-47a8-a8be-e0b80f5bdb98",
+            "displayLabel": "Last Updated",
+            "historyType": "timeUpdated"
+        },
+        {
+            "type": "string",
+            "name": "createdBy",
+            "internal": false,
+            "oid": "82f5e3e1-1793-49f5-b52f-10ae1ae0a356",
+            "displayLabel": "Created By",
+            "historyType": "createdBy"
+        },
+        {
+            "type": "string",
+            "name": "lastUpdatedBy",
+            "internal": false,
+            "oid": "eaf5830d-5ba9-49f5-8837-8f3c909af581",
+            "displayLabel": "Last Updated By",
+            "historyType": "updatedBy"
+        },
+{
+            "type": "number",
+            "name": "versionNumber",
+            "internal": false,
+            "oid": "6296fc8c-e188-437c-86ca-b0936e763cd8",
+            "displayLabel": "Version Number",
+            "historyType": "versionNumber"
+        },
+        {
+            "type": "string",
+            "name": "tokenDesc",
+            "oid": "0f77cb49-95bc-471f-a5ad-7885b2c68dc3",
+            "displayLabel": "Description"
+        }        ,
+        {
+            "type": "string",
+            "name": "tokenURI",
+            "oid": "9abe6b14-2972-4f45-8f1c-c159bc59c2c2",
+            "displayLabel": "URI"
+        },
+        {
+            "type": "string",
+            "name": "tokenId",
+            "oid": "935b9497-c376-4bb7-a3ed-0cd2fb15b19b",
+            "displayLabel": "tokenId"
+        }        ,
+        {
+            "type": "string",
+            "name": "aircraftId",
+            "oid": "5901d9d8-22cb-4217-b71d-1f53ee0b75b3",
+            "displayLabel": "aircraft_id"
+        }        ,
+        {
+            "type": "string",
+            "name": "aircraftDefinition",
+            "oid": "739634b8-da80-4e47-b89b-5243d5c0826f",
+            "displayLabel": "aircraftDefinition"
+        }        ,
+        {
+            "type": "string",
+            "name": "aircraftTitle",
+            "oid": "2f8778b3-8ff5-4f88-b2f9-0e82b04a8452",
+            "displayLabel": "aircraft_Title"
+        }        ,
+        {
+            "type": "string",
+            "name": "aircraftAssetType",
+            "oid": "88cd1782-4710-4220-ae80-20951ccba93b",
+            "displayLabel": "aircraftAssetType"
+        }
+    ],
+    "name": "ColonialViper",
+    "oid": "3b295cf8-3ed8-46f6-a599-7fbc70480c72",
+    "displayLabel": "Colonial Viper",
+    "relationships": [
+        {
+            "name": "landingGearCollection",
+            "reverseRelationship": "figtherObject",
+            "targetEntity": "LandingGear",
+            "type": "incoming",
+            "displayField": "tokenDesc"
+        }
+    ],
+    "security": {
+        "type": "local",
+        "acl": [
+            {
+                "roleId": "approle.anonymous.user",
+                "privileges": [
+                    {
+                        "name": "view",
+                        "value": true
+                    },
+                    {
+                        "name": "create",
+                        "value": true
+                    },
+                    {
+                        "name": "update",
+                        "value": true
+                    },
+                    {
+                        "name": "delete",
+                        "value": true
+                    }
+                ]
+            },
+            {
+                "roleId": "approle.authenticated.user",
+                "privileges": [
+                    {
+                        "name": "view",
+                        "value": true
+                    },
+                    {
+                        "name": "create",
+                        "value": true
+                    },
+                    {
+                        "name": "update",
+                        "value": true
+                    },
+                    {
+                        "name": "delete",
+                        "value": true
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,21 @@
+<!-- vb default-layout:flex -->
+<oj-sp-smart-search-page id="aeralis-system-inventory" page-title="[[ $page.variables.pageTitle ]]"
+  page-subtitle="[[ $page.variables.subtitle ]]" display-options.go-to-parent="[[ $page.variables.goToParentOption ]]"
+  display-mode="mixed" display-options.in-flow-back="true" primary-action.label="Create System"
+  secondary-actions='[{"id":"DetailedSystem","label":"System Details","display":"on"},{"id":"DetailedSubSystem","label":"Detailed Subsystem","display":"on"},{"id":"DetailComponent","label":"Detailed Component","display":"on"}]'>
+  <oj-input-search slot="search" id="searchSys" value="{{ $variables.searchInventory }}"
+    on-oj-value-action="[[$listeners.searchSysValueAction]]"></oj-input-search>
+  <oj-sp-detail-panel panel-title="[[ $variables.singleToken.tokenName ]]"
+    panel-subtitle="[[ $variables.singleToken.tokenType ]]" display-options.edit="on" edit-mode="on" id="TokenDetails">
+    <oj-form-layout direction="row" label-width="60">
+      <oj-input-text label-hint="Id" id="metadata-Id" value="{{ $variables.singleToken.tokenMetadata.id }}"></oj-input-text>
+      <oj-input-text label-hint="Token Name" value="{{ $variables.singleToken.tokenMetadata.name }}" id="metadata-name"></oj-input-text>
+      <oj-sp-input-rich-text-2 label-hint="Token Description" primary-action.display="on"
+        value="{{ $variables.singleToken.tokenMetadata.description }}"></oj-sp-input-rich-text-2>
+      <oj-input-text label-hint="Token subSystems" id="metadata-subSystems"
+        value="{{ $variables.singleToken.tokenMetadata.subSystems }}"></oj-input-text>
+      <oj-input-date-time label-hint="Token Maintenance Date" id="metadata-maintenanceDateAction"
+        value="{{ $variables.singleToken.tokenMetadata.maintenanceDateAction }}"></oj-input-date-time>
+    </oj-form-layout>
+  </oj-sp-detail-panel>
+</oj-sp-smart-search-page>

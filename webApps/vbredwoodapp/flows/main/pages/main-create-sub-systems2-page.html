@@ -1,0 +1,21 @@
+<div class="oj-flex">
+  <h1 class="oj-flex-item oj-sm-12 oj-md-12">Create SubSystems</h1>
+</div>
+<div class="oj-flex">
+  <oj-validation-group id="validation-group" class="oj-flex-item oj-sm-12 oj-md-12">
+    <oj-form-layout class="oj-formlayout-full-width" label-edge="start">
+      <oj-select-single value="{{ $variables.subSystems.landingGear }}" label-hint="Landing Gear" required="true"
+        data="[[ $variables.landingGearListSDP ]]" item-text="subSystemID"></oj-select-single>
+      <oj-input-text value="{{ $variables.subSystems.subsystemCode }}" label-hint="Subsystem Code" required="true"></oj-input-text>
+      <oj-input-text value="{{ $variables.subSystems.subsystemtitle }}" label-hint="subsystemtitle"></oj-input-text>
+      <oj-input-text value="{{ $variables.subSystems.subsystemdefinition }}" label-hint="subsystemdefinition"></oj-input-text>
+    </oj-form-layout>
+  </oj-validation-group>
+</div>
+<div class="oj-flex">
+  <oj-toolbar chroming="solid" class="oj-flex-item oj-sm-12 oj-md-12">
+    <oj-button on-oj-action="[[$listeners.backButtonClicked]]">Cancel</oj-button>
+    <oj-button on-oj-action="[[$listeners.saveButtonClicked]]"
+      disabled="[[ $variables.createSubSystemsChainInProgress ]]">Save</oj-button>
+  </oj-toolbar>
+</div>
