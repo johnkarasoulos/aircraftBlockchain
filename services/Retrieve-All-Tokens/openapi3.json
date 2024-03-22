@@ -7,7 +7,7 @@
     "servers": [
         {
             "url": "vb-catalog://backends/CreateAirplane",
-            "description": "bc-url :     https://wedobcstd2-wedoinfra-fra.blockchain.ocp.oraclecloud.com:7443/restproxy\nbc-channel : goldenthread\nbc-org-id : WEDOBCStd2 \nbc-user-id : cmsleg001\nbc-admin-user : cmsrsk001 \nbc-admin-user-password : Oracle12345.\nbc-token-id : bc-token-id value\nbc-timeout : 6000 \nbc-sync : true \nbc-chaincode-name : gt1155\n",
+            "description": "\nhttps://xxxxxxxxxxxxxblockchain.ocp.oraclecloud.com:7443/restproxy/api/v2/channels/xxxxxxxxx\n",
             "x-vb": {
                 "authentication": {
                     "authenticated": {

@@ -3,7 +3,7 @@
         "CreateAirplane": {
             "servers": [
                 {
-                    "url": "https://wedobcstd2-wedoinfra-fra.blockchain.ocp.oraclecloud.com:7443",
+                    "url": "https://xxxxxxxxxxxxxblockchain.ocp.oraclecloud.com:7443/restproxy/api/v2/channels/xxxxxxxxx",
                     "description": "Restproxy Api V2",
                     "x-vb": {
                         "authentication": {
@@ -24,7 +24,7 @@
         "CreateLandingGear": {
             "servers": [
                 {
-                    "url": "https://wedobcstd2-wedoinfra-fra.blockchain.ocp.oraclecloud.com:7443/restproxy/api/v2/channels/goldenthread",
+                    "url": "https://xxxxxxxxxxxxxblockchain.ocp.oraclecloud.com:7443/restproxy/api/v2/channels/xxxxxxxxx",
                     "description": "Restproxy Api V2",
                     "x-vb": {
                         "authentication": {
